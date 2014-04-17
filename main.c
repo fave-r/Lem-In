@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Thu Apr 17 15:05:09 2014 romaric
+** Last update Thu Apr 17 15:20:09 2014 romaric
 */
 
 #include "lem_in.h"
@@ -250,8 +250,6 @@ int		main(__attribute__((unused))int ac, __attribute__((unused))char **av)
   insert_arc(graphe, 2, 1);
   insert_arc(graphe, 1, 3);
   insert_arc(graphe, 2, 3);
-
-
   start = 9;
   end = 1;
   while (dijkstra(graphe, start, end))

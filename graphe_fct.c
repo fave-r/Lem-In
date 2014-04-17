@@ -1,11 +1,11 @@
 /*
 ** graphe.fct.c for lem_in in /home/thibaud/rendu/lem_in
-** 
+**
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Sun Apr 13 03:01:17 2014 thibaud
-** Last update Thu Apr 17 06:36:00 2014 thibaud
+** Last update Thu Apr 17 15:23:28 2014 romaric
 */
 
 #include "lem_in.h"
@@ -22,7 +22,7 @@ t_graphe        *new_graphe(void)
 
 }
 
-int     add_sommet(t_graphe *graphe, int new_nb)
+int		add_sommet(t_graphe *graphe, int new_nb)
 {
   t_list        *cur;
   t_list        *new_sommet;
@@ -48,7 +48,7 @@ int     add_sommet(t_graphe *graphe, int new_nb)
   return (0);
 }
 
-int     sommet_exist(t_graphe *graphe, int nb)
+int		sommet_exist(t_graphe *graphe, int nb)
 {
   t_list        *cur;
 
@@ -62,11 +62,11 @@ int     sommet_exist(t_graphe *graphe, int nb)
   return (0);
 }
 
-void    *my_realloc(void *source, int size)
+void		*my_realloc(void *source, int size)
 {
-  char  *src;
-  char  *new;
-  int   i;
+  char		*src;
+  char		*new;
+  int		i;
 
   i = 0;
   new = malloc(sizeof(char) * size);
@@ -83,7 +83,7 @@ void    *my_realloc(void *source, int size)
   return (new);
 }
 
-int     add_arc(t_graphe *graphe, int sommet1, int sommet2)
+int		add_arc(t_graphe *graphe, int sommet1, int sommet2)
 {
   t_list        *cur;
 
@@ -101,10 +101,10 @@ int     add_arc(t_graphe *graphe, int sommet1, int sommet2)
   return (0);
 }
 
-int     arc_exist(t_graphe *graphe, int sommet, int adjacent)
+int		arc_exist(t_graphe *graphe, int sommet, int adjacent)
 {
   t_list        *cur;
-  int   i;
+  int		i;
 
   i = 0;
   cur = graphe->next;
@@ -124,7 +124,7 @@ int     arc_exist(t_graphe *graphe, int sommet, int adjacent)
   return (0);
 }
 
-int     insert_arc(t_graphe *graphe, int sommet1, int sommet2)
+int		insert_arc(t_graphe *graphe, int sommet1, int sommet2)
 {
   if (!sommet_exist(graphe, sommet1))
     add_sommet(graphe, sommet1);
@@ -139,7 +139,7 @@ int     insert_arc(t_graphe *graphe, int sommet1, int sommet2)
   return (0);
 }
 
-int     print_graphe(t_graphe *graphe)
+int		print_graphe(t_graphe *graphe)
 {
   t_list        *list;
   printf("Nombre de sommets = %d\nNombre d'arcs = %d\n\n", graphe->nb_sommet, graphe->nb_arcs);

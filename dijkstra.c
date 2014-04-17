@@ -1,16 +1,16 @@
 /*
 ** dijkstra.c for lem_in in /home/thibaud/rendu/Lem-In
-** 
+**
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Thu Apr 17 05:59:54 2014 thibaud
-** Last update Thu Apr 17 07:06:51 2014 thibaud
+** Last update Thu Apr 17 15:24:46 2014 romaric
 */
 
 #include "lem_in.h"
 
-int     dijkstra(t_graphe *graphe, int start, int end)
+int		dijkstra(t_graphe *graphe, int start, int end)
 {
   int           **arc_tab;
   t_list        *tmp;
@@ -52,9 +52,9 @@ t_list          *fix_sommet(t_graphe *graphe)
   return (get_sommet(graphe, closest_sommet));
 }
 
-int     get_tmp_distance(t_graphe *graphe, t_list *fix, int **arc_tab)
+int		get_tmp_distance(t_graphe *graphe, t_list *fix, int **arc_tab)
 {
-  int   i;
+  int		i;
 
   i = 0;
   while (fix && i < fix->nb_sommet_adjacent)
@@ -73,12 +73,12 @@ int     get_tmp_distance(t_graphe *graphe, t_list *fix, int **arc_tab)
   return (0);
 }
 
-int     **build_arcs_tab(t_graphe *graphe, int start)
+int		**build_arcs_tab(t_graphe *graphe, int start)
 {
-  int   **tab;
-  int   size;
-  int   i;
-  int   j;
+  int		**tab;
+  int		size;
+  int		i;
+  int		j;
 
   i = 0;
   size = get_max_sommet(graphe);
