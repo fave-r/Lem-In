@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Thu Apr 17 15:20:09 2014 romaric
+** Last update Thu Apr 17 15:34:04 2014 romaric
 */
 
 #include "lem_in.h"
@@ -136,7 +136,8 @@ int		my_rev_tab(int *tab, int len)
   return (0);
 }
 
-t_way		*get_solution(t_graphe *graphe, t_way *list_chemins, int end, int start)
+t_way		*get_solution(t_graphe *graphe, t_way *list_chemins,
+			      int end, int start)
 {
   t_list	*cur;
   t_way		*new;
@@ -236,7 +237,8 @@ int		print_result(t_way *way)
   return (0);
 }
 
-int		main(__attribute__((unused))int ac, __attribute__((unused))char **av)
+int		main(__attribute__((unused))int ac,
+		     __attribute__((unused))char **av)
 {
   t_graphe	*graphe;
   t_way		*ways;
