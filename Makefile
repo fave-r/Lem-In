@@ -6,7 +6,6 @@
 ## 
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
 ## Last update Thu Apr 17 08:29:28 2014 thibaud
-## Last update Thu Apr 17 02:23:40 2014 romaric
 ##
 
 CC=	gcc
