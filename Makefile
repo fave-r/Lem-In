@@ -5,16 +5,15 @@
 ## Login   <thibaud@epitech.net>
 ## 
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Thu Apr 17 05:56:37 2014 thibaud
+## Last update Thu Apr 17 08:29:28 2014 thibaud
+## Last update Thu Apr 17 02:23:40 2014 romaric
 ##
 
-FLAGS	= -W -Wall -Werror
+CC=	gcc
 
-RM	= rm -f
+RM=	rm -f
 
-RMO	= rm *.o
-
-CC	= gcc -W -Wall -Werror
+CFLAGS	+=	-Wextra -Wall -Werror
 
 NAME	= lem_in
 
@@ -23,13 +22,12 @@ SRCS	= main.c \
 	dijkstra.c \
 	print.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJS=	$(SRCS:.c=.o)
 
-all: $(NAME)
+all:	$(NAME)
 
 $(NAME) :	$(OBJS)
-	$(CC) -o $(NAME) $(SRCS) -W -Werror -Wall -lm
-	$(RMO)
+		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
 	$(RM) $(OBJS) 
@@ -37,4 +35,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME) *~
 
-re: fclean all
+re:	fclean all
+
+.PHONY:	all fclean re
