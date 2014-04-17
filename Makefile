@@ -5,7 +5,7 @@
 ## Login   <thibaud@epitech.net>
 ## 
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Sun Apr 13 03:04:34 2014 thibaud
+## Last update Thu Apr 17 05:56:37 2014 thibaud
 ##
 
 FLAGS	= -W -Wall -Werror
@@ -19,7 +19,9 @@ CC	= gcc -W -Wall -Werror
 NAME	= lem_in
 
 SRCS	= main.c \
-	graphe_fct.c
+	graphe_fct.c \
+	dijkstra.c \
+	print.c
 
 OBJS	= $(SRCS:.c=.o)
 

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sun Apr 13 03:01:17 2014 thibaud
-** Last update Wed Apr 16 02:21:41 2014 thibaud
+** Last update Thu Apr 17 02:29:47 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -129,7 +129,7 @@ int     insert_arc(t_graphe *graphe, int sommet1, int sommet2)
     add_sommet(graphe, sommet1);
   if (!sommet_exist(graphe, sommet2))
     add_sommet(graphe, sommet2);
-  if (!arc_exist(graphe, sommet1, sommet2))
+  if (!arc_exist(graphe, sommet1, sommet2) || !arc_exist(graphe, sommet2, sommet1))
     graphe->nb_arcs++;
   if (!arc_exist(graphe, sommet1, sommet2))
     add_arc(graphe, sommet1, sommet2);
@@ -164,4 +164,3 @@ int     print_graphe(t_graphe *graphe)
     }
   return (0);
 }
-
