@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sun Apr 13 03:01:17 2014 thibaud
-** Last update Thu Apr 17 02:29:47 2014 thibaud
+** Last update Thu Apr 17 06:36:00 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -79,6 +79,7 @@ void    *my_realloc(void *source, int size)
       new[i] = src[i];
       i++;
     }
+  free(source);
   return (new);
 }
 

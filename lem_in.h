@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Thu Apr 17 05:57:25 2014 thibaud
+** Last update Thu Apr 17 06:53:26 2014 thibaud
 */
 
 #ifndef LEM_IN_
@@ -51,7 +51,7 @@ typedef struct		s_way
   int			posy;
   int			numero_fourmie;
   int			len;
-  int			*way;
+  int			*chemin;
   struct s_way		*next;
 }			t_way;
 
@@ -74,5 +74,6 @@ int             get_max_sommet(t_graphe *graphe);
 
 int		print_graphe(t_graphe *graphe);
 int     print_dijsktra(t_graphe *graphe, int end, int start);
+int	my_isdigit(char);
 
 #endif
