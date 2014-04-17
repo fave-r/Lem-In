@@ -1,19 +1,19 @@
 /*
 ** main.c for lem_in in /home/thibaud/rendu/lem_in
-** 
+**
 ** Made by thixbaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Thu Apr 17 08:23:16 2014 thibaud
+** Last update Thu Apr 17 15:05:09 2014 romaric
 */
 
 #include "lem_in.h"
 
-void    *my_memset(void *source, int size, int nb)
+void		*my_memset(void *source, int size, int nb)
 {
-  char  *new;
-  int   i;
+  char		*new;
+  int		i;
 
   i = 0;
   new = source;
@@ -55,11 +55,11 @@ t_list		*get_sommet(t_graphe *graphe, int nb)
   return (NULL);
 }
 
-void	*my_xdup(void *source, int size)
+void		*my_xdup(void *source, int size)
 {
-  char	*tmp;
-  char	*src;
-  int	i;
+  char		*tmp;
+  char		*src;
+  int		i;
 
   i = 0;
   src = source;
@@ -74,11 +74,11 @@ void	*my_xdup(void *source, int size)
   return (tmp);
 }
 
-int	my_xcopy(void *source, int len_src, void *target, int len_trg)
+int		my_xcopy(void *source, int len_src, void *target, int len_trg)
 {
-  char	*src;
-  char	*trg;
-  int	i;
+  char		*src;
+  char		*trg;
+  int		i;
 
   i = 0;
   src = source;
@@ -98,11 +98,11 @@ int             my_isdigit(char c)
   return (0);
 }
 
-int     my_getnbr(char *str)
+int		my_getnbr(char *str)
 {
-  int   i;
-  int   j;
-  int   k;
+  int		i;
+  int		j;
+  int		k;
 
   i = 0;
   j = 0;
@@ -119,10 +119,10 @@ int     my_getnbr(char *str)
   return (j);
 }
 
-int	my_rev_tab(int *tab, int len)
+int		my_rev_tab(int *tab, int len)
 {
-  int	i;
-  int	tmp;
+  int		i;
+  int		tmp;
 
   i = 0;
   while (i < len)
@@ -136,10 +136,10 @@ int	my_rev_tab(int *tab, int len)
   return (0);
 }
 
-t_way	*get_solution(t_graphe *graphe, t_way *list_chemins, int end, int start)
+t_way		*get_solution(t_graphe *graphe, t_way *list_chemins, int end, int start)
 {
   t_list	*cur;
-  t_way	*new;
+  t_way		*new;
 
   new = malloc(sizeof (new));
   new->len = 0;
@@ -163,10 +163,10 @@ t_way	*get_solution(t_graphe *graphe, t_way *list_chemins, int end, int start)
   return (new);
 }
 
-int	rmv_adjacent(t_list *cur, int s2)
+int		rmv_adjacent(t_list *cur, int s2)
 {
-  int	i;
-  int	j;
+  int		i;
+  int		j;
 
   i = 0;
   j = 0;
@@ -181,7 +181,7 @@ int	rmv_adjacent(t_list *cur, int s2)
   return (0);
 }
 
-int	kill_link(t_graphe *graphe, int s1, int s2)
+int		kill_link(t_graphe *graphe, int s1, int s2)
 {
   t_list	*cur;
 
@@ -194,9 +194,9 @@ int	kill_link(t_graphe *graphe, int s1, int s2)
   return (0);
 }
 
-int	kill_the_way(t_graphe *graphe, t_way *to_kill, int start)
+int		kill_the_way(t_graphe *graphe, t_way *to_kill, int start)
 {
-  int	i;
+  int		i;
   t_list	*cur;
 
   cur = graphe->next;
@@ -221,9 +221,9 @@ int	kill_the_way(t_graphe *graphe, t_way *to_kill, int start)
 
 }
 
-int	print_result(t_way *way)
+int		print_result(t_way *way)
 {
-  int	i;
+  int		i;
 
   i = 0;
       printf("Result\t");
@@ -236,15 +236,13 @@ int	print_result(t_way *way)
   return (0);
 }
 
-int		main(int argc, char **argv)
+int		main(__attribute__((unused))int ac, __attribute__((unused))char **av)
 {
   t_graphe	*graphe;
   t_way		*ways;
   int	start;
   int	end;
 
-  (void)argc;
-  (void)argv;
   ways = NULL;
   graphe = new_graphe();
   insert_arc(graphe, 9, 2);

@@ -1,11 +1,11 @@
 ##
 ## Makefile for Makefile in /home/thibaud/rendu/Piscine-C-lib/my
-## 
+##
 ## Made by thibaud
 ## Login   <thibaud@epitech.net>
-## 
+##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Thu Apr 17 08:29:28 2014 thibaud
+## Last update Thu Apr 17 14:53:58 2014 romaric
 ##
 
 CC=	gcc
@@ -29,7 +29,7 @@ $(NAME) :	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJS) 
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME) *~
