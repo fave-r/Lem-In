@@ -5,7 +5,7 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Thu Apr 17 14:53:58 2014 romaric
+## Last update Thu Apr 17 16:41:43 2014 romaric
 ##
 
 CC=	gcc
@@ -19,7 +19,10 @@ NAME	= lem_in
 SRCS	= main.c \
 	graphe_fct.c \
 	dijkstra.c \
-	print.c
+	print.c \
+	lib.c \
+	lib_next.c \
+	graph_fct_next.c
 
 OBJS=	$(SRCS:.c=.o)
 

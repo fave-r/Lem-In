@@ -1,11 +1,11 @@
 /*
 ** lem_in.h for lem_in in /home/thibaud/rendu/lem_in
-** 
+**
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Thu Apr 17 15:20:44 2014 romaric
+** Last update Thu Apr 17 16:43:25 2014 romaric
 */
 
 #ifndef LEM_IN_
@@ -73,5 +73,8 @@ int             get_max_sommet(t_graphe *graphe);
 int		print_graphe(t_graphe *graphe);
 int		print_dijsktra(t_graphe *graphe, int end, int start);
 int		my_isdigit(char);
+
+int		my_rev_tab(int *tab, int len);
+int		rmv_adjacent(t_list *cur, int s2);
 
 #endif
