@@ -1,0 +1,26 @@
+/*
+** parser.c for parser in /home/alex-odet/work/Lem-In/parsing
+** 
+** Made by alex-odet
+** Login   <alex-odet@epitech.net>
+** 
+** Started on  Thu Apr 17 16:54:23 2014 alex-odet
+** Last update Fri Apr 18 14:49:10 2014 alex-odet
+*/
+
+#include "lem_in.h"
+
+t_lem		*parsing()
+{
+  t_lem		*ptr;
+  int		ants;
+  char		*tmp;
+
+  ptr = NULL;
+  while ((tmp = get_next_line(0)))
+    {
+      ants = atoi(tmp);
+      if (ants <= 0)
+	bad_ants();
+    }
+}

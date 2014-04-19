@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Thu Apr 17 16:36:08 2014 romaric
+** Last update Thu Apr 17 18:13:21 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -98,18 +98,33 @@ int		main(__attribute__((unused))int ac,
 {
   t_graphe	*graphe;
   t_way		*ways;
-  int	start;
-  int	end;
+  int		start;
+  int		end;
 
   ways = NULL;
   graphe = new_graphe();
-  insert_arc(graphe, 9, 2);
-  insert_arc(graphe, 9, 3);
-  insert_arc(graphe, 2, 1);
+  /*
+    insert_arc(graphe, 9, 2);
+    insert_arc(graphe, 9, 3);
+    insert_arc(graphe, 2, 1);
+    insert_arc(graphe, 1, 3);
+    insert_arc(graphe, 2, 3);
+  */
   insert_arc(graphe, 1, 3);
+  insert_arc(graphe, 1, 2);
+  insert_arc(graphe, 2, 4);
   insert_arc(graphe, 2, 3);
-  start = 9;
-  end = 1;
+  insert_arc(graphe, 3, 4);
+  insert_arc(graphe, 3, 5);
+  insert_arc(graphe, 3, 7);
+  insert_arc(graphe, 3, 6);
+  insert_arc(graphe, 4, 5);
+  insert_arc(graphe, 5, 7);
+  insert_arc(graphe, 7, 6);
+  insert_arc(graphe, 7, 8);
+  insert_arc(graphe, 6, 8);
+  start = 1;
+  end = 8;
   while (dijkstra(graphe, start, end))
     {
       ways = get_solution(graphe, ways, end, start);

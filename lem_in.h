@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Thu Apr 17 16:43:25 2014 romaric
+** Last update Fri Apr 18 15:09:24 2014 alex-odet
 */
 
 #ifndef LEM_IN_
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+
+#define BUFF_SIZE 4096
 
 typedef struct		s_list
 {
@@ -55,6 +57,37 @@ typedef struct		s_way
   struct s_way		*next;
 }			t_way;
 
+typedef struct		s_coor
+{
+  int			num;
+  char			*name;
+  int			x;
+  int			y;
+}			t_coor;
+
+typedef struct		s_lem
+{
+  int			ants;
+  t_coor		ptr;
+  struct s_lem		*next;
+}			t_lem;
+
+typedef struct		s_get
+{
+  char			*s;
+  int			c;
+  int			l;
+}			t_get;
+
+typedef struct		s_pars
+{
+  int	ants;
+  char	**tmp;
+  char	*tmp;
+  int	i;
+  int	line;
+}
+
 t_graphe	*new_graphe(void);
 int		add_sommet(t_graphe *graphe, int new_nb);
 int		sommet_exist(t_graphe *graphe, int nb);
@@ -77,4 +110,5 @@ int		my_isdigit(char);
 int		my_rev_tab(int *tab, int len);
 int		rmv_adjacent(t_list *cur, int s2);
 
+int		my_len_tab(char **tab);
 #endif
