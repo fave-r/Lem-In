@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sat Apr 19 22:51:07 2014 thibaud
+** Last update Sat Apr 19 23:24:34 2014 thibaud
 */
 
 #ifndef LEM_IN_
@@ -112,9 +112,23 @@ int		**build_arcs_tab(t_graphe *graphe, int start);
 t_list          *get_sommet(t_graphe *graphe, int nb);
 int             get_max_sommet(t_graphe *graphe);
 
+t_way           *get_ways(t_graphe *graphe, int start, int end, t_way *ways);
+t_way           *get_solution(t_graphe *graphe, t_way *list_chemins, int end, int start);
+int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start);
+int             kill_link(t_graphe *graphe, int s1, int s2);
+
 int		print_graphe(t_graphe *graphe);
 int		print_dijsktra(t_graphe *graphe, int end, int start);
+int             print_result(t_way *way);
+int             print_all_result(t_way *ways);
+int             print_wave(t_fourmi *fourmis);
 int		my_isdigit(char);
+
+int             fill_ways(t_way *ways, int nb_fourmis);
+t_fourmi        *add_fourmi(t_way *way, t_fourmi *fourmis, int *cpt);
+t_fourmi        *fill_wave(t_way *ways, t_fourmi *fourmis, int *cpt);
+t_fourmi        *kill_fourmis(t_fourmi *fourmis);
+int             run_lem_in(t_way *ways);
 
 int		my_rev_tab(int *tab, int len);
 int		rmv_adjacent(t_list *cur, int s2);
