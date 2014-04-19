@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sat Apr 19 23:57:41 2014 thibaud
+** Last update Sun Apr 20 00:16:03 2014 thibaud
 */
 
 #ifndef LEM_IN_
@@ -120,6 +120,7 @@ int		print_dijsktra(t_graphe *graphe, int end, int start);
 int             print_result(t_way *way);
 int             print_all_result(t_way *ways);
 int             print_wave(t_fourmi *fourmis);
+int		print_arc_tab(int **, int);
 int		my_isdigit(char);
 
 
