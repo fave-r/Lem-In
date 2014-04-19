@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sun Apr 13 03:01:17 2014 thibaud
-** Last update Thu Apr 17 06:36:00 2014 thibaud
+** Last update Sat Apr 19 18:39:18 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -93,7 +93,8 @@ int     add_arc(t_graphe *graphe, int sommet1, int sommet2)
       if (cur->numero_sommet == sommet1)
         {
           cur->nb_sommet_adjacent++;
-          cur->adjacents = my_realloc(cur->adjacents, sizeof(int) * cur->nb_sommet_adjacent);
+          cur->adjacents = realloc(cur->adjacents, sizeof(int) * cur->nb_sommet_adjacent);
+          //cur->adjacents = my_realloc(cur->adjacents, sizeof(int) * cur->nb_sommet_adjacent);
           cur->adjacents[cur->nb_sommet_adjacent - 1] = sommet2;
         }
       cur = cur->next;

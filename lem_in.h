@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Thu Apr 17 06:53:26 2014 thibaud
+** Last update Sat Apr 19 21:35:58 2014 thibaud
 */
 
 #ifndef LEM_IN_
@@ -34,23 +34,32 @@ typedef struct		s_graphe
   t_list		*next;
 }			t_graphe;
 
-typedef struct		s_file
-{
-  int			elem;
-  struct s_file		*next;
-}			t_file;
+/* typedef struct		s_file */
+/* { */
+/*   int			elem; */
+/*   struct s_file		*next; */
+/* }			t_file; */
 
-typedef struct		s_noeud
+/* typedef struct		s_noeud */
+/* { */
+/*   int			sommet1; */
+/*   int			sommet2; */
+/* }			t_noeud; */
+
+typedef struct		s_fourmi
 {
-  int			sommet1;
-  int			sommet2;
-}			t_noeud;
+  int			numero_fourmi;
+  int			posy;
+  int			*chemin;
+  int			len;
+  struct s_fourmi	*next;
+}			t_fourmi;
 
 typedef struct		s_way
 {
-  int			posy;
-  int			numero_fourmie;
+  int			nb_fourmies;
   int			len;
+  int			len_th;
   int			*chemin;
   struct s_way		*next;
 }			t_way;
@@ -63,17 +72,15 @@ int		add_arc(t_graphe *graphe, int sommet1, int sommet2);
 int		arc_exist(t_graphe *graphe, int sommet, int adjacent);
 int		insert_arc(t_graphe *graphe, int sommet1, int sommet2);
 
-int     dijkstra(t_graphe *graphe, int start, int end);
-int     get_tmp_distance(t_graphe *graphe, t_list *fix, int **arc_tab);
+int		dijkstra(t_graphe *graphe, int start, int end);
+int		get_tmp_distance(t_graphe *graphe, t_list *fix, int **arc_tab);
 t_list          *fix_sommet(t_graphe *graphe);
-int     **build_arcs_tab(t_graphe *graphe, int start);
+int		**build_arcs_tab(t_graphe *graphe, int start);
 t_list          *get_sommet(t_graphe *graphe, int nb);
 int             get_max_sommet(t_graphe *graphe);
 
-
-
 int		print_graphe(t_graphe *graphe);
-int     print_dijsktra(t_graphe *graphe, int end, int start);
-int	my_isdigit(char);
+int		print_dijsktra(t_graphe *graphe, int end, int start);
+int		my_isdigit(char);
 
 #endif
