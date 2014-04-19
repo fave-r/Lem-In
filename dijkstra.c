@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Thu Apr 17 05:59:54 2014 thibaud
-** Last update Thu Apr 17 15:24:46 2014 romaric
+** Last update Sat Apr 19 23:56:10 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -24,6 +24,7 @@ int		dijkstra(t_graphe *graphe, int start, int end)
       get_tmp_distance(graphe, tmp, arc_tab);
       tmp = fix_sommet(graphe);
     }
+  free_arc_tab(arc_tab, get_max_sommet(graphe));
   if (!get_sommet(graphe, end)->fix)
     return (0);
   return (1);

@@ -5,7 +5,7 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Sat Apr 19 23:22:58 2014 thibaud
+## Last update Sat Apr 19 23:57:06 2014 thibaud
 ##
 
 CC=	gcc
@@ -24,7 +24,8 @@ SRCS	= main.c \
 	lib_next.c \
 	graph_fct_next.c \
 	get_ways.c \
-	run_lem_in.c
+	run_lem_in.c \
+	free.c
 
 OBJS=	$(SRCS:.c=.o)
 

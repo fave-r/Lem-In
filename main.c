@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Sat Apr 19 23:25:25 2014 thibaud
+** Last update Sat Apr 19 23:56:53 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -33,8 +33,9 @@ int		main(__attribute__((unused))int ac,
   insert_arc(graphe, 2, 3);
 
   ways = get_ways(graphe, start, end, ways);
+  free_graphe(graphe);
   fill_ways(ways, nb_fourmis);
   run_lem_in(ways);
-
+  free_ways(ways);
   return (0);
 }

@@ -5,31 +5,10 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sun Apr 13 03:01:17 2014 thibaud
-** Last update Sat Apr 19 22:56:38 2014 thibaud
+** Last update Sat Apr 19 23:47:21 2014 thibaud
 */
 
 #include "lem_in.h"
-
-void		*my_realloc(void *source, int size)
-{
-  char		*src;
-  char		*new;
-  int		i;
-
-  i = 0;
-  new = malloc(sizeof(char) * size);
-  if (source)
-    src = source;
-  else
-    return (new);
-  while (source && i < size)
-    {
-      new[i] = src[i];
-      i++;
-    }
-  free(source);
-  return (new);
-}
 
 int		add_arc(t_graphe *graphe, int sommet1, int sommet2)
 {
@@ -41,9 +20,10 @@ int		add_arc(t_graphe *graphe, int sommet1, int sommet2)
       if (cur->numero_sommet == sommet1)
         {
           cur->nb_sommet_adjacent++;
-          cur->adjacents = realloc(cur->adjacents, sizeof(int) * cur->nb_sommet_adjacent);
-          cur->adjacents = my_realloc(cur->adjacents, sizeof(int)
-				      * cur->nb_sommet_adjacent);
+          cur->adjacents = realloc(cur->adjacents, sizeof(int)
+				   * cur->nb_sommet_adjacent);
+          cur->adjacents = realloc(cur->adjacents, sizeof(int)
+				   * cur->nb_sommet_adjacent);
           cur->adjacents[cur->nb_sommet_adjacent - 1] = sommet2;
         }
       cur = cur->next;
@@ -93,10 +73,10 @@ int		insert_arc(t_graphe *graphe, int sommet1, int sommet2)
 int		print_graphe(t_graphe *graphe)
 {
   t_list        *list;
+  int		i;
+
   printf("Nombre de sommets = %d\nNombre d'arcs = %d\n\n"
 	 , graphe->nb_sommet, graphe->nb_arcs);
-  int   i;
-
   i = 0;
   list = graphe->next;
   while (list != NULL)

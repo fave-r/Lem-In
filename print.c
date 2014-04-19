@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Thu Apr 17 05:55:27 2014 thibaud
-** Last update Sat Apr 19 23:25:13 2014 thibaud
+** Last update Sun Apr 20 00:05:19 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -18,7 +18,9 @@ int             print_wave(t_fourmi *fourmis)
   while (cur)
     {
       if (cur->posy <= cur->len)
-        printf("P%d-%d ", cur->numero_fourmi, cur->chemin[cur->posy + 1]);
+        printf("P%d-%d", cur->numero_fourmi, cur->chemin[cur->posy + 1]);
+      if (cur->next)
+	printf(" ");
       cur->posy++;
       cur = cur->next;
     }

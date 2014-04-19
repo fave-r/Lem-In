@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 19 23:20:28 2014 thibaud
-** Last update Sat Apr 19 23:22:14 2014 thibaud
+** Last update Sat Apr 19 23:45:07 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -26,6 +26,7 @@ int             run_lem_in(t_way *ways)
       fourmis = fill_wave(ways, fourmis, cpt);
       fourmis = kill_fourmis(fourmis);
     }
+  free(cpt);
   return (0);
 }
 
