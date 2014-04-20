@@ -5,20 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Sat Apr 19 14:41:07 2014 romaric
+** Last update Sun Apr 20 19:46:48 2014 alex-odet
 */
 
 #include "lem_in.h"
-
-t_lem	*parsing(void)
-{
-  int	ants;
-  t_lem	*list;
-  t_arc	*ptr;
-
-  ants = parse_ants();
-  list = parse_room();
-}
 
 int	parse_ants(void)
 {
@@ -26,7 +16,7 @@ int	parse_ants(void)
   char	*tmp;
 
   tmp = get_next_line(0);
-  if (tmp[0] <= '0' || tmp[0] >= '9' || tmp[0] != '-')
+  if ((tmp[0] < '0' || tmp[0] > '9' ) && tmp[0] != '-')
     {
       printf("Syntax error : no number of ants.\n");
       exit(EXIT_FAILURE);
@@ -40,7 +30,7 @@ int	parse_ants(void)
 
 t_lem	*parse_room(void)
 {
-  char	**tab;
+  char	**tmp_tab;
   char	*tmp;
   t_lem	*list;
   int	bool_start;
@@ -51,12 +41,17 @@ t_lem	*parse_room(void)
   bool_end = 0;
   while ((tmp = get_next_line(0)))
     {
-      if ((strcmp(tmp, "##start") == 0) || (tmp[0] == '#' && tmp[1] != '#'))
-	parse_room_start(&bool_start, &(*list));
-      else
-	parse_room(&(*list));
-      else if (strcmp(tmp, "##end") == 0)
-	return (parse_room_end(&bool_end, &(*list)));
+      printf("tmp = %s\n", tmp);
+      if (tmp != NULL)
+	{
+	  tmp_tab = my_str_to_wordtab(tmp, "\t \n");
+	  if (strcmp(tmp, "##start") == 0)
+	    list = parse_room_start(&bool_start, &(*list));
+	  else if (strcmp(tmp, "##end") == 0)
+	    list = parse_room_end(&bool_end, &(*list));
+	  else if (tmp[0] != '#' && strcmp(tmp_tab[2], "-") != 0)
+	    list = parse_room_other(&(*list), tmp);
+	}
     }
   if (bool_start != 1)
     no_start();
@@ -80,7 +75,7 @@ void	check_tab(char **tab)
       j = 0;
       while (tab[i][j] != '\0')
 	{
-	  if ((tab[i][j] <= '0' || tab[i][j] >= '9')
+	  if ((tab[i][j] < '0' || tab[i][j] > '9')
 	      || (tab[i][j] == '-' && j != 0))
 	    bad_coor();
 	  j++;

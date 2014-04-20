@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Sun Apr 20 00:31:34 2014 thibaud
+** Last update Sun Apr 20 17:32:34 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -18,12 +18,13 @@ int		main(__attribute__((unused))int ac,
   int		start;
   int		end;
   int		nb_fourmis;
+  t_lem		*list;
 
   ways = NULL;
-  nb_fourmis = 5;
-  start = 9;
-  end = 1;
-
+  nb_fourmis = parse_ants();
+  list = parse_room();
+  start = 1;
+  end = my_list_size(list);
   graphe = new_graphe();
   
   insert_arc(graphe, 9, 2);

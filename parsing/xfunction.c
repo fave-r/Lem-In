@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 17 16:58:17 2014 alex-odet
-** Last update Thu Apr 17 16:59:19 2014 alex-odet
+** Last update Sun Apr 20 17:36:20 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -17,7 +17,7 @@ void	*xmalloc(size_t n)
   p = malloc(n);
   if (p == NULL)
     {
-      my_putstr("Malloc failed.\n", 2);
+      fprintf(stderr, "Malloc failed.\n");
       exit(EXIT_FAILURE);
     }
   return (p);

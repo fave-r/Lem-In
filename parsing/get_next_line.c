@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Nov 23 13:24:46 2013 romaric
-** Last update Thu Apr 17 16:54:09 2014 alex-odet
+** Last update Sun Apr 20 17:36:56 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -14,10 +14,10 @@ char		*my_strdup_new(char *src)
 {
   char		*dest;
 
-  dest = malloc((my_strlen(src) + 2) * sizeof(char));
+  dest = malloc((strlen(src) + 2) * sizeof(char));
   if (dest == NULL)
     exit (EXIT_FAILURE);
-  my_strcpy(dest, src);
+  strcpy(dest, src);
   return (dest);
 }
 

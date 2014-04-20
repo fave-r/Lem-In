@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sun Apr 20 00:16:03 2014 thibaud
+** Last update Sun Apr 20 19:44:32 2014 alex-odet
 */
 
 #ifndef LEM_IN_
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+#include <string.h>
 
 #define BUFF_SIZE 4096
 
@@ -57,14 +58,14 @@ typedef struct		s_way
 typedef struct		s_coor
 {
   int			num;
-  char			*name;
   int			x;
   int			y;
 }			t_coor;
 
 typedef struct		s_lem
 {
-  int			ants;
+  int			is_start;
+  char			*name;
   t_coor		ptr;
   struct s_lem		*next;
 }			t_lem;
@@ -123,5 +124,29 @@ int             print_wave(t_fourmi *fourmis);
 int		print_arc_tab(int **, int);
 int		my_isdigit(char);
 
+void		bad_ants();
+void		no_start();
+void		no_end();
+void		bad_coor();
+void		bad_len();
+int		my_len_tab(char **tab);
+t_lem		*new_node(char *name, int x, int y);
+t_lem		*my_put_in_lem_list(t_lem *list, char *name, int x, int y);
+t_lem		*my_put_start(t_lem *list, char *name, int x, int y);
+t_lem		*my_put_end(t_lem *list, char *name, int x, int y);
+int		parse_ants(void);
+t_lem		*parse_room(void);
+void		check_tab(char **tab);
+void		*xmalloc(size_t n);
+char		*my_strdup_new(char *src);
+char		*get_next_line(const int fd);
+int		my_list_size(t_lem *list);
+int		strlen_word(const char *str, char *sep);
+int		lentab(char *str, char *sep);
+char		**my_str_to_wordtab(char *str, char *sep);
+t_lem		*parse_room_start(int *bool_start, t_lem *list);
+t_lem		*parse_room_other(t_lem *list, char *tmp);
+t_lem		*parse_room_end(int *bool_end, t_lem *list);
+int		my_strchr(char src, char *dest);
 
 #endif
