@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Sun Apr 20 19:46:48 2014 alex-odet
+** Last update Mon Apr 21 12:26:28 2014 romaric
 */
 
 #include "lem_in.h"
@@ -49,7 +49,7 @@ t_lem	*parse_room(void)
 	    list = parse_room_start(&bool_start, &(*list));
 	  else if (strcmp(tmp, "##end") == 0)
 	    list = parse_room_end(&bool_end, &(*list));
-	  else if (tmp[0] != '#' && strcmp(tmp_tab[2], "-") != 0)
+	  else if (tmp[0] != '#' && tmp_tab[2] != NULL && strcmp(tmp_tab[2], "-") != 0)
 	    list = parse_room_other(&(*list), tmp);
 	}
     }
