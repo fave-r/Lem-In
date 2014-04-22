@@ -5,10 +5,12 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Sun Apr 20 17:32:34 2014 alex-odet
+** Last update Tue Apr 22 12:54:01 2014 alex-odet
 */
 
 #include "lem_in.h"
+
+void		my_show_room(t_lem *list);
 
 int		main(__attribute__((unused))int ac,
 		     __attribute__((unused))char **av)
@@ -23,6 +25,7 @@ int		main(__attribute__((unused))int ac,
   ways = NULL;
   nb_fourmis = parse_ants();
   list = parse_room();
+  my_show_room(list);
   start = 1;
   end = my_list_size(list);
   graphe = new_graphe();
@@ -39,4 +42,13 @@ int		main(__attribute__((unused))int ac,
   run_lem_in(ways);
   free_ways(ways);
   return (0);
+}
+
+void		my_show_room(t_lem *list)
+{
+  while (list)
+    {
+      printf("room->%s\tx->%d\ty->%d\n", list->name, list->ptr.x, list->ptr.y);
+      list = list->next;
+    }
 }
