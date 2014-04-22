@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Sun Apr 13 15:34:10 2014 Thibaut Lopez
+** Last update Tue Apr 22 08:34:27 2014 Thibaut Lopez
 */
 
 #include "my.h"
@@ -117,7 +117,7 @@ int	init_graphic(t_sdl *cor, t_champ *champ, int dump)
     return (1);
   if ((cor->screen = SDL_SetVideoMode(1530, 1010, 32, SDL_SWSURFACE)) == NULL)
     return (1);
-  SDL_WM_SetCaption("Corewar VM", NULL);
+  SDL_WM_SetCaption("Lem-In", NULL);
   SDL_FillRect(cor->screen, NULL,
 	       SDL_MapRGB(cor->screen->format, 150, 150, 150));
   position.x = 0;
