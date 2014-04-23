@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 23 15:54:02 2014 alex-odet
+** Last update Wed Apr 23 16:30:00 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -25,8 +25,9 @@ int		main(__attribute__((unused))int ac,
   char		**map;
 
   ways = NULL;
+  map = NULL;
   map = init_parse();
-  if (*map == NULL)
+  if (map == NULL)
     {
       printf("No map.\n");
       exit(EXIT_FAILURE);
@@ -36,6 +37,7 @@ int		main(__attribute__((unused))int ac,
     printf("la map vaut : %s\n", map[i++]);
   nb_fourmis = parse_ants(map[0]);
   list = parse_room(map);
+  map = NULL;
   if (list == NULL)
     {
       printf("No rooms in the map.\n");
@@ -64,6 +66,7 @@ int		main(__attribute__((unused))int ac,
   fill_ways(ways, nb_fourmis);
   run_lem_in(ways);
   free_ways(ways);
+  sfree(map);
   return (0);
 }
 
