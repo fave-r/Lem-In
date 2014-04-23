@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 23 22:15:49 2014 alex-odet
+** Last update Wed Apr 23 22:47:10 2014 alex-odet
 */
 
 #ifndef LEM_IN_
@@ -134,7 +134,7 @@ t_lem		*my_put_in_lem_list(t_lem *list, char *name, int x, int y);
 t_lem		*my_put_start(t_lem *list, char *name, int x, int y);
 t_lem		*my_put_end(t_lem *list, char *name, int x, int y);
 int		parse_ants(char *tab);
-t_lem		*parse_room(char **tab);
+t_lem		*parse_room(char **tab, int *i);
 t_lem		*loop_parse(t_lem **list, char *tab);
 void		check_tab(char **tab);
 void		*xmalloc(size_t n);

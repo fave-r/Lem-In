@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Wed Apr 23 22:18:18 2014 alex-odet
+** Last update Wed Apr 23 23:33:36 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -39,9 +39,8 @@ t_lem	*loop_parse(t_lem **list, char *tab)
   return (*list);
 }
 
-t_lem	*parse_room(char **tab)
+t_lem	*parse_room(char **tab, int *i)
 {
-  int	i;
   t_lem	*list;
   int	bool_start;
   int	bool_end;
@@ -49,16 +48,23 @@ t_lem	*parse_room(char **tab)
   list = NULL;
   bool_start = 0;
   bool_end = 0;
-  i = 1;
-  while (tab[i] != NULL)
+  while (tab[*i] != NULL)
     {
-      if (strcmp(tab[i], "##start") == 0)
-	list = parse_room_start(&bool_start, list, tab[i + 1]);
-      if (strcmp(tab[i], "##end") == 0)
-	list = parse_room_end(&bool_end, list, tab[i + 1]);
+      if (strcmp(tab[*i], "##start") == 0)
+	{
+	  list = parse_room_start(&bool_start, list, tab[*i + 1]);
+	  *i = *i + 2;
+	}
+      if (strcmp(tab[*i], "##end") == 0)
+	{
+	  list = parse_room_end(&bool_end, list, tab[*i + 1]);
+	  *i = *i + 2;
+	}
       else
-	list = loop_parse(&list, tab[i]);
-      i++;
+	{
+	  list = loop_parse(&list, tab[*i]);
+	  *i = *i + 1;
+	}
     }
   if (bool_start != 1)
     no_start();
@@ -67,26 +73,26 @@ t_lem	*parse_room(char **tab)
   return (list);
 }
 
-  void	check_tab(char **tab)
-  {
-    int	i;
-    int	j;
-    int	len;
+void	check_tab(char **tab)
+{
+  int	i;
+  int	j;
+  int	len;
 
-    i = 1;
-    len = my_len_tab(tab);
-    if (len != 3)
-      bad_len();
-    while (tab[i] != NULL)
-      {
-	j = 0;
-	while (tab[i][j] != '\0')
-	  {
-	    if ((tab[i][j] < '0' || tab[i][j] > '9')
-		|| (tab[i][j] == '-' && j != 0))
-	      bad_coor();
-	    j++;
-	  }
-	i++;
-      }
-  }
+  i = 1;
+  len = my_len_tab(tab);
+  if (len != 3)
+    bad_len();
+  while (tab[i] != NULL)
+    {
+      j = 0;
+      while (tab[i][j] != '\0')
+	{
+	  if ((tab[i][j] < '0' || tab[i][j] > '9')
+	      || (tab[i][j] == '-' && j != 0))
+	    bad_coor();
+	  j++;
+	}
+      i++;
+    }
+}

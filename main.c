@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 23 22:17:06 2014 alex-odet
+** Last update Wed Apr 23 22:48:53 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -15,6 +15,7 @@ void		my_show_room(t_lem *list);
 int		main(__attribute__((unused))int ac,
 		     __attribute__((unused))char **av)
 {
+  int		i;
   t_graphe	*graphe;
   t_way		*ways;
   int		start;
@@ -32,16 +33,15 @@ int		main(__attribute__((unused))int ac,
       printf("No map.\n");
       exit(EXIT_FAILURE);
     }
+  i = 1;
   nb_fourmis = parse_ants(map[0]);
-  list = parse_room(map);
-  map = NULL;
-  /*
+  list = parse_room(map, &i);
+  printf("i = %d\n", i);
   if (my_list_size(list) == 0)
     {
       printf("No rooms in the map.\n");
       exit(EXIT_FAILURE);
     }
-  */
   my_show_room(list);
   start = 1;
   end = my_list_size(list);
