@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Sun Apr 20 00:31:34 2014 thibaud
+** Last update Wed Apr 23 15:52:05 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -35,6 +35,7 @@ int		main(__attribute__((unused))int ac,
   ways = get_ways(graphe, start, end, ways);
   free_graphe(graphe);
   fill_ways(ways, nb_fourmis);
+  print_all_result(ways);
   run_lem_in(ways);
   free_ways(ways);
   return (0);
