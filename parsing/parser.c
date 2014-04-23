@@ -5,33 +5,48 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Tue Apr 22 13:01:50 2014 alex-odet
+** Last update Wed Apr 23 15:49:44 2014 alex-odet
 */
 
 #include "lem_in.h"
 
-int	parse_ants(void)
+int	parse_ants(char *tab)
 {
   int	ants;
-  char	*tmp;
 
-  tmp = get_next_line(0);
-  if ((tmp[0] < '0' || tmp[0] > '9' ) && tmp[0] != '-')
+  if ((tab[0] < '0' || tab[0] > '9') && tab[0] != '-')
     {
       printf("Syntax error : no number of ants.\n");
       exit(EXIT_FAILURE);
     }
   else
-    ants = atoi(tmp);
+    ants = atoi(tab);
   if (ants <= 0)
     bad_ants();
   return (ants);
 }
 
-t_lem	*parse_room(void)
+int	loop_parse(t_lem **list, char *tab, int *bool_start, int *bool_end)
 {
   char	**tmp_tab;
-  char	*tmp;
+
+  printf("tab[i] = %s\n", tab);
+  tmp_tab = my_str_to_wordtab(tab, "\t \n");
+  if (strcmp(tab, "##start") == 0)
+    *list = parse_room_start(bool_start, *list, tab + 1);
+  else if (strcmp(tab, "##end") == 0)
+    *list = parse_room_end(bool_end, *list, tab + 1);
+  else if (tab[0] != '#' && tmp_tab[2] != NULL
+	   && strcmp(tmp_tab[2], "-") != 0)
+    *list = parse_room_other(*list, tab);
+  else
+    return (1);
+  return (0);
+}
+
+t_lem	*parse_room(char **tab)
+{
+  int	i;
   t_lem	*list;
   int	bool_start;
   int	bool_end;
@@ -39,21 +54,12 @@ t_lem	*parse_room(void)
   list = NULL;
   bool_start = 0;
   bool_end = 0;
-  while ((tmp = get_next_line(0)))
+  i = 1;
+  while (tab[i] != NULL)
     {
-      printf("tmp = %s\n", tmp);
-      if (tmp != NULL)
-	{
-	  tmp_tab = my_str_to_wordtab(tmp, "\t \n");
-	  if (strcmp(tmp, "##start") == 0)
-	    list = parse_room_start(&bool_start, &(*list));
-	  else if (strcmp(tmp, "##end") == 0)
-	    list = parse_room_end(&bool_end, &(*list));
-	  else if (tmp[0] != '#' && tmp_tab[2] != NULL && strcmp(tmp_tab[2], "-") != 0)
-	    list = parse_room_other(&(*list), tmp);
-	  else
-	    return (list);
-	}
+      if (loop_parse(&list, tab[i], &bool_start, &bool_end) == 1)
+	return (list);
+      i++;
     }
   if (bool_start != 1)
     no_start();

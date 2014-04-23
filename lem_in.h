@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sun Apr 20 19:44:32 2014 alex-odet
+** Last update Wed Apr 23 15:49:18 2014 alex-odet
 */
 
 #ifndef LEM_IN_
@@ -77,14 +77,13 @@ typedef struct		s_get
   int			l;
 }			t_get;
 
-typedef struct		s_pars
+typedef struct		s_arc
 {
-  int			ants;
-  char			**tmp2;
-  char			*tmp;
-  int			i;
-  int			line;
-}			t_pars;
+  char			*first;
+  int			first_room;
+  char			*second;
+  int			second_room;
+}			t_arc;
 
 t_graphe	*new_graphe(void);
 int		add_sommet(t_graphe *graphe, int new_nb);
@@ -134,8 +133,9 @@ t_lem		*new_node(char *name, int x, int y);
 t_lem		*my_put_in_lem_list(t_lem *list, char *name, int x, int y);
 t_lem		*my_put_start(t_lem *list, char *name, int x, int y);
 t_lem		*my_put_end(t_lem *list, char *name, int x, int y);
-int		parse_ants(void);
-t_lem		*parse_room(void);
+int		parse_ants(char *tab);
+t_lem		*parse_room(char **tab);
+int		loop_parse(t_lem **list, char *tab, int *bool_start, int *bool_end);
 void		check_tab(char **tab);
 void		*xmalloc(size_t n);
 char		*my_strdup_new(char *src);
@@ -144,9 +144,14 @@ int		my_list_size(t_lem *list);
 int		strlen_word(const char *str, char *sep);
 int		lentab(char *str, char *sep);
 char		**my_str_to_wordtab(char *str, char *sep);
-t_lem		*parse_room_start(int *bool_start, t_lem *list);
+t_lem		*parse_room_start(int *bool_start, t_lem *list, char *map);
 t_lem		*parse_room_other(t_lem *list, char *tmp);
-t_lem		*parse_room_end(int *bool_end, t_lem *list);
+t_lem		*parse_room_end(int *bool_end, t_lem *list, char *tmp);
 int		my_strchr(char src, char *dest);
+char		**init_parse();
+void		sfree();
+char		*my_strdup(char *src);
+int		my_strslen(char **tab);
+char		**my_strscat(char **tab, char *str);
 
 #endif

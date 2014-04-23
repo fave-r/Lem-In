@@ -5,7 +5,7 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Sun Apr 20 19:30:10 2014 alex-odet
+## Last update Wed Apr 23 14:52:26 2014 alex-odet
 ##
 
 CC=	gcc
@@ -35,7 +35,9 @@ SRCS	= main.c \
 	parsing/my_list_size.c \
 	parsing/my_str_to_wordtab.c \
 	parsing/parser_next.c \
-	parsing/my_strchr.c
+	parsing/my_strchr.c \
+	parsing/init.c \
+	parsing/my_strscat.c
 
 OBJS=	$(SRCS:.c=.o)
 

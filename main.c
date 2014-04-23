@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Tue Apr 22 12:54:01 2014 alex-odet
+** Last update Wed Apr 23 15:54:02 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -21,13 +21,36 @@ int		main(__attribute__((unused))int ac,
   int		end;
   int		nb_fourmis;
   t_lem		*list;
+  //  t_arc		*arc;
+  char		**map;
 
   ways = NULL;
-  nb_fourmis = parse_ants();
-  list = parse_room();
+  map = init_parse();
+  if (*map == NULL)
+    {
+      printf("No map.\n");
+      exit(EXIT_FAILURE);
+    }
+  int i =  0;
+  while (map[i])
+    printf("la map vaut : %s\n", map[i++]);
+  nb_fourmis = parse_ants(map[0]);
+  list = parse_room(map);
+  if (list == NULL)
+    {
+      printf("No rooms in the map.\n");
+      exit(EXIT_FAILURE);
+    }
   my_show_room(list);
   start = 1;
   end = my_list_size(list);
+  /*  arc = parse_arc();
+      if (arc == NULL)
+      {
+      printf("No rooms are linked.\n");
+      exit(EXIT_FAILURE);
+      }
+  */
   graphe = new_graphe();
   
   insert_arc(graphe, 9, 2);
