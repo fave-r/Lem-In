@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 19 14:25:15 2014 romaric
-** Last update Wed Apr 23 16:14:35 2014 alex-odet
+** Last update Wed Apr 23 22:09:40 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -18,7 +18,6 @@ t_lem	*parse_room_start(int *bool_start, t_lem *list, char *map)
     {
       *bool_start = 1;
       tab = my_str_to_wordtab(map, "\t ");
-      printf("start\n");
       check_tab(tab);
       list = my_put_start(list, strdup(tab[0]), atoi(tab[1]), atoi(tab[2]));
       return (list);

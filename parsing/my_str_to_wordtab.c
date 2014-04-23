@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 11 15:10:11 2014 romaric
-** Last update Wed Apr 23 17:46:00 2014 alex-odet
+** Last update Wed Apr 23 21:58:00 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -22,7 +22,6 @@ int	strlen_word(const char *str, char *sep)
     return (0);
   while (my_strchr(str[i], sep) == -1 && str[i] != 0)
     i++;
-  fprintf(stderr, "%d\n", i);
   return (i);
 }
 

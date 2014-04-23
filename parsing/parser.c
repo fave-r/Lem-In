@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Wed Apr 23 15:49:44 2014 alex-odet
+** Last update Wed Apr 23 22:18:18 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -26,22 +26,17 @@ int	parse_ants(char *tab)
   return (ants);
 }
 
-int	loop_parse(t_lem **list, char *tab, int *bool_start, int *bool_end)
+t_lem	*loop_parse(t_lem **list, char *tab)
 {
   char	**tmp_tab;
 
-  printf("tab[i] = %s\n", tab);
   tmp_tab = my_str_to_wordtab(tab, "\t \n");
-  if (strcmp(tab, "##start") == 0)
-    *list = parse_room_start(bool_start, *list, tab + 1);
-  else if (strcmp(tab, "##end") == 0)
-    *list = parse_room_end(bool_end, *list, tab + 1);
-  else if (tab[0] != '#' && tmp_tab[2] != NULL
-	   && strcmp(tmp_tab[2], "-") != 0)
+  if (tab[0] != '#' && tmp_tab[2] != NULL
+      && strcmp(tmp_tab[2], "-") != 0)
     *list = parse_room_other(*list, tab);
   else
-    return (1);
-  return (0);
+    return (*list);
+  return (*list);
 }
 
 t_lem	*parse_room(char **tab)
@@ -57,8 +52,12 @@ t_lem	*parse_room(char **tab)
   i = 1;
   while (tab[i] != NULL)
     {
-      if (loop_parse(&list, tab[i], &bool_start, &bool_end) == 1)
-	return (list);
+      if (strcmp(tab[i], "##start") == 0)
+	list = parse_room_start(&bool_start, list, tab[i + 1]);
+      if (strcmp(tab[i], "##end") == 0)
+	list = parse_room_end(&bool_end, list, tab[i + 1]);
+      else
+	list = loop_parse(&list, tab[i]);
       i++;
     }
   if (bool_start != 1)
@@ -68,26 +67,26 @@ t_lem	*parse_room(char **tab)
   return (list);
 }
 
-void	check_tab(char **tab)
-{
-  int	i;
-  int	j;
-  int	len;
+  void	check_tab(char **tab)
+  {
+    int	i;
+    int	j;
+    int	len;
 
-  i = 1;
-  len = my_len_tab(tab);
-  if (len != 3)
-    bad_len();
-  while (tab[i] != NULL)
-    {
-      j = 0;
-      while (tab[i][j] != '\0')
-	{
-	  if ((tab[i][j] < '0' || tab[i][j] > '9')
-	      || (tab[i][j] == '-' && j != 0))
-	    bad_coor();
-	  j++;
-	}
-      i++;
-    }
-}
+    i = 1;
+    len = my_len_tab(tab);
+    if (len != 3)
+      bad_len();
+    while (tab[i] != NULL)
+      {
+	j = 0;
+	while (tab[i][j] != '\0')
+	  {
+	    if ((tab[i][j] < '0' || tab[i][j] > '9')
+		|| (tab[i][j] == '-' && j != 0))
+	      bad_coor();
+	    j++;
+	  }
+	i++;
+      }
+  }

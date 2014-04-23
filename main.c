@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 23 16:30:00 2014 alex-odet
+** Last update Wed Apr 23 22:17:06 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -32,17 +32,16 @@ int		main(__attribute__((unused))int ac,
       printf("No map.\n");
       exit(EXIT_FAILURE);
     }
-  int i =  0;
-  while (map[i])
-    printf("la map vaut : %s\n", map[i++]);
   nb_fourmis = parse_ants(map[0]);
   list = parse_room(map);
   map = NULL;
-  if (list == NULL)
+  /*
+  if (my_list_size(list) == 0)
     {
       printf("No rooms in the map.\n");
       exit(EXIT_FAILURE);
     }
+  */
   my_show_room(list);
   start = 1;
   end = my_list_size(list);
