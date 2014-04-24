@@ -5,33 +5,42 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Tue Apr 22 13:01:50 2014 alex-odet
+** Last update Thu Apr 24 12:21:44 2014 romaric
 */
 
 #include "lem_in.h"
 
-int	parse_ants(void)
+int	parse_ants(char *tab)
 {
   int	ants;
-  char	*tmp;
 
-  tmp = get_next_line(0);
-  if ((tmp[0] < '0' || tmp[0] > '9' ) && tmp[0] != '-')
+  if ((tab[0] < '0' || tab[0] > '9') && tab[0] != '-')
     {
       printf("Syntax error : no number of ants.\n");
       exit(EXIT_FAILURE);
     }
   else
-    ants = atoi(tmp);
+    ants = atoi(tab);
   if (ants <= 0)
     bad_ants();
   return (ants);
 }
 
-t_lem	*parse_room(void)
+t_lem	*loop_parse(t_lem **list, char *tab)
 {
   char	**tmp_tab;
-  char	*tmp;
+
+  tmp_tab = my_str_to_wordtab(tab, "\t \n");
+  if (tab[0] != '#' && tmp_tab[2] != NULL
+      && strcmp(tmp_tab[2], "-") != 0)
+    *list = parse_room_other(*list, tab);
+  else
+    return (*list);
+  return (*list);
+}
+
+t_lem	*parse_room(char **tab, int *i)
+{
   t_lem	*list;
   int	bool_start;
   int	bool_end;
@@ -39,20 +48,23 @@ t_lem	*parse_room(void)
   list = NULL;
   bool_start = 0;
   bool_end = 0;
-  while ((tmp = get_next_line(0)))
+  while (tab[*i] != NULL && (tab[*i][1] != '-' && tab[*i][2] != '-'))
     {
-      printf("tmp = %s\n", tmp);
-      if (tmp != NULL)
+      if (strcmp(tab[*i], "##start") == 0)
 	{
-	  tmp_tab = my_str_to_wordtab(tmp, "\t \n");
-	  if (strcmp(tmp, "##start") == 0)
-	    list = parse_room_start(&bool_start, &(*list));
-	  else if (strcmp(tmp, "##end") == 0)
-	    list = parse_room_end(&bool_end, &(*list));
-	  else if (tmp[0] != '#' && tmp_tab[2] != NULL && strcmp(tmp_tab[2], "-") != 0)
-	    list = parse_room_other(&(*list), tmp);
-	  else
-	    return (list);
+	  list = parse_room_start(&bool_start, list, tab[*i + 1]);
+	  *i = *i + 2;
+	}
+      if (strcmp(tab[*i], "##end") == 0)
+	{
+	  list = parse_room_end(&bool_end, list, tab[*i + 1]);
+	  *i = *i + 2;
+	}
+      else
+	{
+	  list = loop_parse(&list, tab[*i]);
+	  printf("tab[i] = %s\n", tab[*i]);
+	  *i = *i + 1;
 	}
     }
   if (bool_start != 1)

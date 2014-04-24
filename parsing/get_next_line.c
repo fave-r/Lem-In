@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Nov 23 13:24:46 2013 romaric
-** Last update Sun Apr 20 17:36:56 2014 alex-odet
+** Last update Wed Apr 23 17:51:39 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -44,7 +44,7 @@ char		*get_next_line(const int fd)
       l.s = my_strdup_new(l.s);
       l.s[l.c] = buff[i];
       i++;
-      l.c++;
+      l.s[++l.c] = 0;
     }
   i++;
   return (l.s);
