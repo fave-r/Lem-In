@@ -5,133 +5,64 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Tue Apr 22 08:34:27 2014 Thibaut Lopez
+** Last update Thu Apr 24 18:57:59 2014 Thibaut Lopez
 */
 
-#include "my.h"
-#include "vm.h"
+#include "graphic.h"
 
-void	init_color_champ(t_sdl *cor, t_champ *champ)
+int	my_pause(SDL_Surface *screen, SDL_Surface *tmp)
 {
-  int		i;
-  char		*tmp;
-  char		*nb;
-
-  i = 0;
-  while (champ != NULL)
-    {
-      if (i == 0)
-	champ->color = SDL_MapRGB(cor->screen->format, 255, 0, 0);
-      else if (i == 1)
-	champ->color = SDL_MapRGB(cor->screen->format, 0, 255, 0);
-      else if (i == 2)
-	champ->color = SDL_MapRGB(cor->screen->format, 0, 0, 255);
-      else
-	champ->color = SDL_MapRGB(cor->screen->format, 255, 255, 0);
-      i++;
-      nb = my_nbr_to_char(champ->champ_nb);
-      tmp = my_strcat(", champion number : ", nb);
-      free(nb);
-      champ->graphic_name = my_strcat(champ->head->prog_name, tmp);
-      free(tmp);
-      champ = champ->next;
-    }
-}
-
-void	fill_arena(t_sdl *cor, t_champ *champ)
-{
-  int		i;
+  int		wait;
+  SDL_Event	event;
   SDL_Rect	position;
 
-  position.w = 10;
-  position.h = 20;
-  while (champ != NULL)
+  wait = 0;
+  position.x = 0;
+  position.y = 0;
+  while (wait == 0)
     {
-      i = 0;
-      while (i < champ->head->prog_size)
-	{
-	  position.x = (champ->pc + i) % (MEM_SIZE - 1) % 149 * 10;
-	  position.y = (champ->pc + i) % (MEM_SIZE - 1) / 149 * 20;
-	  SDL_FillRect(cor->arena, &position, champ->color);
-	  i++;
-	}
-      champ = champ->next;
+      SDL_WaitEvent(&event);
+      if (event.key.keysym.sym == SDLK_ESCAPE)
+	return (1);
+      else if (event.key.keysym.sym == SDLK_SPACE &&
+	       event.type == SDL_KEYDOWN)
+	wait = 1;
     }
-  position.x = (MEM_SIZE - 1) % 149 * 10;
-  position.y = (MEM_SIZE - 1) / 149 * 20;
-  position.w = 1490 - position.x;
-  SDL_FillRect(cor->arena, &position,
-	       SDL_MapRGB(cor->arena->format, 127, 127, 127));
-  position.x = 20;
-  position.y = 150;
-  SDL_BlitSurface(cor->arena, NULL, cor->screen, &position);
+  return (0);
 }
 
-void	loop_name(SDL_Rect *position, t_sdl *cor, int i, t_champ *tmp)
-{
-  SDL_Color	color;
-
-  color.r = 255;
-  color.g = 255;
-  color.b = 255;
-  position->w = 15;
-  position->h = 30;
-  SDL_FillRect(cor->screen, position, tmp->color);
-  position->x += 50;
-  cor->name[i] = TTF_RenderText_Blended(cor->font,
-					tmp->graphic_name, color);
-  SDL_BlitSurface(cor->name[i], NULL, cor->screen, position);
-  position->x -= 50;
-  position->y += 35;
-}
-
-void	name_champ(t_sdl *cor, t_champ *champ)
-{
-  int		i;
-  t_champ	*tmp;
-  SDL_Rect	position;
-
-  position.x = 100;
-  position.y = 10;
-  i = 0;
-  if ((cor->font = TTF_OpenFont(MAIN_TF, 20)) == NULL)
-    exit(0);
-  tmp = champ;
-  while (tmp != NULL)
-    {
-      loop_name(&position, cor, i, tmp);
-      i++;
-      tmp = tmp->next;
-    }
-  if (i < 4)
-    cor->name[i] = NULL;
-}
-
-int	init_graphic(t_sdl *cor, t_champ *champ, int dump)
+int	init_graphic()
 {
   SDL_Rect	position;
+  SDL_Surface	*screen;
+  SDL_Surface	*arena;
+  SDL_Surface	*arena2;
 
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     return (1);
-  if (TTF_Init() == -1)
-    return (1);
-  if ((cor->screen = SDL_SetVideoMode(1530, 1010, 32, SDL_SWSURFACE)) == NULL)
+  //  if (TTF_Init() == -1)
+  //return (1);
+  if ((screen = SDL_SetVideoMode(1000, 1000, 32, SDL_SWSURFACE)) == NULL)
     return (1);
   SDL_WM_SetCaption("Lem-In", NULL);
-  SDL_FillRect(cor->screen, NULL,
-	       SDL_MapRGB(cor->screen->format, 150, 150, 150));
+  SDL_FillRect(screen, NULL,
+	       SDL_MapRGB(screen->format, 150, 150, 150));
+  arena = draw_circle(0xFF00FF);
   position.x = 0;
   position.y = 0;
-  cor->bg = SDL_LoadBMP(MAIN_BG);
-  if (cor->bg != NULL)
-    SDL_BlitSurface(cor->bg, NULL, cor->screen, &position);
-  cor->arena = SDL_CreateRGBSurface(SDL_HWSURFACE, 1490, 840, 32, 0, 0, 0, 0);
-  SDL_FillRect(cor->arena, NULL, SDL_MapRGB(cor->arena->format, 0, 0, 0));
-  init_color_champ(cor, champ);
-  name_champ(cor, champ);
-  fill_arena(cor, champ);
-  init_information(cor);
-  put_dump(cor, dump);
-  SDL_Flip(cor->screen);
+  SDL_BlitSurface(arena, NULL, screen, &position);
+  arena2 = draw_circle(0xFF0000);
+  position.x = 0;
+  position.y = 50;
+  SDL_BlitSurface(arena2, NULL, screen, &position);
+  SDL_Flip(screen);
+  my_pause(screen, arena);
+  return (0);
+}
+
+int	main()
+{
+  init_graphic();
+  //  pause();
   return (0);
 }
