@@ -5,8 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:13:10 2014 alex-odet
-** Last update Thu Apr 24 14:18:05 2014 alex-odet
+** Last update Fri Apr 25 14:58:28 2014 alex-odet
 */
+
+#include "lem_in.h"
 
 t_arc	*new_arc_node(char *name, char *second)
 {
@@ -14,10 +16,9 @@ t_arc	*new_arc_node(char *name, char *second)
 
   new = xmalloc(sizeof(t_arc));
   new->first = strdup(name);
-  new->first_room = 0;
   new->second = strdup(second);
-  new->second_room = 0;
   new->next = NULL;
+  return (new);
 }
 
 t_arc	*my_put_in_arc_list(t_arc *list, char *first, char *second)

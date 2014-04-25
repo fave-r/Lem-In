@@ -5,11 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-<<<<<<< HEAD
-** Last update Thu Apr 24 17:53:37 2014 Thibaut Lopez
-=======
-** Last update Wed Apr 23 22:47:10 2014 alex-odet
->>>>>>> 61739177180d1135f8cc0f7c10224d575b1ba293
+** Last update Fri Apr 25 15:06:51 2014 alex-odet
 */
 
 #ifndef LEM_IN_
@@ -87,6 +83,7 @@ typedef struct		s_arc
   int			first_room;
   char			*second;
   int			second_room;
+  struct s_arc		*next;
 }			t_arc;
 
 t_graphe	*new_graphe(void);
@@ -157,5 +154,12 @@ void		sfree();
 char		*my_strdup(char *src);
 int		my_strslen(char **tab);
 char		**my_strscat(char **tab, char *str);
+void		bad_arc(char *room);
+t_arc		*new_arc_node(char *name, char *second);
+t_arc		*my_put_in_arc_list(t_arc *list, char *first, char *second);
+t_arc		*parse_arc(t_lem *list, int *i, char **map);
+void		check_len_tab(char **tab);
+t_arc		*is_valid(char *first, char *second, t_lem *list, t_arc *arc);
+void		my_show_arc(t_arc *list);
 
 #endif
