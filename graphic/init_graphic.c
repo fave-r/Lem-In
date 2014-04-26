@@ -5,12 +5,12 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Thu Apr 24 18:57:59 2014 Thibaut Lopez
+** Last update Sat Apr 26 03:08:54 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
 
-int	my_pause(SDL_Surface *screen, SDL_Surface *tmp)
+int	my_pause(SDL_Surface *screen)
 {
   int		wait;
   SDL_Event	event;
@@ -33,10 +33,9 @@ int	my_pause(SDL_Surface *screen, SDL_Surface *tmp)
 
 int	init_graphic()
 {
-  SDL_Rect	position;
   SDL_Surface	*screen;
-  SDL_Surface	*arena;
-  SDL_Surface	*arena2;
+  SDL_Rect	a;
+  SDL_Rect	b;
 
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     return (1);
@@ -47,16 +46,15 @@ int	init_graphic()
   SDL_WM_SetCaption("Lem-In", NULL);
   SDL_FillRect(screen, NULL,
 	       SDL_MapRGB(screen->format, 150, 150, 150));
-  arena = draw_circle(0xFF00FF);
-  position.x = 0;
-  position.y = 0;
-  SDL_BlitSurface(arena, NULL, screen, &position);
-  arena2 = draw_circle(0xFF0000);
-  position.x = 0;
-  position.y = 50;
-  SDL_BlitSurface(arena2, NULL, screen, &position);
+  a.x = 0;
+  a.y = 0;
+  b.x = 50;
+  b.y = 50;
+  draw_tubes(&a, &b, screen);
+  draw_circle(0xFF00FF, screen, 0, 0);
+  draw_circle(0xFF0000, screen, 50, 50);
   SDL_Flip(screen);
-  my_pause(screen, arena);
+  my_pause(screen);
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 09:42:42 2014 Thibaut Lopez
-** Last update Thu Apr 24 18:55:33 2014 Thibaut Lopez
+** Last update Sat Apr 26 03:06:01 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -31,7 +31,7 @@ void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel)
     *(Uint32 *)p = pixel;
 }
 
-SDL_Surface	*fill_circle(SDL_Surface *surface, Uint32 pixel, double r)
+void	fill_circle(t_box *var, Uint32 pixel, double r)
 {
   int		x;
   double	dx;
@@ -43,41 +43,38 @@ SDL_Surface	*fill_circle(SDL_Surface *surface, Uint32 pixel, double r)
   while (dy <= r)
     {
       dx = floor(sqrt((2.0 * r * dy) - (dy * dy)));
-      x = 25.0 - dx;
-      target_pixel_a = (Uint8 *)surface->pixels +
-	((int)(25.0 + r - dy)) * surface->pitch + x * BPP(surface);
-      target_pixel_b = (Uint8 *)surface->pixels +
-	((int)(25.0 - r + dy)) * surface->pitch + x * BPP(surface);
-      while (x <= 25.0 + dx)
+      x = var->cx + 0.5 - dx;
+      target_pixel_a = (Uint8 *)var->ret->pixels +
+	((int)(var->cy + 0.5 + r - dy)) * var->ret->pitch + x * BPP(var->ret);
+      target_pixel_b = (Uint8 *)var->ret->pixels +
+	((int)(var->cy + 0.5 - r + dy)) * var->ret->pitch + x * BPP(var->ret);
+      while (x <= var->cx + 0.5 + dx)
         {
 	  *(Uint32 *)target_pixel_a = pixel;
 	  *(Uint32 *)target_pixel_b = pixel;
-	  target_pixel_a += BPP(surface);
-	  target_pixel_b += BPP(surface);
+	  target_pixel_a += BPP(var->ret);
+	  target_pixel_b += BPP(var->ret);
 	  x++;
         }
       dy += 1.0;
     }
-  return (surface);
 }
 
-void	init_box(t_box *var)
+void	init_box(t_box *var, int x, int y, SDL_Surface *arena)
 {
-  var->ret = SDL_CreateRGBSurface(SDL_HWSURFACE, 50, 50, 32, 0, 0, 0, 0);
-  SDL_FillRect(var->ret, NULL,
-	       SDL_MapRGBA(var->ret->format, 255, 255, 255, 255));
+  var->ret = arena;
   var->error = -20.0;
   var->x = 19.5;
   var->y = 0.5;
-  var->cx = 24.5;
-  var->cy = 24.5;
+  var->cx = (double)(x + 25.0 - 0.5);
+  var->cy = (double)(y + 25.0 - 0.5);
 }
 
-SDL_Surface	*draw_circle(Uint32 pixel)
+void	draw_circle(Uint32 pixel, SDL_Surface *arena, int x, int y)
 {
   t_box	var;
 
-  init_box(&var);
+  init_box(&var, x, y, arena);
   while (var.x >= var.y)
     {
       put_pixel(var.ret, (int)(var.cx + var.x), (int)(var.cy + var.y), pixel);
@@ -100,5 +97,5 @@ SDL_Surface	*draw_circle(Uint32 pixel)
       var.error += (++var.y) * 2 - 1;
       var.error -= (var.error >= 0) ? (--var.x) * 2 : 0;
     }
-  return (fill_circle(var.ret, pixel, 20.0));
+  fill_circle(&var, pixel, 20.0);
 }

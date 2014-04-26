@@ -1,1 +1,1 @@
-gcc init_graphic.c draw_circle.c -lSDL -lGL -lGLU -lm
+gcc init_graphic.c draw_circle.c draw_tubes.c draw_line.c line.c quarter.c quarter2.c -lSDL -lGL -lGLU -lm
