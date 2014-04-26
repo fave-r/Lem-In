@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Thu Apr 24 12:21:44 2014 romaric
+** Last update Fri Apr 25 13:44:24 2014 alex-odet
 */
 
 #include "lem_in.h"
@@ -63,7 +63,6 @@ t_lem	*parse_room(char **tab, int *i)
       else
 	{
 	  list = loop_parse(&list, tab[*i]);
-	  printf("tab[i] = %s\n", tab[*i]);
 	  *i = *i + 1;
 	}
     }

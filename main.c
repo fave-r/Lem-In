@@ -5,12 +5,13 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 23 22:48:53 2014 alex-odet
+** Last update Fri Apr 25 14:49:17 2014 alex-odet
 */
 
 #include "lem_in.h"
 
 void		my_show_room(t_lem *list);
+void		my_show_arc(t_arc *list);
 
 int		main(__attribute__((unused))int ac,
 		     __attribute__((unused))char **av)
@@ -22,7 +23,7 @@ int		main(__attribute__((unused))int ac,
   int		end;
   int		nb_fourmis;
   t_lem		*list;
-  //  t_arc		*arc;
+  t_arc		*arc;
   char		**map;
 
   ways = NULL;
@@ -45,13 +46,13 @@ int		main(__attribute__((unused))int ac,
   my_show_room(list);
   start = 1;
   end = my_list_size(list);
-  /*  arc = parse_arc();
-      if (arc == NULL)
-      {
+  arc = parse_arc(list, &i, map);
+  if (arc == NULL)
+    {
       printf("No rooms are linked.\n");
       exit(EXIT_FAILURE);
-      }
-  */
+    }
+  my_show_arc(arc);
   graphe = new_graphe();
   
   insert_arc(graphe, 9, 2);
@@ -74,6 +75,15 @@ void		my_show_room(t_lem *list)
   while (list)
     {
       printf("room->%s\tx->%d\ty->%d\n", list->name, list->ptr.x, list->ptr.y);
+      list = list->next;
+    }
+}
+
+void		my_show_arc(t_arc *list)
+{
+  while (list)
+    {
+      printf("room : %s is linked to : %s\n", list->first, list->second);
       list = list->next;
     }
 }
