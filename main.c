@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Fri Apr 25 14:49:17 2014 alex-odet
+** Last update Mon Apr 28 17:11:59 2014 Alex
 */
 
 #include "lem_in.h"
@@ -37,24 +37,18 @@ int		main(__attribute__((unused))int ac,
   i = 1;
   nb_fourmis = parse_ants(map[0]);
   list = parse_room(map, &i);
-  printf("i = %d\n", i);
-  if (my_list_size(list) == 0)
-    {
-      printf("No rooms in the map.\n");
-      exit(EXIT_FAILURE);
-    }
-  my_show_room(list);
   start = 1;
   end = my_list_size(list);
+  list = fill_list_num(list);
   arc = parse_arc(list, &i, map);
   if (arc == NULL)
     {
       printf("No rooms are linked.\n");
       exit(EXIT_FAILURE);
     }
+  arc = arc_num(arc, list);
   my_show_arc(arc);
   graphe = new_graphe();
-  
   insert_arc(graphe, 9, 2);
   insert_arc(graphe, 9, 3);
   insert_arc(graphe, 2, 1);
@@ -74,7 +68,7 @@ void		my_show_room(t_lem *list)
 {
   while (list)
     {
-      printf("room->%s\tx->%d\ty->%d\n", list->name, list->ptr.x, list->ptr.y);
+      printf("room->%s\tnum->%d\tx->%d\ty->%d\n", list->name,list->ptr.num,  list->ptr.x, list->ptr.y);
       list = list->next;
     }
 }
@@ -83,7 +77,7 @@ void		my_show_arc(t_arc *list)
 {
   while (list)
     {
-      printf("room : %s is linked to : %s\n", list->first, list->second);
+      printf("room : %s (Num : %d) is linked to : %s (Num : %d)\n", list->first, list->first_room, list->second, list->second_room);
       list = list->next;
     }
 }
