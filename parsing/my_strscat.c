@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 13:11:55 2014 alex-odet
-** Last update Wed Apr 23 17:00:12 2014 alex-odet
+** Last update Tue Apr 29 14:04:54 2014 romaric
 */
 
 #include "lem_in.h"
@@ -53,10 +53,10 @@ char	**my_strscat(char **tab, char *str)
   i = 0;
   while (tab != NULL && tab[i] != NULL)
     {
-      new[i] = /*my_*/strdup(tab[i]);
+      new[i] = my_strdup(tab[i]);
       i++;
     }
-  new[i] = /*my_*/strdup(str);
+  new[i] = my_strdup(str);
   new[i + 1] = NULL;
   sfree(tab);
   return (new);
