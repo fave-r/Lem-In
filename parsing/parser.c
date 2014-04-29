@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Fri Apr 25 13:44:24 2014 alex-odet
+** Last update Mon Apr 28 19:22:00 2014 Alex
 */
 
 #include "lem_in.h"
@@ -83,16 +83,17 @@ void	check_tab(char **tab)
   len = my_len_tab(tab);
   if (len != 3)
     bad_len();
-  while (tab[i] != NULL)
-    {
-      j = 0;
-      while (tab[i][j] != '\0')
-	{
-	  if ((tab[i][j] < '0' || tab[i][j] > '9')
-	      || (tab[i][j] == '-' && j != 0))
-	    bad_coor();
-	  j++;
-	}
-      i++;
-    }
+  if (tab[i] != NULL)
+    while (tab[i] != NULL && tab != NULL)
+      {
+	j = 0;
+	while (tab[i][j] != '\0')
+	  {
+	    if ((tab[i][j] < '0' || tab[i][j] > '9')
+		|| (tab[i][j] == '-' && j != 0))
+	      bad_coor();
+	    j++;
+	  }
+	i++;
+      }
 }

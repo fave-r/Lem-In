@@ -5,12 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 10:35:38 2014 alex-odet
-** Last update Mon Apr 28 16:53:34 2014 Alex
+** Last update Mon Apr 28 17:25:25 2014 Alex
 */
 
 #include "lem_in.h"
-
-void		my_show_room(t_lem *list);
 
 t_arc		*parse_arc(t_lem *list, int *i, char **map)
 {
@@ -18,7 +16,6 @@ t_arc		*parse_arc(t_lem *list, int *i, char **map)
   char		**tmp_tab;
 
   arc = NULL;
-  my_show_room(list);
   while (map[*i])
     {
       tmp_tab = my_str_to_wordtab(map[*i], "-");

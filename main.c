@@ -5,13 +5,13 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Mon Apr 28 17:11:59 2014 Alex
+** Last update Tue Apr 29 11:50:37 2014 Alex
 */
 
 #include "lem_in.h"
 
 void		my_show_room(t_lem *list);
-void		my_show_arc(t_arc *list);
+void		my_show_arc(t_arc *arc);
 
 int		main(__attribute__((unused))int ac,
 		     __attribute__((unused))char **av)
@@ -47,13 +47,18 @@ int		main(__attribute__((unused))int ac,
       exit(EXIT_FAILURE);
     }
   arc = arc_num(arc, list);
-  my_show_arc(arc);
   graphe = new_graphe();
-  insert_arc(graphe, 9, 2);
-  insert_arc(graphe, 9, 3);
-  insert_arc(graphe, 2, 1);
-  insert_arc(graphe, 1, 3);
-  insert_arc(graphe, 2, 3);
+  int a;
+  int b;
+  t_arc *cur;
+  cur = arc;
+  while (cur)
+    {
+      a = cur->first_room;
+      b = cur->second_room;
+      insert_arc(graphe,a, b);
+      cur = cur->next;
+    }
 
   ways = get_ways(graphe, start, end, ways);
   free_graphe(graphe);
