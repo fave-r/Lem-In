@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Mon Apr 28 17:10:36 2014 Alex
+** Last update Tue Apr 29 13:55:26 2014 Alex
 */
 
 #ifndef LEM_IN_
@@ -163,5 +163,8 @@ t_arc		*is_valid(char *first, char *second, t_lem *list, t_arc *arc);
 void		my_show_arc(t_arc *list);
 t_lem		*fill_list_num(t_lem *list);
 t_arc		*arc_num(t_arc *arc, t_lem *list);
+void		no_map();
+void		no_arc();
+void		algo(t_arc *arc, t_lem *list, int ants);
 
 #endif

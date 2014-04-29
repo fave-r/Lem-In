@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Tue Apr 29 11:50:37 2014 Alex
+** Last update Tue Apr 29 13:56:16 2014 Alex
 */
 
 #include "lem_in.h"
@@ -13,76 +13,57 @@
 void		my_show_room(t_lem *list);
 void		my_show_arc(t_arc *arc);
 
-int		main(__attribute__((unused))int ac,
-		     __attribute__((unused))char **av)
+int		main(void)
 {
   int		i;
-  t_graphe	*graphe;
-  t_way		*ways;
-  int		start;
-  int		end;
-  int		nb_fourmis;
+  int		ants;
   t_lem		*list;
   t_arc		*arc;
   char		**map;
 
-  ways = NULL;
-  map = NULL;
   map = init_parse();
   if (map == NULL)
-    {
-      printf("No map.\n");
-      exit(EXIT_FAILURE);
-    }
+    no_map();
   i = 1;
-  nb_fourmis = parse_ants(map[0]);
+  ants = parse_ants(map[0]);
   list = parse_room(map, &i);
-  start = 1;
-  end = my_list_size(list);
   list = fill_list_num(list);
   arc = parse_arc(list, &i, map);
   if (arc == NULL)
-    {
-      printf("No rooms are linked.\n");
-      exit(EXIT_FAILURE);
-    }
+    no_arc();
   arc = arc_num(arc, list);
-  graphe = new_graphe();
-  int a;
-  int b;
-  t_arc *cur;
-  cur = arc;
-  while (cur)
-    {
-      a = cur->first_room;
-      b = cur->second_room;
-      insert_arc(graphe,a, b);
-      cur = cur->next;
-    }
-
-  ways = get_ways(graphe, start, end, ways);
-  free_graphe(graphe);
-  fill_ways(ways, nb_fourmis);
-  run_lem_in(ways);
-  free_ways(ways);
+  algo(arc, list, ants);
   sfree(map);
   return (0);
 }
 
-void		my_show_room(t_lem *list)
+void		algo(t_arc *arc, t_lem *list, int ants)
 {
-  while (list)
+  t_graphe	*graphe;
+  t_way		*ways;
+
+  ways = NULL;
+  graphe = new_graphe();
+  while (arc)
     {
-      printf("room->%s\tnum->%d\tx->%d\ty->%d\n", list->name,list->ptr.num,  list->ptr.x, list->ptr.y);
-      list = list->next;
+      insert_arc(graphe, arc->first_room, arc->second_room);
+      arc = arc->next;
     }
+  ways = get_ways(graphe, 1, my_list_size(list), ways);
+  free_graphe(graphe);
+  fill_ways(ways, ants);
+  run_lem_in(ways);
+  free_ways(ways);
 }
 
-void		my_show_arc(t_arc *list)
+void		no_map()
 {
-  while (list)
-    {
-      printf("room : %s (Num : %d) is linked to : %s (Num : %d)\n", list->first, list->first_room, list->second, list->second_room);
-      list = list->next;
-    }
+  printf("No map.\n");
+  exit(EXIT_FAILURE);
+}
+
+void		no_arc()
+{
+  printf("No rooms are linked.\n");
+  exit(EXIT_FAILURE);
 }
