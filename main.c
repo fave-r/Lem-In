@@ -5,27 +5,19 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 30 16:23:04 2014 Alex
+** Last update Wed Apr 30 16:36:17 2014 Alex
 */
 
 #include "lem_in.h"
 
-void		show_room(t_lem *list);
-
 int		main(void)
 {
-  int		ants;
-  char		**map;
   t_all		*p;
 
-  map = init_parse();
-  if (map == NULL)
-    no_map();
-  ants = parse_ants(map[0]);
-  p = parse(map);
-  my_show_map(map);
-  algo(p->arc, p->room, ants);
-  sfree(map);
+  p = parse();
+  my_show_map(p->map);
+  algo(p->arc, p->room, p->ants);
+  sfree(p->map);
   free_arc(p->arc);
   free_list(p->room);
   return (0);

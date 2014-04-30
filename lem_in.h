@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 30 16:29:32 2014 Thibaut Lopez
+** Last update Wed Apr 30 16:36:35 2014 Alex
 */
 
 #ifndef LEM_IN_
@@ -87,6 +87,8 @@ typedef struct		s_ant
 
 typedef struct		s_all
 {
+  int			ants;
+  char			**map;
   t_lem			*room;
   t_arc			*arc;
   t_ant			*move;
@@ -174,6 +176,6 @@ void		check_bool(int *bool_start, int *bool_end);
 void		my_show_map(char **map);
 void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
-t_all		*parse(char **map);
+t_all		*parse();
 
 #endif
