@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Wed Apr 30 12:17:22 2014 Alex
+** Last update Wed Apr 30 16:29:46 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -123,6 +123,6 @@ int	init_graphic()
 
 int	main()
 {
-  init_graphic();
+  init_graphic(parse);
   return (0);
 }

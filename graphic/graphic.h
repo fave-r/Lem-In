@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Wed Apr 30 12:12:27 2014 Alex
+** Last update Wed Apr 30 16:29:31 2014 Thibaut Lopez
 */
 
 #ifndef GRAPHIC_H
@@ -26,12 +26,42 @@ typedef struct	s_box
   double	cy;
 }		t_box;
 
-typedef struct	s_all
+typedef struct		s_coor
 {
-  t_lem		*room;
-  t_arc		*arc;
-  t_ant		*ants;
-}		t_all;
+  int			num;
+  int			x;
+  int			y;
+}			t_coor;
+
+typedef struct		s_lem
+{
+  int			is_start;
+  char			*name;
+  t_coor		ptr;
+  struct s_lem		*next;
+}			t_lem;
+
+typedef struct		s_arc
+{
+  char			*first;
+  int			first_room;
+  char			*second;
+  int			second_room;
+  struct s_arc		*next;
+}			t_arc;
+
+typedef struct		s_ant
+{
+  char			*ant_name;
+  char			*whereis;
+}			t_ant;
+
+typedef struct		s_all
+{
+  t_lem			*room;
+  t_arc			*arc;
+  t_ant			*move;
+}			t_all;
 
 void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 void	draw_circle(Uint32 pixel, SDL_Surface *arena, int x, int y);
