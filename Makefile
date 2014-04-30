@@ -5,14 +5,14 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Sat Apr 19 23:57:06 2014 thibaud
+## Last update Wed Apr 23 14:52:26 2014 alex-odet
 ##
 
 CC=	gcc
 
 RM=	rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror
+CFLAGS	+=	-Wextra -Wall -Werror -I.
 
 NAME	= lem_in
 
@@ -25,7 +25,19 @@ SRCS	= main.c \
 	graph_fct_next.c \
 	get_ways.c \
 	run_lem_in.c \
-	free.c
+	free.c \
+	parsing/error.c \
+	parsing/my_len_tab.c \
+	parsing/my_put_in_lem_list.c \
+	parsing/parser.c \
+	parsing/xfunction.c \
+	parsing/get_next_line.c \
+	parsing/my_list_size.c \
+	parsing/my_str_to_wordtab.c \
+	parsing/parser_next.c \
+	parsing/my_strchr.c \
+	parsing/init.c \
+	parsing/my_strscat.c
 
 OBJS=	$(SRCS:.c=.o)
 

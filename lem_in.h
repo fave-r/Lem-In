@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sun Apr 20 00:16:03 2014 thibaud
+** Last update Wed Apr 23 15:49:18 2014 alex-odet
 */
 
 #ifndef LEM_IN_
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
+#include <string.h>
 
 #define BUFF_SIZE 4096
 
@@ -57,14 +58,14 @@ typedef struct		s_way
 typedef struct		s_coor
 {
   int			num;
-  char			*name;
   int			x;
   int			y;
 }			t_coor;
 
 typedef struct		s_lem
 {
-  int			ants;
+  int			is_start;
+  char			*name;
   t_coor		ptr;
   struct s_lem		*next;
 }			t_lem;
@@ -76,14 +77,13 @@ typedef struct		s_get
   int			l;
 }			t_get;
 
-typedef struct		s_pars
+typedef struct		s_arc
 {
-  int			ants;
-  char			**tmp2;
-  char			*tmp;
-  int			i;
-  int			line;
-}			t_pars;
+  char			*first;
+  int			first_room;
+  char			*second;
+  int			second_room;
+}			t_arc;
 
 t_graphe	*new_graphe(void);
 int		add_sommet(t_graphe *graphe, int new_nb);
@@ -123,5 +123,35 @@ int             print_wave(t_fourmi *fourmis);
 int		print_arc_tab(int **, int);
 int		my_isdigit(char);
 
+void		bad_ants();
+void		no_start();
+void		no_end();
+void		bad_coor();
+void		bad_len();
+int		my_len_tab(char **tab);
+t_lem		*new_node(char *name, int x, int y);
+t_lem		*my_put_in_lem_list(t_lem *list, char *name, int x, int y);
+t_lem		*my_put_start(t_lem *list, char *name, int x, int y);
+t_lem		*my_put_end(t_lem *list, char *name, int x, int y);
+int		parse_ants(char *tab);
+t_lem		*parse_room(char **tab);
+int		loop_parse(t_lem **list, char *tab, int *bool_start, int *bool_end);
+void		check_tab(char **tab);
+void		*xmalloc(size_t n);
+char		*my_strdup_new(char *src);
+char		*get_next_line(const int fd);
+int		my_list_size(t_lem *list);
+int		strlen_word(const char *str, char *sep);
+int		lentab(char *str, char *sep);
+char		**my_str_to_wordtab(char *str, char *sep);
+t_lem		*parse_room_start(int *bool_start, t_lem *list, char *map);
+t_lem		*parse_room_other(t_lem *list, char *tmp);
+t_lem		*parse_room_end(int *bool_end, t_lem *list, char *tmp);
+int		my_strchr(char src, char *dest);
+char		**init_parse();
+void		sfree();
+char		*my_strdup(char *src);
+int		my_strslen(char **tab);
+char		**my_strscat(char **tab, char *str);
 
 #endif

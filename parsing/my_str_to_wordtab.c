@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 11 15:10:11 2014 romaric
-** Last update Fri Apr 11 15:25:04 2014 romaric
+** Last update Sun Apr 20 19:29:54 2014 alex-odet
 */
 
-#include "my.h"
+#include "lem_in.h"
 
 int	strlen_word(const char *str, char *sep)
 {
@@ -64,7 +64,7 @@ char	**my_str_to_wordtab(char *str, char *sep)
       if (strlen_word(str, sep) > 0)
 	{
 	  tb[j] = xmalloc((strlen_word(str, sep) + 1) * sizeof(char));
-	  tb[j] = my_strncpy(tb[j], str, strlen_word(str, sep));
+	  tb[j] = strncpy(tb[j], str, strlen_word(str, sep));
 	  str = str + strlen_word(str, sep) + 1;
 	  j++;
 	}

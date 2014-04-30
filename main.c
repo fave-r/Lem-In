@@ -5,10 +5,12 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 23 15:52:05 2014 thibaud
+** Last update Wed Apr 23 16:05:02 2014 thibaud
 */
 
 #include "lem_in.h"
+
+void		my_show_room(t_lem *list);
 
 int		main(__attribute__((unused))int ac,
 		     __attribute__((unused))char **av)
@@ -18,12 +20,37 @@ int		main(__attribute__((unused))int ac,
   int		start;
   int		end;
   int		nb_fourmis;
+  t_lem		*list;
+  //  t_arc		*arc;
+  char		**map;
 
   ways = NULL;
-  nb_fourmis = 5;
-  start = 9;
-  end = 1;
-
+  map = init_parse();
+  if (*map == NULL)
+    {
+      printf("No map.\n");
+      exit(EXIT_FAILURE);
+    }
+  int i =  0;
+  while (map[i])
+    printf("la map vaut : %s\n", map[i++]);
+  nb_fourmis = parse_ants(map[0]);
+  list = parse_room(map);
+  if (list == NULL)
+    {
+      printf("No rooms in the map.\n");
+      exit(EXIT_FAILURE);
+    }
+  my_show_room(list);
+  start = 1;
+  end = my_list_size(list);
+  /*  arc = parse_arc();
+      if (arc == NULL)
+      {
+      printf("No rooms are linked.\n");
+      exit(EXIT_FAILURE);
+      }
+  */
   graphe = new_graphe();
   
   insert_arc(graphe, 9, 2);
@@ -39,4 +66,13 @@ int		main(__attribute__((unused))int ac,
   run_lem_in(ways);
   free_ways(ways);
   return (0);
+}
+
+void		my_show_room(t_lem *list)
+{
+  while (list)
+    {
+      printf("room->%s\tx->%d\ty->%d\n", list->name, list->ptr.x, list->ptr.y);
+      list = list->next;
+    }
 }
