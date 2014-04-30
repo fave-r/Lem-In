@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Tue Apr 29 00:41:16 2014 Thibaut Lopez
+** Last update Wed Apr 30 12:12:27 2014 Alex
 */
 
 #ifndef GRAPHIC_H
@@ -25,6 +25,13 @@ typedef struct	s_box
   double	cx;
   double	cy;
 }		t_box;
+
+typedef struct	s_all
+{
+  t_lem		*room;
+  t_arc		*arc;
+  t_ant		*ants;
+}		t_all;
 
 void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 void	draw_circle(Uint32 pixel, SDL_Surface *arena, int x, int y);

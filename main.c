@@ -5,10 +5,12 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 30 11:08:56 2014 Alex
+** Last update Wed Apr 30 14:05:54 2014 Alex
 */
 
 #include "lem_in.h"
+
+void		show_room(t_lem *list);
 
 int		main(void)
 {
@@ -25,16 +27,26 @@ int		main(void)
   ants = parse_ants(map[0]);
   list = parse_room(map, &i);
   list = fill_list_num(list);
+  show_room(list);
   arc = parse_arc(list, &i, map);
   if (arc == NULL)
     no_arc();
   arc = arc_num(arc, list);
-  //  my_show_map(map);
+  my_show_map(map);
   algo(arc, list, ants);
   sfree(map);
-  free (arc);
-  free(list);
+  free_arc(arc);
+  free_list(list);
   return (0);
+}
+
+void		show_room(t_lem *list)
+{
+  while (list)
+    {
+      printf("room = %s\n", list->name);
+      list = list->next;
+    }
 }
 
 void		my_show_map(char **map)

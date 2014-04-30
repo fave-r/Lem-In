@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 13:11:55 2014 alex-odet
-** Last update Tue Apr 29 14:04:54 2014 romaric
+** Last update Wed Apr 30 14:25:04 2014 Alex
 */
 
 #include "lem_in.h"
@@ -49,7 +49,7 @@ char	**my_strscat(char **tab, char *str)
   char	**new;
   int	i;
 
-  new = xmalloc(sizeof(char *) * (my_strslen(tab) + 2));
+  new = xmalloc(sizeof(char *) * (my_strslen(tab) + 10));
   i = 0;
   while (tab != NULL && tab[i] != NULL)
     {

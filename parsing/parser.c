@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Wed Apr 30 03:02:28 2014 Alex
+** Last update Wed Apr 30 14:03:57 2014 Alex
 */
 
 #include "lem_in.h"
@@ -30,13 +30,11 @@ t_lem	*loop_parse(t_lem **list, char *tab)
 {
   char	**tmp_tab;
 
-  tmp_tab = my_str_to_wordtab(tab, "\t \n");
+  tmp_tab = my_str_to_wordtab(tab, "\t \n\0");
   if (tab[0] != '#' && tmp_tab[1] != NULL)
     {
-      if (strcmp(tmp_tab[1], "-") != 0 && tmp_tab[1] != NULL)
+      if ((strcmp(tmp_tab[1], "-") != 0))
 	*list = parse_room_other(*list, tab);
-      else
-	return (*list);
     }
   else
     return (*list);
@@ -110,7 +108,10 @@ void	check_tab(char **tab)
 	  {
 	    if ((tab[i][j] < '0' || tab[i][j] > '9')
 		|| (tab[i][j] == '-' && j != 0))
-	      bad_coor();
+	      {
+		sfree(tab);
+		bad_coor();
+	      }
 	    j++;
 	  }
 	i++;

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 30 03:06:45 2014 Alex
+** Last update Wed Apr 30 12:34:26 2014 Alex
 */
 
 #ifndef LEM_IN_
@@ -70,13 +70,6 @@ typedef struct		s_lem
   struct s_lem		*next;
 }			t_lem;
 
-typedef struct		s_get
-{
-  char			*s;
-  int			c;
-  int			l;
-}			t_get;
-
 typedef struct		s_arc
 {
   char			*first;
@@ -139,8 +132,6 @@ t_lem		*parse_room(char **tab, int *i);
 t_lem		*loop_parse(t_lem **list, char *tab);
 void		check_tab(char **tab);
 void		*xmalloc(size_t n);
-char		*my_strdup_new(char *src);
-char		*get_next_line(const int fd);
 int		my_list_size(t_lem *list);
 int		strlen_word(const char *str, char *sep);
 int		lentab(char *str, char *sep);
@@ -168,5 +159,7 @@ void		no_arc();
 void		algo(t_arc *arc, t_lem *list, int ants);
 void		check_bool(int *bool_start, int *bool_end);
 void		my_show_map(char **map);
+void		free_arc(t_arc *arc);
+void		free_list(t_lem *list);
 
 #endif

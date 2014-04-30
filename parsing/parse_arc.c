@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 10:35:38 2014 alex-odet
-** Last update Wed Apr 30 09:18:15 2014 Alex
+** Last update Wed Apr 30 14:16:22 2014 Alex
 */
 
 #include "lem_in.h"
@@ -21,7 +21,6 @@ t_arc		*parse_arc(t_lem *list, int *i, char **map)
       tmp_tab = my_str_to_wordtab(map[*i], "-");
       check_len_tab(tmp_tab, map[*i]);
       arc = is_valid(tmp_tab[0], tmp_tab[1], list, arc);
-      sfree(tmp_tab);
       *i = *i + 1;
     }
   return (arc);
@@ -37,6 +36,7 @@ void		check_len_tab(char **tab, char *arc)
   if (i != 2)
     {
       printf("Syntax Error : Bad definition of the arc :%s\n", arc);
+      sfree(tab);
       exit(EXIT_FAILURE);
     }
 }
@@ -47,6 +47,7 @@ t_arc		*is_valid(char *first, char *second, t_lem *list, t_arc *arc)
   char	*save_first;
   char	*save_second;
 
+  printf("first = %s\nsecond = %s\n", first, second);
   save_first = NULL;
   save_second = NULL;
   cur = list;
