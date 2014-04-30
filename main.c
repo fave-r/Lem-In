@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Wed Apr 30 16:36:17 2014 Alex
+** Last update Wed Apr 30 17:56:41 2014 Alex
 */
 
 #include "lem_in.h"
@@ -18,8 +18,6 @@ int		main(void)
   my_show_map(p->map);
   algo(p->arc, p->room, p->ants);
   sfree(p->map);
-  free_arc(p->arc);
-  free_list(p->room);
   return (0);
 }
 
