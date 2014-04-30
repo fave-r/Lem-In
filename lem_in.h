@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 30 12:34:26 2014 Alex
+** Last update Wed Apr 30 14:46:11 2014 Thibaut Lopez
 */
 
 #ifndef LEM_IN_
@@ -141,7 +141,7 @@ t_lem		*parse_room_other(t_lem *list, char *tmp);
 t_lem		*parse_room_end(int *bool_end, t_lem *list, char *tmp);
 int		my_strchr(char src, char *dest);
 char		**init_parse();
-void		sfree();
+void		sfree(char **tab);
 char		*my_strdup(char *src);
 int		my_strslen(char **tab);
 char		**my_strscat(char **tab, char *str);

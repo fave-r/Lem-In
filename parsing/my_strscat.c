@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 13:11:55 2014 alex-odet
-** Last update Wed Apr 30 14:25:04 2014 Alex
+** Last update Wed Apr 30 14:56:46 2014 Thibaut Lopez
 */
 
 #include "lem_in.h"
@@ -30,7 +30,7 @@ char	*my_strdup(char *src)
 
   dest = xmalloc(sizeof(char) * (strlen(src) + 1));
   strcpy(dest, src);
-  dest[strlen(src) + 1] = 0;
+  dest[strlen(src)] = 0;
   return (dest);
 }
 
@@ -49,7 +49,7 @@ char	**my_strscat(char **tab, char *str)
   char	**new;
   int	i;
 
-  new = xmalloc(sizeof(char *) * (my_strslen(tab) + 10));
+  new = xmalloc(sizeof(char *) * (my_strslen(tab) + 2));
   i = 0;
   while (tab != NULL && tab[i] != NULL)
     {
