@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 13:11:55 2014 alex-odet
-** Last update Tue Apr 29 14:04:54 2014 romaric
+** Last update Wed Apr 30 16:49:59 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 void	sfree(char **tab)
 {

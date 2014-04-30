@@ -5,10 +5,10 @@
 ** Login   <Alex@epitech.net>
 ** 
 ** Started on  Mon Apr 28 14:42:06 2014 Alex
-** Last update Mon Apr 28 16:00:48 2014 Alex
+** Last update Wed Apr 30 16:48:19 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_lem	*fill_list_num(t_lem *list)
 {

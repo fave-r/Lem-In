@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 19 14:25:15 2014 romaric
-** Last update Tue Apr 29 16:27:39 2014 Alex
+** Last update Wed Apr 30 16:51:10 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_lem	*parse_room_start(int *bool_start, t_lem *list, char *map)
 {

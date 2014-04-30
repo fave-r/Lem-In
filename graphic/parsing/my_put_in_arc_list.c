@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 24 14:13:10 2014 alex-odet
-** Last update Fri Apr 25 14:58:28 2014 alex-odet
+** Last update Wed Apr 30 16:49:41 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_arc	*new_arc_node(char *name, char *second)
 {

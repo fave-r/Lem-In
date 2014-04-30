@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 18 14:45:17 2014 alex-odet
-** Last update Mon Apr 28 15:33:59 2014 Alex
+** Last update Wed Apr 30 16:49:43 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_lem		*new_node(char *name, int x, int y)
 {

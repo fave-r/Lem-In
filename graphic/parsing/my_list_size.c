@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Sun Apr 20 17:18:27 2014 alex-odet
-** Last update Sun Apr 20 17:19:20 2014 alex-odet
+** Last update Wed Apr 30 16:49:22 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 int	my_list_size(t_lem *list)
 {

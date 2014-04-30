@@ -5,10 +5,10 @@
 ** Login   <Alex@epitech.net>
 ** 
 ** Started on  Mon Apr 28 16:57:44 2014 Alex
-** Last update Mon Apr 28 17:08:59 2014 Alex
+** Last update Wed Apr 30 16:47:23 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_arc	*arc_num(t_arc *arc, t_lem *list)
 {

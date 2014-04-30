@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Wed Apr 30 16:29:31 2014 Thibaut Lopez
+** Last update Wed Apr 30 16:53:09 2014 Thibaut Lopez
 */
 
 #ifndef GRAPHIC_H
@@ -62,6 +62,51 @@ typedef struct		s_all
   t_arc			*arc;
   t_ant			*move;
 }			t_all;
+
+void		bad_ants();
+void		no_start();
+void		no_end();
+void		bad_coor();
+void		bad_len();
+int		my_len_tab(char **tab);
+t_lem		*new_node(char *name, int x, int y);
+t_lem		*my_put_in_lem_list(t_lem *list, char *name, int x, int y);
+t_lem		*my_put_start(t_lem *list, char *name, int x, int y);
+t_lem		*my_put_end(t_lem *list, char *name, int x, int y);
+int		parse_ants(char *tab);
+t_lem		*parse_room(char **tab, int *i);
+t_lem		*loop_parse(t_lem **list, char *tab);
+void		check_tab(char **tab);
+void		*xmalloc(size_t n);
+int		my_list_size(t_lem *list);
+int		strlen_word(const char *str, char *sep);
+int		lentab(char *str, char *sep);
+char		**my_str_to_wordtab(char *str, char *sep);
+t_lem		*parse_room_start(int *bool_start, t_lem *list, char *map);
+t_lem		*parse_room_other(t_lem *list, char *tmp);
+t_lem		*parse_room_end(int *bool_end, t_lem *list, char *tmp);
+int		my_strchr(char src, char *dest);
+char		**init_parse();
+void		sfree(char **tab);
+char		*my_strdup(char *src);
+int		my_strslen(char **tab);
+char		**my_strscat(char **tab, char *str);
+void		bad_arc(char *room);
+t_arc		*new_arc_node(char *name, char *second);
+t_arc		*my_put_in_arc_list(t_arc *list, char *first, char *second);
+t_arc		*parse_arc(t_lem *list, int *i, char **map);
+void		check_len_tab(char **tab, char *arc);
+t_arc		*is_valid(char *first, char *second, t_lem *list, t_arc *arc);
+void		my_show_arc(t_arc *list);
+t_lem		*fill_list_num(t_lem *list);
+t_arc		*arc_num(t_arc *arc, t_lem *list);
+void		no_map();
+void		no_arc();
+void		check_bool(int *bool_start, int *bool_end);
+void		free_arc(t_arc *arc);
+void		free_list(t_lem *list);
+t_all		*parse();
+
 
 void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 void	draw_circle(Uint32 pixel, SDL_Surface *arena, int x, int y);

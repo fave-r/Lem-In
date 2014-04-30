@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 19 14:22:42 2014 romaric
-** Last update Sat Apr 19 14:24:03 2014 romaric
+** Last update Wed Apr 30 16:48:10 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 void	bad_ants()
 {

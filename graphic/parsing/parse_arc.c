@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 10:35:38 2014 alex-odet
-** Last update Wed Apr 30 09:18:15 2014 Alex
+** Last update Wed Apr 30 16:50:16 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_arc		*parse_arc(t_lem *list, int *i, char **map)
 {

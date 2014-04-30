@@ -5,10 +5,10 @@
 ** Login   <Alex@epitech.net>
 ** 
 ** Started on  Tue Apr 29 15:01:35 2014 Alex
-** Last update Wed Apr 30 12:33:53 2014 Alex
+** Last update Wed Apr 30 16:48:30 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 void		free_list(t_lem *list)
 {

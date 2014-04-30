@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 18 14:55:14 2014 alex-odet
-** Last update Mon Apr 28 17:49:39 2014 Alex
+** Last update Wed Apr 30 16:49:20 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 int	my_len_tab(char **tab)
 {

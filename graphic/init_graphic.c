@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Wed Apr 30 16:29:46 2014 Thibaut Lopez
+** Last update Wed Apr 30 16:51:43 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -39,7 +39,7 @@ void	fill_arena(SDL_Surface *arena, int x, int y)
   SDL_FreeSurface(image);
 }
 
-int	init_graphic()
+int	init_graphic(t_all *all)
 {
   SDL_Surface	*screen;
   SDL_Surface	*arena;
@@ -47,6 +47,7 @@ int	init_graphic()
   SDL_Rect	b;
   SDL_Rect	position;
 
+  (void)all;
   if (SDL_Init(SDL_INIT_VIDEO) == -1)
     return (1);
   if ((screen = SDL_SetVideoMode(1000, 1000, 32, SDL_SWSURFACE)) == NULL)
@@ -123,6 +124,11 @@ int	init_graphic()
 
 int	main()
 {
-  init_graphic(parse);
+  t_all	*all;
+
+  all = parse();
+  init_graphic(all);
+  free_list(all->room);
+  free_arc(all->arc);
   return (0);
 }

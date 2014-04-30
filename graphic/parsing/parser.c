@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Wed Apr 30 03:02:28 2014 Alex
+** Last update Wed Apr 30 16:50:44 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 int	parse_ants(char *tab)
 {

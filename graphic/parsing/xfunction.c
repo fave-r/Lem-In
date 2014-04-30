@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Thu Apr 17 16:58:17 2014 alex-odet
-** Last update Sun Apr 20 17:36:20 2014 alex-odet
+** Last update Wed Apr 30 16:51:04 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 void	*xmalloc(size_t n)
 {

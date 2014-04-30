@@ -5,10 +5,10 @@
 ** Login   <Alex@epitech.net>
 ** 
 ** Started on  Wed Apr 30 16:09:14 2014 Alex
-** Last update Wed Apr 30 16:23:59 2014 Alex
+** Last update Wed Apr 30 16:50:50 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_all	*parse(char **map)
 {
