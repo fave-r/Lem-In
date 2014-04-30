@@ -5,13 +5,10 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Tue Apr 29 13:56:16 2014 Alex
+** Last update Wed Apr 30 11:08:56 2014 Alex
 */
 
 #include "lem_in.h"
-
-void		my_show_room(t_lem *list);
-void		my_show_arc(t_arc *arc);
 
 int		main(void)
 {
@@ -32,9 +29,21 @@ int		main(void)
   if (arc == NULL)
     no_arc();
   arc = arc_num(arc, list);
+  //  my_show_map(map);
   algo(arc, list, ants);
   sfree(map);
+  free (arc);
+  free(list);
   return (0);
+}
+
+void		my_show_map(char **map)
+{
+  int		i;
+
+  i = 0;
+  while (map != NULL && map[i])
+    printf("%s\n", map[i++]);
 }
 
 void		algo(t_arc *arc, t_lem *list, int ants)

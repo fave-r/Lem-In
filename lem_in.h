@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Tue Apr 29 13:55:26 2014 Alex
+** Last update Wed Apr 30 03:06:45 2014 Alex
 */
 
 #ifndef LEM_IN_
@@ -158,7 +158,7 @@ void		bad_arc(char *room);
 t_arc		*new_arc_node(char *name, char *second);
 t_arc		*my_put_in_arc_list(t_arc *list, char *first, char *second);
 t_arc		*parse_arc(t_lem *list, int *i, char **map);
-void		check_len_tab(char **tab);
+void		check_len_tab(char **tab, char *arc);
 t_arc		*is_valid(char *first, char *second, t_lem *list, t_arc *arc);
 void		my_show_arc(t_arc *list);
 t_lem		*fill_list_num(t_lem *list);
@@ -166,5 +166,7 @@ t_arc		*arc_num(t_arc *arc, t_lem *list);
 void		no_map();
 void		no_arc();
 void		algo(t_arc *arc, t_lem *list, int ants);
+void		check_bool(int *bool_start, int *bool_end);
+void		my_show_map(char **map);
 
 #endif

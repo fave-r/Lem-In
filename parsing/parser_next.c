@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 19 14:25:15 2014 romaric
-** Last update Wed Apr 23 23:01:48 2014 alex-odet
+** Last update Tue Apr 29 16:27:39 2014 Alex
 */
 
 #include "lem_in.h"
@@ -16,7 +16,7 @@ t_lem	*parse_room_start(int *bool_start, t_lem *list, char *map)
 
   if (map != NULL)
     {
-      *bool_start = 1;
+      *bool_start = *bool_start + 1;
       tab = my_str_to_wordtab(map, "\t ");
       check_tab(tab);
       list = my_put_start(list, strdup(tab[0]), atoi(tab[1]), atoi(tab[2]));
@@ -31,7 +31,7 @@ t_lem	*parse_room_end(int *bool_end, t_lem *list, char *map)
 
   if (map != NULL)
     {
-      *bool_end = 1;
+      *bool_end = *bool_end + 1;
       tab = my_str_to_wordtab(map, " \t");
       check_tab(tab);
       list = my_put_end(list, strdup(tab[0]), atoi(tab[1]), atoi(tab[2]));

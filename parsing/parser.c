@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Tue Apr 29 14:08:12 2014 romaric
+** Last update Wed Apr 30 03:02:28 2014 Alex
 */
 
 #include "lem_in.h"
@@ -31,9 +31,13 @@ t_lem	*loop_parse(t_lem **list, char *tab)
   char	**tmp_tab;
 
   tmp_tab = my_str_to_wordtab(tab, "\t \n");
-  if (tab[0] != '#' && tmp_tab[2] != NULL
-      && strcmp(tmp_tab[2], "-") != 0)
-    *list = parse_room_other(*list, tab);
+  if (tab[0] != '#' && tmp_tab[1] != NULL)
+    {
+      if (strcmp(tmp_tab[1], "-") != 0 && tmp_tab[1] != NULL)
+	*list = parse_room_other(*list, tab);
+      else
+	return (*list);
+    }
   else
     return (*list);
   return (*list);
@@ -66,11 +70,26 @@ t_lem	*parse_room(char **tab, int *i)
 	  *i = *i + 1;
 	}
     }
-  if (bool_start != 1)
-    no_start();
-  if (bool_end != 1)
-    no_end();
+  check_bool(&bool_start, &bool_end);
   return (list);
+}
+
+void	check_bool(int *bool_start, int *bool_end)
+{
+  if (*bool_start < 1)
+    no_start();
+  if (*bool_start > 1)
+    {
+      printf("Multiple Definitions of the start.\n");
+      exit(EXIT_FAILURE);
+    }
+  if (*bool_end < 1)
+    no_end();
+  if (*bool_end > 1)
+    {
+      printf("Multiple Definitions of the end.\n");
+      exit(EXIT_FAILURE);
+    }
 }
 
 void	check_tab(char **tab)
