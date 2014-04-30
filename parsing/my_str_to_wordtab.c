@@ -5,11 +5,11 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Fri Apr 11 15:10:11 2014 romaric
-** Last update Wed Apr 23 21:58:00 2014 alex-odet
+** Last update Tue Apr 29 14:05:22 2014 romaric
 */
 
-#include "lem_in.h"
 #include <stdio.h>
+#include "lem_in.h"
 
 int	strlen_word(const char *str, char *sep)
 {

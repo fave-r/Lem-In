@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 14:02:21 2014 alex-odet
-** Last update Wed Apr 23 21:56:03 2014 alex-odet
+** Last update Mon Apr 28 17:48:18 2014 Alex
 */
 
 #include "lem_in.h"
@@ -25,8 +25,3 @@ char	**init_parse()
     }
   return (map);
 }
-/*
-tmp = strcat(big_buffer, la commande)
-  free(big_buffer)
-big_buffer = tmp
-*/

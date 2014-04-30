@@ -5,7 +5,7 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Fri Apr 25 14:43:12 2014 alex-odet
+## Last update Tue Apr 29 15:06:03 2014 Alex
 ##
 
 CC=	gcc
@@ -40,7 +40,9 @@ SRCS	= main.c \
 	parsing/my_strscat.c \
 	parsing/my_put_in_arc_list.c \
 	parsing/bad_arc.c \
-	parsing/parse_arc.c
+	parsing/parse_arc.c \
+	parsing/fill_num_list.c \
+	parsing/arc_num.c
 
 OBJS=	$(SRCS:.c=.o)
 
