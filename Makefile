@@ -5,14 +5,14 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Wed Apr 30 14:38:28 2014 Alex
+## Last update Wed Apr 30 16:21:08 2014 Alex
 ##
 
 CC=	gcc
 
 RM=	rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror -I. -Ofast -g3 -ggdb3
+CFLAGS	+=	-Wextra -Wall -Werror -I. -Ofast
 
 NAME	= lem_in
 
@@ -27,6 +27,7 @@ SRCS	= main.c \
 	run_lem_in.c \
 	free.c \
 	free_list.c \
+	parse.c \
 	parsing/error.c \
 	parsing/my_len_tab.c \
 	parsing/my_put_in_lem_list.c \

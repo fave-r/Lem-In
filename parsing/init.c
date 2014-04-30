@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 14:02:21 2014 alex-odet
-** Last update Wed Apr 30 14:09:01 2014 Alex
+** Last update Wed Apr 30 15:23:49 2014 Alex
 */
 
 #include "lem_in.h"
@@ -25,13 +25,11 @@ char	**init_parse()
   while ((getlen = getline(&tmp, &len, stdin)) > 0)
     {
       tmp[getlen - 1] = 0;
-      printf("gnl tmp = %s\n", tmp);
-      tmp_tab = my_strscat(map, tmp);
+      tmp_tab = my_strscat(tmp_tab, tmp);
       map = tmp_tab;
       free(tmp);
       tmp = xmalloc(sizeof(char) * len);
     }
-  sfree(tmp_tab);
   free(tmp);
   return (map);
 }
