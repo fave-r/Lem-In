@@ -5,63 +5,10 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Mon Apr 28 14:19:18 2014 Thibaut Lopez
+** Last update Tue Apr 29 00:31:30 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
-
-int	my_pause(SDL_Surface *screen, SDL_Surface *arena, int x, int y, int posx, int posy)
-{
-  int		wait;
-  SDL_Event	event;
-  SDL_Rect	position;
-
-  wait = 0;
-  position.x = 0;
-  position.y = 0;
-  while (wait == 0)
-    {
-      SDL_WaitEvent(&event);
-      if (event.key.keysym.sym == SDLK_ESCAPE)
-	return (1);
-      else if (event.key.keysym.sym == SDLK_SPACE &&
-	       event.type == SDL_KEYDOWN)
-	wait = 1;
-      else if (event.key.keysym.sym == SDLK_DOWN && posy + y - 10 >= 1000)
-	{
-	  y -= 10;
-	  position.x = x;
-	  position.y = y;
-	  SDL_BlitSurface(arena, NULL, screen, &position);
-	  SDL_Flip(screen);
-	}
-      else if (event.key.keysym.sym == SDLK_UP && y + 10 <= 0)
-	{
-	  y += 10;
-	  position.x = x;
-	  position.y = y;
-	  SDL_BlitSurface(arena, NULL, screen, &position);
-	  SDL_Flip(screen);
-	}
-      else if (event.key.keysym.sym == SDLK_RIGHT && posx + x - 10 >= 1000)
-	{
-	  x -= 10;
-	  position.x = x;
-	  position.y = y;
-	  SDL_BlitSurface(arena, NULL, screen, &position);
-	  SDL_Flip(screen);
-	}
-      else if (event.key.keysym.sym == SDLK_LEFT && x + 10 <= 0)
-	{
-	  x += 10;
-	  position.x = x;
-	  position.y = y;
-	  SDL_BlitSurface(arena, NULL, screen, &position);
-	  SDL_Flip(screen);
-	}
-    }
-  return (0);
-}
 
 void	fill_arena(SDL_Surface *arena, int x, int y)
 {
@@ -166,7 +113,11 @@ int	init_graphic()
   position.y = 0;
   SDL_BlitSurface(arena, NULL, screen, &position);
   SDL_Flip(screen);
-  my_pause(screen, arena, 0, 0, /*1000*/1500, 1000);
+  a.x = 0;
+  a.y = 0;
+  b.x = /*1000*/1500;
+  b.y = 1000;
+  operate_event(screen, arena, &a, &b);
   return (0);
 }
 

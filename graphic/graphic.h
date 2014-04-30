@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Sat Apr 26 02:53:31 2014 Thibaut Lopez
+** Last update Tue Apr 29 00:41:16 2014 Thibaut Lopez
 */
 
 #ifndef GRAPHIC_H
@@ -14,6 +14,7 @@
 
 #include <math.h>
 #include <SDL/SDL.h>
+#include <unistd.h>
 
 typedef struct	s_box
 {
@@ -41,5 +42,6 @@ void	quarter5(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter6(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter7(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter8(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
+int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim);
 
 #endif
