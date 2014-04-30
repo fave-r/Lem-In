@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 10:35:38 2014 alex-odet
-** Last update Wed Apr 30 15:13:12 2014 Alex
+** Last update Wed Apr 30 17:52:46 2014 Alex
 */
 
 #include "lem_in.h"
@@ -18,9 +18,12 @@ t_arc		*parse_arc(t_lem *list, int *i, char **map)
   arc = NULL;
   while (map[*i])
     {
-      tmp_tab = my_str_to_wordtab(map[*i], "-");
-      check_len_tab(tmp_tab, map[*i]);
-      arc = is_valid(tmp_tab[0], tmp_tab[1], list, arc);
+      if (map[*i][0] != '#')
+	{
+	  tmp_tab = my_str_to_wordtab(map[*i], "-");
+	  check_len_tab(tmp_tab, map[*i]);
+	  arc = is_valid(tmp_tab[0], tmp_tab[1], list, arc);
+	}
       *i = *i + 1;
     }
   return (arc);
