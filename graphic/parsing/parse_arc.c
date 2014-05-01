@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 10:35:38 2014 alex-odet
-** Last update Thu May  1 13:53:14 2014 Alex
+** Last update Wed Apr 30 17:53:47 2014 Alex
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_arc		*parse_arc(t_lem *list, int *i, char **map)
 {
@@ -40,7 +40,6 @@ void		check_len_tab(char **tab, char *arc)
   if (i != 2)
     {
       printf("Syntax Error : Bad definition of the arc :%s\n", arc);
-      sfree(tab);
       exit(EXIT_FAILURE);
     }
 }

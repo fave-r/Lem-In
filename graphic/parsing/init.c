@@ -5,10 +5,10 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 14:02:21 2014 alex-odet
-** Last update Wed Apr 30 17:50:33 2014 Alex
+** Last update Wed Apr 30 17:51:26 2014 Alex
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 char	**init_parse()
 {
@@ -26,7 +26,7 @@ char	**init_parse()
     {
       if (tmp[getlen - 1] == '\n')
 	tmp[getlen - 1] = 0;
-      tmp_tab = my_strscat(tmp_tab, tmp);
+      tmp_tab = my_strscat(map, tmp);
       map = tmp_tab;
       free(tmp);
       tmp = xmalloc(sizeof(char) * len);

@@ -5,10 +5,10 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 19 14:25:15 2014 romaric
-** Last update Thu May  1 13:56:39 2014 Alex
+** Last update Wed Apr 30 16:51:10 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
 t_lem	*parse_room_start(int *bool_start, t_lem *list, char *map)
 {
@@ -20,7 +20,6 @@ t_lem	*parse_room_start(int *bool_start, t_lem *list, char *map)
       tab = my_str_to_wordtab(map, "\t ");
       check_tab(tab);
       list = my_put_start(list, strdup(tab[0]), atoi(tab[1]), atoi(tab[2]));
-      sfree(tab);
       return (list);
     }
   return (NULL);
@@ -36,7 +35,6 @@ t_lem	*parse_room_end(int *bool_end, t_lem *list, char *map)
       tab = my_str_to_wordtab(map, " \t");
       check_tab(tab);
       list = my_put_end(list, strdup(tab[0]), atoi(tab[1]), atoi(tab[2]));
-      sfree(tab);
       return (list);
     }
   return (NULL);
@@ -49,6 +47,5 @@ t_lem	*parse_room_other(t_lem *list, char *tmp)
   tab = my_str_to_wordtab(tmp, "\t \n\0");
   check_tab(tab);
   list = my_put_in_lem_list(list, strdup(tab[0]), atoi(tab[1]), atoi(tab[2]));
-  sfree(tab);
   return (list);
 }

@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 30 14:46:11 2014 Thibaut Lopez
+** Last update Wed Apr 30 16:53:03 2014 Thibaut Lopez
 */
 
 #ifndef LEM_IN_
@@ -78,6 +78,21 @@ typedef struct		s_arc
   int			second_room;
   struct s_arc		*next;
 }			t_arc;
+
+typedef struct		s_ant
+{
+  char			*ant_name;
+  char			*whereis;
+}			t_ant;
+
+typedef struct		s_all
+{
+  int			ants;
+  char			**map;
+  t_lem			*room;
+  t_arc			*arc;
+  t_ant			*move;
+}			t_all;
 
 t_graphe	*new_graphe(void);
 int		add_sommet(t_graphe *graphe, int new_nb);
@@ -161,5 +176,6 @@ void		check_bool(int *bool_start, int *bool_end);
 void		my_show_map(char **map);
 void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
+t_all		*parse();
 
 #endif
