@@ -5,12 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Sat Apr 26 01:37:50 2014 Thibaut Lopez
-** Last update Sat Apr 26 01:41:26 2014 Thibaut Lopez
+** Last update Thu May  1 01:43:25 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
 
-void	half_circle_right(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta)
+void	half_circle_right(SDL_Surface *arena, SDL_Rect *a,
+			  SDL_Rect *b, int *delta)
 {
   if (delta[1] != 0)
     {
@@ -33,7 +34,8 @@ void	half_circle_right(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta)
     flat1(arena, a, b);
 }
 
-void	half_circle_left(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta)
+void	half_circle_left(SDL_Surface *arena, SDL_Rect *a,
+			 SDL_Rect *b, int *delta)
 {
   if (delta[1] != 0)
     {

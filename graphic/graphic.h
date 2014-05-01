@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Wed Apr 30 16:53:09 2014 Thibaut Lopez
+** Last update Thu May  1 12:26:56 2014 Thibaut Lopez
 */
 
 #ifndef GRAPHIC_H
@@ -58,6 +58,8 @@ typedef struct		s_ant
 
 typedef struct		s_all
 {
+  int			ants;
+  char			**map;
   t_lem			*room;
   t_arc			*arc;
   t_ant			*move;
@@ -105,12 +107,12 @@ void		no_arc();
 void		check_bool(int *bool_start, int *bool_end);
 void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
-t_all		*parse();
-
+void		parse(t_all *list);
 
 void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
-void	draw_circle(Uint32 pixel, SDL_Surface *arena, int x, int y);
-void	draw_tubes(SDL_Rect *f_box, SDL_Rect *s_box, SDL_Surface *arena);
+Uint32	get_pixel(SDL_Surface *surface, int x, int y);
+void	draw_circle(Uint32 pixel, SDL_Surface *arena, t_coor *pos, int scale);
+void	draw_tubes(SDL_Rect *f_box, SDL_Rect *s_box, SDL_Surface *arena, int scale);
 void	draw_line(SDL_Rect *a, SDL_Rect *b, SDL_Surface *arena);
 void	flat1(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b);
 void	flat2(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b);
@@ -125,5 +127,10 @@ void	quarter6(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter7(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter8(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim);
+int	greater_x(t_lem *list, int *scale);
+int	greater_y(t_lem *list, int *scale);
+t_lem	*find_elem_in_list(char *name, t_lem *list);
+void	init_tubes(t_arc *arc, t_lem *room, SDL_Surface *arena, int scale);
+void	init_circle(t_lem *room, SDL_Surface *arena, int scale);
 
 #endif
