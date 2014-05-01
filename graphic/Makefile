@@ -5,14 +5,14 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Mon Apr 28 11:58:44 2014 Thibaut Lopez
-## Last update Thu May  1 01:37:08 2014 Thibaut Lopez
+## Last update Thu May  1 16:27:22 2014 Alex
 ##
 
 CC=		gcc
 
 RM=		rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror -I. -lSDL -lGL -lGLU -lm -g3
+CFLAGS	+=	-Wextra -Wall -Werror -I.
 
 NAME=		ant_colony
 
@@ -44,14 +44,15 @@ SRCS=		init_graphic.c \
 		parsing/parse.c \
 		parsing/parser.c \
 		parsing/parser_next.c \
-		parsing/xfunction.c
+		parsing/xfunction.c \
+		parsing/ants.c
 
 OBJS=		$(SRCS:.c=.o)
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(OBJS) -o $(NAME) $(CFLAGS)
+		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) -lm -g3 -framework SDL -lSDLmain -framework cocoa
 
 clean:
 		$(RM) $(OBJS)

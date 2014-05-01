@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 10:35:38 2014 alex-odet
-** Last update Wed Apr 30 17:53:47 2014 Alex
+** Last update Thu May  1 14:43:39 2014 Alex
 */
 
 #include "graphic.h"
@@ -16,13 +16,15 @@ t_arc		*parse_arc(t_lem *list, int *i, char **map)
   char		**tmp_tab;
 
   arc = NULL;
-  while (map[*i])
+  while (map[*i][0] != 'P')
     {
-      if (map[*i][0] != '#')
+      if (map[*i][0] != '#' && map[*i][0] != 'P')
 	{
 	  tmp_tab = my_str_to_wordtab(map[*i], "-");
 	  check_len_tab(tmp_tab, map[*i]);
 	  arc = is_valid(tmp_tab[0], tmp_tab[1], list, arc);
+	  if (arc == NULL)
+	    return (arc);
 	  sfree(tmp_tab);
 	}
       *i = *i + 1;
