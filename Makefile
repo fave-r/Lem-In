@@ -5,14 +5,14 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Thu May  1 14:06:12 2014 Alex
+## Last update Thu May  1 15:42:22 2014 thibaud
 ##
 
 CC=	gcc
 
 RM=	rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror -I. -Ofast
+CFLAGS	+=	-Wextra -Wall -Werror -I. -Ofast -g3 -ggdb
 
 NAME	= lem_in
 

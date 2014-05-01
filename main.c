@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Thu May  1 14:05:13 2014 Alex
+** Last update Thu May  1 15:07:37 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -47,6 +47,8 @@ void		algo(t_arc *arc, t_lem *list, int ants)
     }
   ways = get_ways(graphe, 1, my_list_size(list), ways);
   free_graphe(graphe);
+  fill_ways(ways, ants);
+  print_all_result(ways);
   fill_ways(ways, ants);
   run_lem_in(ways);
   free_ways(ways);
