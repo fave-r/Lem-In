@@ -5,10 +5,12 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Apr 28 12:06:49 2014 Thibaut Lopez
-** Last update Mon Apr 28 14:18:54 2014 Thibaut Lopez
+** Last update Thu May  1 11:43:14 2014 Thibaut Lopez
 */
 
-int	greater_x(t_lem *list)
+#include "graphic.h"
+
+int	greater_x(t_lem *list, int *scale)
 {
   int    save;
 
@@ -19,12 +21,14 @@ int	greater_x(t_lem *list)
 	save = list->ptr.x;
       list = list->next;
     }
-  save *= 10;
-  return ((save >= 1000) ? save + 50 : 1000);
+  if (1635 <= save)
+    return (-1);
+  *scale = save / 327 + 1;
+  save *= 50 / *scale;
+  return ((save >= 1000) ? save + (50 / *scale) : 1000);
 }
 
-
-int	greater_y(t_lem *list)
+int	greater_y(t_lem *list, int *scale)
 {
   int    save;
 
@@ -35,8 +39,11 @@ int	greater_y(t_lem *list)
 	save = list->ptr.y;
       list = list->next;
     }
-  save *= 10;
-  return ((save >= 1000) ? save + 50 : 1000);
+  if (1635 <= save)
+    return (-1);
+  *scale = save / 327 + 1;
+  save *= 50 / *scale;
+  return ((save >= 1000) ? save + (50 / *scale) : 1000);
 }
 
 t_lem	*find_elem_in_list(char *name, t_lem *list)

@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Wed Apr 30 16:50:44 2014 Thibaut Lopez
+** Last update Thu May  1 01:45:15 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -53,23 +53,21 @@ t_lem	*parse_room(char **tab, int *i)
   bool_start = 0;
   bool_end = 0;
   while (tab[*i] != NULL && (tab[*i][1] != '-' && tab[*i][2] != '-'))
-    {
-      if (strcmp(tab[*i], "##start") == 0)
-	{
-	  list = parse_room_start(&bool_start, list, tab[*i + 1]);
-	  *i = *i + 2;
-	}
-      if (strcmp(tab[*i], "##end") == 0)
-	{
-	  list = parse_room_end(&bool_end, list, tab[*i + 1]);
-	  *i = *i + 2;
-	}
-      else
-	{
-	  list = loop_parse(&list, tab[*i]);
-	  *i = *i + 1;
-	}
-    }
+    if (strcmp(tab[*i], "##start") == 0)
+      {
+	list = parse_room_start(&bool_start, list, tab[*i + 1]);
+	*i = *i + 2;
+      }
+    else if (strcmp(tab[*i], "##end") == 0)
+      {
+	list = parse_room_end(&bool_end, list, tab[*i + 1]);
+	*i = *i + 2;
+      }
+    else
+      {
+	list = loop_parse(&list, tab[*i]);
+	*i = *i + 1;
+      }
   check_bool(&bool_start, &bool_end);
   return (list);
 }

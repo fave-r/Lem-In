@@ -5,25 +5,28 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Mon Apr 28 11:58:44 2014 Thibaut Lopez
-## Last update Wed Apr 30 16:52:50 2014 Thibaut Lopez
+## Last update Thu May  1 01:37:08 2014 Thibaut Lopez
 ##
 
 CC=		gcc
 
 RM=		rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror -I. -lSDL -lGL -lGLU -lm
+CFLAGS	+=	-Wextra -Wall -Werror -I. -lSDL -lGL -lGLU -lm -g3
 
 NAME=		ant_colony
 
-SRCS=		draw_circle.c \
-		draw_line.c \
-		draw_tubes.c \
-		init_graphic.c \
-		line.c \
+SRCS=		init_graphic.c \
+		init_tubes.c \
+		list_fun.c \
 		operate_event.c \
-		quarter2.c \
-		quarter.c \
+		draw_fun/draw_circle.c \
+		draw_fun/draw_line.c \
+		draw_fun/draw_tubes.c \
+		draw_fun/line.c \
+		draw_fun/pixel_fun.c \
+		draw_fun/quarter2.c \
+		draw_fun/quarter.c \
 		parsing/arc_num.c \
 		parsing/bad_arc.c \
 		parsing/error.c \

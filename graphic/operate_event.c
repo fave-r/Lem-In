@@ -5,12 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Apr 28 23:48:33 2014 Thibaut Lopez
-** Last update Tue Apr 29 00:47:34 2014 Thibaut Lopez
+** Last update Thu May  1 01:42:13 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
 
-void	my_down(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim)
+void	my_down(SDL_Surface *screen, SDL_Surface *arena,
+		SDL_Rect *pos, SDL_Rect *dim)
 {
   int		x;
   int		y;
@@ -62,7 +63,8 @@ void	my_up(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos)
   pos->x = x;
 }
 
-void	my_right(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim)
+void	my_right(SDL_Surface *screen, SDL_Surface *arena,
+		 SDL_Rect *pos, SDL_Rect *dim)
 {
   int		y;
   int		x;
@@ -114,7 +116,8 @@ void	my_left(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos)
   pos->y = y;
 }
 
-int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim)
+int	operate_event(SDL_Surface *screen, SDL_Surface *arena,
+		      SDL_Rect *pos, SDL_Rect *dim)
 {
   int		wait;
   SDL_Event	event;

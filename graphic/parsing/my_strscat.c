@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Wed Apr 23 13:11:55 2014 alex-odet
-** Last update Wed Apr 30 16:49:59 2014 Thibaut Lopez
+** Last update Wed Apr 30 20:40:41 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -30,7 +30,7 @@ char	*my_strdup(char *src)
 
   dest = xmalloc(sizeof(char) * (strlen(src) + 1));
   strcpy(dest, src);
-  dest[strlen(src) + 1] = 0;
+  dest[strlen(src)] = 0;
   return (dest);
 }
 

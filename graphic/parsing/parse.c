@@ -5,18 +5,16 @@
 ** Login   <Alex@epitech.net>
 ** 
 ** Started on  Wed Apr 30 16:09:14 2014 Alex
-** Last update Wed Apr 30 16:37:33 2014 Alex
+** Last update Wed Apr 30 20:29:20 2014 Thibaut Lopez
 */
 
-#include "lem_in.h"
+#include "graphic.h"
 
-t_all	*parse()
+void	parse(t_all *list)
 {
   int	i;
-  t_all	*list;
 
   i = 1;
-  list = xmalloc(sizeof(t_all));
   list->map = init_parse();
   if (list->map == NULL)
     no_map();
@@ -28,5 +26,4 @@ t_all	*parse()
     no_arc();
   list->arc = arc_num(list->arc, list->room);
   list->move = NULL;
-  return (list);
 }
