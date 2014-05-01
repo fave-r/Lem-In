@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Wed Apr 30 14:03:57 2014 Alex
+** Last update Thu May  1 17:18:26 2014 Alex
 */
 
 #include "lem_in.h"
@@ -57,7 +57,7 @@ t_lem	*parse_room(char **tab, int *i)
 	  list = parse_room_start(&bool_start, list, tab[*i + 1]);
 	  *i = *i + 2;
 	}
-      if (strcmp(tab[*i], "##end") == 0)
+      else if (strcmp(tab[*i], "##end") == 0)
 	{
 	  list = parse_room_end(&bool_end, list, tab[*i + 1]);
 	  *i = *i + 2;
