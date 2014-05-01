@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 23 15:49:18 2014 alex-odet
+** Last update Wed Apr 30 14:46:11 2014 Thibaut Lopez
 */
 
 #ifndef LEM_IN_
@@ -70,19 +70,13 @@ typedef struct		s_lem
   struct s_lem		*next;
 }			t_lem;
 
-typedef struct		s_get
-{
-  char			*s;
-  int			c;
-  int			l;
-}			t_get;
-
 typedef struct		s_arc
 {
   char			*first;
   int			first_room;
   char			*second;
   int			second_room;
+  struct s_arc		*next;
 }			t_arc;
 
 t_graphe	*new_graphe(void);
@@ -134,12 +128,10 @@ t_lem		*my_put_in_lem_list(t_lem *list, char *name, int x, int y);
 t_lem		*my_put_start(t_lem *list, char *name, int x, int y);
 t_lem		*my_put_end(t_lem *list, char *name, int x, int y);
 int		parse_ants(char *tab);
-t_lem		*parse_room(char **tab);
-int		loop_parse(t_lem **list, char *tab, int *bool_start, int *bool_end);
+t_lem		*parse_room(char **tab, int *i);
+t_lem		*loop_parse(t_lem **list, char *tab);
 void		check_tab(char **tab);
 void		*xmalloc(size_t n);
-char		*my_strdup_new(char *src);
-char		*get_next_line(const int fd);
 int		my_list_size(t_lem *list);
 int		strlen_word(const char *str, char *sep);
 int		lentab(char *str, char *sep);
@@ -149,9 +141,25 @@ t_lem		*parse_room_other(t_lem *list, char *tmp);
 t_lem		*parse_room_end(int *bool_end, t_lem *list, char *tmp);
 int		my_strchr(char src, char *dest);
 char		**init_parse();
-void		sfree();
+void		sfree(char **tab);
 char		*my_strdup(char *src);
 int		my_strslen(char **tab);
 char		**my_strscat(char **tab, char *str);
+void		bad_arc(char *room);
+t_arc		*new_arc_node(char *name, char *second);
+t_arc		*my_put_in_arc_list(t_arc *list, char *first, char *second);
+t_arc		*parse_arc(t_lem *list, int *i, char **map);
+void		check_len_tab(char **tab, char *arc);
+t_arc		*is_valid(char *first, char *second, t_lem *list, t_arc *arc);
+void		my_show_arc(t_arc *list);
+t_lem		*fill_list_num(t_lem *list);
+t_arc		*arc_num(t_arc *arc, t_lem *list);
+void		no_map();
+void		no_arc();
+void		algo(t_arc *arc, t_lem *list, int ants);
+void		check_bool(int *bool_start, int *bool_end);
+void		my_show_map(char **map);
+void		free_arc(t_arc *arc);
+void		free_list(t_lem *list);
 
 #endif

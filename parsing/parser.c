@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 **
 ** Started on  Thu Apr 17 16:54:23 2014 alex-odet
-** Last update Wed Apr 23 15:49:44 2014 alex-odet
+** Last update Wed Apr 30 14:03:57 2014 Alex
 */
 
 #include "lem_in.h"
@@ -26,27 +26,23 @@ int	parse_ants(char *tab)
   return (ants);
 }
 
-int	loop_parse(t_lem **list, char *tab, int *bool_start, int *bool_end)
+t_lem	*loop_parse(t_lem **list, char *tab)
 {
   char	**tmp_tab;
 
-  printf("tab[i] = %s\n", tab);
-  tmp_tab = my_str_to_wordtab(tab, "\t \n");
-  if (strcmp(tab, "##start") == 0)
-    *list = parse_room_start(bool_start, *list, tab + 1);
-  else if (strcmp(tab, "##end") == 0)
-    *list = parse_room_end(bool_end, *list, tab + 1);
-  else if (tab[0] != '#' && tmp_tab[2] != NULL
-	   && strcmp(tmp_tab[2], "-") != 0)
-    *list = parse_room_other(*list, tab);
+  tmp_tab = my_str_to_wordtab(tab, "\t \n\0");
+  if (tab[0] != '#' && tmp_tab[1] != NULL)
+    {
+      if ((strcmp(tmp_tab[1], "-") != 0))
+	*list = parse_room_other(*list, tab);
+    }
   else
-    return (1);
-  return (0);
+    return (*list);
+  return (*list);
 }
 
-t_lem	*parse_room(char **tab)
+t_lem	*parse_room(char **tab, int *i)
 {
-  int	i;
   t_lem	*list;
   int	bool_start;
   int	bool_end;
@@ -54,18 +50,44 @@ t_lem	*parse_room(char **tab)
   list = NULL;
   bool_start = 0;
   bool_end = 0;
-  i = 1;
-  while (tab[i] != NULL)
+  while (tab[*i] != NULL && (tab[*i][1] != '-' && tab[*i][2] != '-'))
     {
-      if (loop_parse(&list, tab[i], &bool_start, &bool_end) == 1)
-	return (list);
-      i++;
+      if (strcmp(tab[*i], "##start") == 0)
+	{
+	  list = parse_room_start(&bool_start, list, tab[*i + 1]);
+	  *i = *i + 2;
+	}
+      if (strcmp(tab[*i], "##end") == 0)
+	{
+	  list = parse_room_end(&bool_end, list, tab[*i + 1]);
+	  *i = *i + 2;
+	}
+      else
+	{
+	  list = loop_parse(&list, tab[*i]);
+	  *i = *i + 1;
+	}
     }
-  if (bool_start != 1)
-    no_start();
-  if (bool_end != 1)
-    no_end();
+  check_bool(&bool_start, &bool_end);
   return (list);
+}
+
+void	check_bool(int *bool_start, int *bool_end)
+{
+  if (*bool_start < 1)
+    no_start();
+  if (*bool_start > 1)
+    {
+      printf("Multiple Definitions of the start.\n");
+      exit(EXIT_FAILURE);
+    }
+  if (*bool_end < 1)
+    no_end();
+  if (*bool_end > 1)
+    {
+      printf("Multiple Definitions of the end.\n");
+      exit(EXIT_FAILURE);
+    }
 }
 
 void	check_tab(char **tab)
@@ -78,16 +100,20 @@ void	check_tab(char **tab)
   len = my_len_tab(tab);
   if (len != 3)
     bad_len();
-  while (tab[i] != NULL)
-    {
-      j = 0;
-      while (tab[i][j] != '\0')
-	{
-	  if ((tab[i][j] < '0' || tab[i][j] > '9')
-	      || (tab[i][j] == '-' && j != 0))
-	    bad_coor();
-	  j++;
-	}
-      i++;
-    }
+  if (tab[i] != NULL)
+    while (tab[i] != NULL && tab != NULL)
+      {
+	j = 0;
+	while (tab[i][j] != '\0')
+	  {
+	    if ((tab[i][j] < '0' || tab[i][j] > '9')
+		|| (tab[i][j] == '-' && j != 0))
+	      {
+		sfree(tab);
+		bad_coor();
+	      }
+	    j++;
+	  }
+	i++;
+      }
 }

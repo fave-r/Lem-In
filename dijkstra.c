@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Thu Apr 17 05:59:54 2014 thibaud
-** Last update Sun Apr 20 00:32:53 2014 thibaud
+** Last update Tue Apr 29 14:11:45 2014 romaric
 */
 
 #include "lem_in.h"
@@ -18,7 +18,6 @@ int		dijkstra(t_graphe *graphe, int start, int end)
   if (!graphe || !get_sommet(graphe, start) || !get_sommet(graphe, end))
     exit(-1);
   arc_tab = build_arcs_tab(graphe, start);
-  //print_arc_tab(arc_tab, get_max_sommet(graphe));
   tmp = fix_sommet(graphe);
   while (get_sommet(graphe, end)->fix == 0 && tmp != NULL)
     {

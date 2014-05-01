@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 19 23:11:03 2014 thibaud
-** Last update Sat Apr 19 23:17:09 2014 thibaud
+** Last update Wed Apr 30 15:43:15 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -76,7 +76,8 @@ int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start)
   i = 1;
   while (i < to_kill->len)
     {
-      kill_link(graphe, to_kill->chemin[i], to_kill->chemin[i - 1]);
+      get_sommet(graphe, to_kill->chemin[i - 1])->adjacents = 0;
+      //      kill_link(graphe, to_kill->chemin[i], to_kill->chemin[i - 1]);
       i++;
     }
   while (cur != NULL)
