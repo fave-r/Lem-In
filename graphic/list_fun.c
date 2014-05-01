@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Apr 28 12:06:49 2014 Thibaut Lopez
-** Last update Thu May  1 11:43:14 2014 Thibaut Lopez
+** Last update Thu May  1 19:36:53 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -51,6 +51,17 @@ t_lem	*find_elem_in_list(char *name, t_lem *list)
   while (list)
     {
       if (strcmp(name, list->name) == 0)
+	return (list);
+      list = list->next;
+    }
+  return (NULL);
+}
+
+t_ant	*find_ant_in_list(int nb, t_ant *list)
+{
+  while (list)
+    {
+      if (nb == list->num)
 	return (list);
       list = list->next;
     }
