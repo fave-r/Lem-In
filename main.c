@@ -6,7 +6,7 @@
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
 <<<<<<< HEAD
-** Last update Wed Apr 30 15:43:59 2014 thibaud
+** Last update Thu May  1 15:00:02 2014 thibaud
 =======
 ** Last update Thu May  1 14:05:13 2014 Alex
 >>>>>>> aa761703e092755c25bc45e3257aee87fe7a3dc1
@@ -51,7 +51,7 @@ void		algo(t_arc *arc, t_lem *list, int ants)
     }
   ways = get_ways(graphe, 1, my_list_size(list), ways);
   free_graphe(graphe);
-  fill_ways(ways, nb_fourmis);
+  fill_ways(ways, ants);
   print_all_result(ways);
   fill_ways(ways, ants);
   run_lem_in(ways);
