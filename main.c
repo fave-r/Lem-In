@@ -5,11 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-<<<<<<< HEAD
-** Last update Thu May  1 15:00:02 2014 thibaud
-=======
-** Last update Thu May  1 14:05:13 2014 Alex
->>>>>>> aa761703e092755c25bc45e3257aee87fe7a3dc1
+** Last update Thu May  1 15:07:37 2014 thibaud
 */
 
 #include "lem_in.h"

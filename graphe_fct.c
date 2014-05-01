@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sun Apr 13 03:01:17 2014 thibaud
-** Last update Sat Apr 19 23:47:21 2014 thibaud
+** Last update Thu May  1 15:45:20 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -37,19 +37,22 @@ int		arc_exist(t_graphe *graphe, int sommet, int adjacent)
   int		i;
 
   i = 0;
-  cur = graphe->next;
-  while (cur != NULL)
+  if (graphe)
     {
-      if (cur->numero_sommet == sommet)
-        {
-          while (i < cur->nb_sommet_adjacent)
-            {
-              if (cur->adjacents[i] == adjacent)
-                return (1);
-              i++;
-            }
+      cur = graphe->next;
+      while (cur != NULL)
+	{
+	  if (cur->numero_sommet == sommet)
+	    {
+	      while (i < cur->nb_sommet_adjacent)
+		{
+		  if (cur->adjacents[i] == adjacent)
+		    return (1);
+		  i++;
+		}
+	    }
+	  cur = cur->next;
 	}
-      cur = cur->next;
     }
   return (0);
 }

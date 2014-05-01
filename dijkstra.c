@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Thu Apr 17 05:59:54 2014 thibaud
-** Last update Tue Apr 29 14:11:45 2014 romaric
+** Last update Thu May  1 15:07:06 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -61,12 +61,12 @@ int		get_tmp_distance(t_graphe *graphe, t_list *fix, int **arc_tab)
   while (fix && i < fix->nb_sommet_adjacent)
     {
       if (get_sommet(graphe, fix->adjacents[i])->distance >
-          (fix->distance + arc_tab[fix->numero_sommet - 1]//-1
-           [fix->adjacents[i] - 1]))//-1
+          (fix->distance + arc_tab[fix->numero_sommet - 1]
+           [fix->adjacents[i] - 1]))
         {
           get_sommet(graphe, fix->adjacents[i])->distance =
-            fix->distance + arc_tab[fix->numero_sommet - 1]//-1
-            [fix->adjacents[i] - 1];//-1
+            fix->distance + arc_tab[fix->numero_sommet - 1]
+            [fix->adjacents[i] - 1];
           get_sommet(graphe, fix->adjacents[i])->last = fix->numero_sommet;
         }
       i++;

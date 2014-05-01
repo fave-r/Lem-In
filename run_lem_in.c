@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 19 23:20:28 2014 thibaud
-** Last update Thu May  1 15:01:09 2014 thibaud
+** Last update Thu May  1 15:52:23 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -21,8 +21,7 @@ int             run_lem_in(t_way *ways)
   fourmis = fill_wave(ways, fourmis, cpt);
   while (fourmis)
     {
-      //print_wave(fourmis);
-      //print_fourmi(fourmis);
+      print_wave(fourmis);
       printf("\n");
       fourmis = fill_wave(ways, fourmis, cpt);
       fourmis = kill_fourmis(fourmis);
