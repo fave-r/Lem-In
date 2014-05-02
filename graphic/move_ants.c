@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu May  1 16:33:43 2014 Thibaut Lopez
-** Last update Fri May  2 19:18:53 2014 Thibaut Lopez
+** Last update Fri May  2 20:20:14 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -38,13 +38,25 @@ void	edit_cpy(t_all *all, SDL_Surface *cpy, int *i)
     }
 }
 
+void	keep_init_value(SDL_Surface *cpy, SDL_Surface *screen, SDL_Rect *init)
+{
+  int	x;
+  int	y;
+
+  x = init->x;
+  y = init->y;
+  SDL_BlitSurface(cpy, NULL, screen, init);
+  init->x = x;
+  init->y = y;
+  SDL_Flip(screen);
+}
+
 void	move_ants(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, t_all *all)
 {
   t_round	*tmp;
   SDL_Surface	*cpy;
   SDL_Rect	init;
   int		i;
-  int		j;
 
   init.x = 0;
   init.y = 0;
@@ -55,16 +67,9 @@ void	move_ants(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, t_all *al
   while (all->move != NULL)
     {
       edit_cpy(all, cpy, &i);
-      SDL_BlitSurface(cpy, NULL, screen, &init);
-      SDL_Flip(screen);
-      j = 0;
-      while (j < 10000)
-	{
-	  if (operate_event(screen, cpy, &init, pos, all) == 1)
-	    return;
-	  usleep(10);
-	  j++;
-	}
+      keep_init_value(cpy, screen, &init);
+      if (operate_event(screen, cpy, &init, pos) == 1)
+	return;
       SDL_BlitSurface(arena, NULL, cpy, NULL);
       i++;
       if (i > 5)

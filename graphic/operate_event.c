@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Apr 28 23:48:33 2014 Thibaut Lopez
-** Last update Fri May  2 19:36:22 2014 Thibaut Lopez
+** Last update Fri May  2 20:42:50 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -116,31 +116,30 @@ void	my_left(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos)
   pos->y = y;
 }
 
-int	operate_event(SDL_Surface *screen, SDL_Surface *arena,
-		      SDL_Rect *pos, SDL_Rect *dim, t_all *all)
+int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim)
 {
+  static Uint32	a_time = 0;
+  Uint32	n_time;
   SDL_Event	event;
 
-  if (SDL_PollEvent(&event) == 0)
-    return (0);
-  else if (event.key.keysym.sym == SDLK_ESCAPE)
-    return (1);
-  else if (event.key.keysym.sym == SDLK_DOWN)
-    my_down(screen, arena, pos, dim);
-  else if (event.key.keysym.sym == SDLK_UP)
-    my_up(screen, arena, pos);
-  else if (event.key.keysym.sym == SDLK_RIGHT)
-    my_right(screen, arena, pos, dim);
-  else if (event.key.keysym.sym == SDLK_LEFT)
-    my_left(screen, arena, pos);
-  else if (event.key.keysym.sym == SDLK_e || event.key.keysym.sym == SDLK_s)
-    {
-      if (event.key.keysym.sym == SDLK_s)
-	my_find_start(all->room, pos, dim);
-      else
-	my_find_end(all->room, pos, dim);
-      SDL_BlitSurface(arena, NULL, screen, pos);
-      SDL_Flip(screen);
-    }
+  if (a_time == 0)
+    a_time = SDL_GetTicks();
+  n_time = SDL_GetTicks();
+  while (n_time - a_time <= 1000)
+    if (SDL_PollEvent(&event) == 0)
+      n_time = SDL_GetTicks();
+    else if (event.key.keysym.sym == SDLK_ESCAPE)
+      return (1);
+    else if (event.key.keysym.sym == SDLK_DOWN)
+      my_down(screen, arena, pos, dim);
+    else if (event.key.keysym.sym == SDLK_UP)
+      my_up(screen, arena, pos);
+    else if (event.key.keysym.sym == SDLK_RIGHT)
+      my_right(screen, arena, pos, dim);
+    else if (event.key.keysym.sym == SDLK_LEFT)
+      my_left(screen, arena, pos);
+    else
+      n_time = SDL_GetTicks();
+  a_time = SDL_GetTicks();
   return (0);
 }

@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Fri May  2 19:37:45 2014 Thibaut Lopez
+** Last update Fri May  2 20:16:58 2014 Thibaut Lopez
 */
 
 #ifndef GRAPHIC_H
@@ -69,8 +69,6 @@ typedef struct		s_ant
   int			num;
   int			ant_x;
   int			ant_y;
-  int			tmp_x;
-  int			tmp_y;
   struct s_ant		*next;
 }			t_ant;
 
@@ -84,6 +82,8 @@ typedef struct		s_all
   t_round      		*move;
   t_ant			*ant;
   SDL_Surface		*image;
+  int			tmp_x;
+  int			tmp_y;
 }			t_all;
 
 void		bad_ants();
@@ -156,7 +156,7 @@ void	quarter5(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter6(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter7(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter8(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
-int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim, t_all *all);
+int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim);
 int	greater_x(t_lem *list, int *scale);
 int	greater_y(t_lem *list, int *scale);
 t_lem	*find_elem_in_list(char *name, t_lem *list);

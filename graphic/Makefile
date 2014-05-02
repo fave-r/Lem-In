@@ -5,7 +5,7 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Mon Apr 28 11:58:44 2014 Thibaut Lopez
-## Last update Fri May  2 19:36:41 2014 Thibaut Lopez
+## Last update Fri May  2 20:13:13 2014 Thibaut Lopez
 ##
 
 CC=		gcc
@@ -20,7 +20,6 @@ SRCS=		init_graphic.c \
 		init_tubes.c \
 		list_fun.c \
 		move_ants.c \
-		my_find.c \
 		operate_event.c \
 		draw_fun/draw_circle.c \
 		draw_fun/draw_line.c \
