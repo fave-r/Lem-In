@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 19 23:11:03 2014 thibaud
-** Last update Thu May  1 15:47:53 2014 thibaud
+** Last update Thu May  1 16:25:23 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -27,6 +27,7 @@ t_way           *get_ways(t_graphe *graphe, int start, int end, t_way *ways)
 {
   while (dijkstra(graphe, start, end))
     {
+      //print_dijsktra(graphe, end, start);
       ways = get_solution(graphe, ways, end, start);
       kill_the_way(graphe, ways, start);
     }
@@ -77,8 +78,8 @@ int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start)
   //exit(0);
   while (i < to_kill->len)
     {
-      get_sommet(graphe, to_kill->chemin[i - 1])->nb_sommet_adjacent = 0;
-      //kill_link(graphe, to_kill->chemin[i], to_kill->chemin[i - 1]);
+      //get_sommet(graphe, to_kill->chemin[i - 1])->nb_sommet_adjacent = 0;
+      kill_link(graphe, to_kill->chemin[i], to_kill->chemin[i - 1]);
       i++;
     }
   while (cur != NULL)
