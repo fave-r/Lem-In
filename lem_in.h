@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 30 16:53:03 2014 Thibaut Lopez
+** Last update Fri May  2 16:43:47 2014 romaric
 */
 
 #ifndef LEM_IN_
@@ -108,7 +108,8 @@ int		**build_arcs_tab(t_graphe *graphe, int start);
 t_list          *get_sommet(t_graphe *graphe, int nb);
 int             get_max_sommet(t_graphe *graphe);
 t_way           *get_ways(t_graphe *graphe, int start, int end, t_way *ways);
-t_way           *get_solution(t_graphe *graphe, t_way *list_chemins, int end, int start);
+t_way           *get_solution(t_graphe *graphe
+			      , t_way *list_chemins, int end, int start);
 int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start);
 int             kill_link(t_graphe *graphe, int s1, int s2);
 int             fill_ways(t_way *ways, int nb_fourmis);
@@ -177,5 +178,6 @@ void		my_show_map(char **map);
 void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
 t_all		*parse();
+void		parse_room_next(int *bool_start, int *bool_end, t_lem **list);
 
 #endif
