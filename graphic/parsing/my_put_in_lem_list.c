@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 18 14:45:17 2014 alex-odet
-** Last update Wed Apr 30 16:49:43 2014 Thibaut Lopez
+** Last update Fri May  2 19:00:10 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -68,6 +68,7 @@ t_lem		*my_put_end(t_lem *list, char *name, int x, int y)
     {
       list = (new_node(name, x, y));
       list->is_start = 2;
+      printf("%s =\t%d\n", list->name, list->is_start);
       return (list);
     }
   list->is_start = 2;

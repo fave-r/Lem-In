@@ -5,20 +5,22 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Mon Apr 28 11:58:44 2014 Thibaut Lopez
-## Last update Thu May  1 16:27:22 2014 Alex
+## Last update Fri May  2 19:36:41 2014 Thibaut Lopez
 ##
 
 CC=		gcc
 
 RM=		rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror -I.
+CFLAGS	+=	-Wextra -Wall -Werror -I. -lm -lSDL -lGL -lGLU -g3
 
 NAME=		ant_colony
 
 SRCS=		init_graphic.c \
 		init_tubes.c \
 		list_fun.c \
+		move_ants.c \
+		my_find.c \
 		operate_event.c \
 		draw_fun/draw_circle.c \
 		draw_fun/draw_line.c \
@@ -52,7 +54,7 @@ OBJS=		$(SRCS:.c=.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) -lm -g3 -framework SDL -lSDLmain -framework cocoa
+		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) -lm -g3
 
 clean:
 		$(RM) $(OBJS)

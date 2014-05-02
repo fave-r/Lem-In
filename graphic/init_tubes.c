@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Apr 30 17:09:40 2014 Thibaut Lopez
-** Last update Thu May  1 12:23:53 2014 Thibaut Lopez
+** Last update Fri May  2 18:58:17 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -46,6 +46,7 @@ void	init_circle(t_lem *room, SDL_Surface *arena, int scale)
 	pixel = 0xFF0000;
       else
 	pixel = 0x00FF00;
+      printf("%s => %d\n", tmp->name, tmp->is_start);
       draw_circle(pixel, arena, &(tmp->ptr), scale);
       tmp = tmp->next;
     }

@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Mon Apr 28 23:48:33 2014 Thibaut Lopez
-** Last update Thu May  1 01:42:13 2014 Thibaut Lopez
+** Last update Fri May  2 19:36:22 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -117,30 +117,30 @@ void	my_left(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos)
 }
 
 int	operate_event(SDL_Surface *screen, SDL_Surface *arena,
-		      SDL_Rect *pos, SDL_Rect *dim)
+		      SDL_Rect *pos, SDL_Rect *dim, t_all *all)
 {
-  int		wait;
   SDL_Event	event;
 
-  wait = 1;
-  while (wait > 0)
+  if (SDL_PollEvent(&event) == 0)
+    return (0);
+  else if (event.key.keysym.sym == SDLK_ESCAPE)
+    return (1);
+  else if (event.key.keysym.sym == SDLK_DOWN)
+    my_down(screen, arena, pos, dim);
+  else if (event.key.keysym.sym == SDLK_UP)
+    my_up(screen, arena, pos);
+  else if (event.key.keysym.sym == SDLK_RIGHT)
+    my_right(screen, arena, pos, dim);
+  else if (event.key.keysym.sym == SDLK_LEFT)
+    my_left(screen, arena, pos);
+  else if (event.key.keysym.sym == SDLK_e || event.key.keysym.sym == SDLK_s)
     {
-      SDL_WaitEvent(&event);
-      if (event.key.keysym.sym == SDLK_ESCAPE)
-	return (1);
-      else if (event.key.keysym.sym == SDLK_DOWN)
-	my_down(screen, arena, pos, dim);
-      else if (event.key.keysym.sym == SDLK_UP)
-	my_up(screen, arena, pos);
-      else if (event.key.keysym.sym == SDLK_RIGHT)
-	my_right(screen, arena, pos, dim);
-      else if (event.key.keysym.sym == SDLK_LEFT)
-	my_left(screen, arena, pos);
-      if (event.key.keysym.sym == SDLK_SPACE &&
-	  event.type == SDL_KEYDOWN)
-	wait = (wait == 1) ? 2 : 0;
-      /*      else
-	      wait = 0;*/
+      if (event.key.keysym.sym == SDLK_s)
+	my_find_start(all->room, pos, dim);
+      else
+	my_find_end(all->room, pos, dim);
+      SDL_BlitSurface(arena, NULL, screen, pos);
+      SDL_Flip(screen);
     }
   return (0);
 }

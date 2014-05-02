@@ -5,33 +5,10 @@
 ** Login   <Alex@epitech.net>
 **
 ** Started on  Wed Apr 30 16:09:14 2014 Alex
-** Last update Fri May  2 15:34:12 2014 Alex
+** Last update Fri May  2 16:24:27 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
-
-void	       show_ant(t_mov *list)
-{
-  while (list)
-    {
-      printf("ant : %d\t is room : %s\n", list->ant_num, list->whereis);
-      list = list->next;
-    }
-}
-
-void		show_round(t_round *list)
-{
-  int	i;
-
-  i = 0;
-  while (list)
-    {
-      printf("au tour : %d\t", i);
-      show_ant(list->ptr);
-      list = list->next;
-      i++;
-    }
-}
 
 void		parse(t_all *list)
 {
@@ -49,7 +26,6 @@ void		parse(t_all *list)
     no_arc();
   list->arc = arc_num(list->arc, list->room);
   list->move = parse_move(list->map, &i);
-  show_round(list->move);
   list->ant = ants(list->ants, list->room);
 }
 
@@ -59,20 +35,21 @@ t_round		*parse_move(char **map, int *i)
   int			tmp;
   t_round		*list;
   char			**second;
+  t_mov			*temp;
 
   list = NULL;
-  list->ptr = NULL;
   while (map[*i])
     {
       tmp = 0;
       tab = my_str_to_wordtab(map[*i], " ");
+      temp = NULL;
       while (tab[tmp])
 	{
 	  second = my_str_to_wordtab(tab[tmp], "-");
-	  list->ptr = my_put_mov(list->ptr, second[0], second[1]);
+	  temp = my_put_mov(temp, second[0], second[1]);
 	  tmp++;
 	}
-      list = round_list(list, list->ptr);
+      list = round_list(list, temp);
       sfree(second);
       *i = *i + 1;
     }

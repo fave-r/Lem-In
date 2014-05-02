@@ -5,7 +5,7 @@
 ** Login   <Alex@epitech.net>
 ** 
 ** Started on  Thu May  1 16:08:13 2014 Alex
-** Last update Thu May  1 16:28:21 2014 Alex
+** Last update Fri May  2 16:48:22 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -25,12 +25,12 @@ t_ant	*fill_ant_num(t_ant *ptr, int nb, t_lem *room)
   int	x;
   int	y;
 
-  i = 0;
+  i = 1;
   while (room->is_start != 1)
     room = room->next;
   x = room->ptr.x;
   y = room->ptr.y;
-  while (i < nb)
+  while (i <= nb)
     {
       ptr = create_list(ptr, i, x, y);
       i++;
