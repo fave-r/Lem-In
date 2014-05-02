@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Fri May  2 15:33:08 2014 Alex
+** Last update Fri May  2 15:36:58 2014 Alex
 */
 
 #ifndef GRAPHIC_H
@@ -68,12 +68,15 @@ typedef struct		s_ant
   int			num;
   int			ant_x;
   int			ant_y;
+  int			tmp_x;
+  int			tmp_y;
   struct s_ant		*next;
 }			t_ant;
 
 typedef struct		s_all
 {
   int			ants;
+  int			scale;
   char			**map;
   t_lem			*room;
   t_arc			*arc;
@@ -157,5 +160,6 @@ int	greater_y(t_lem *list, int *scale);
 t_lem	*find_elem_in_list(char *name, t_lem *list);
 void	init_tubes(t_arc *arc, t_lem *room, SDL_Surface *arena, int scale);
 void	init_circle(t_lem *room, SDL_Surface *arena, int scale);
+t_ant	*find_ant_in_list(int nb, t_ant *list);
 
 #endif
