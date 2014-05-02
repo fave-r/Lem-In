@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu May  1 16:33:43 2014 Thibaut Lopez
-** Last update Fri May  2 20:20:14 2014 Thibaut Lopez
+** Last update Fri May  2 21:08:41 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -23,7 +23,11 @@ void	edit_cpy(t_all *all, SDL_Surface *cpy, int *i)
   while (tmp != NULL)
     {
       cur = find_ant_in_list(tmp->ant_num, all->ant);
+      if (cur == NULL)
+	exit(printf("Ant not found\n"));
       lem = find_elem_in_list(tmp->whereis, all->room);
+      if (lem == NULL)
+	exit(printf("Room not found\n"));
       len = POS(lem->ptr.x, all->scale) - POS(cur->ant_x, all->scale);
       rect.x = POS(cur->ant_x, all->scale) + (len * *i / 5) - 7;
       len = POS(lem->ptr.y, all->scale) - POS(cur->ant_y, all->scale) - 10;
