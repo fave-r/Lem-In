@@ -1,18 +1,41 @@
 /*
 ** parse.c for parse in /Users/Alex/work/Lem-In
-** 
+**
 ** Made by Alex
 ** Login   <Alex@epitech.net>
-** 
+**
 ** Started on  Wed Apr 30 16:09:14 2014 Alex
-** Last update Thu May  1 16:31:33 2014 Alex
+** Last update Fri May  2 15:34:12 2014 Alex
 */
 
 #include "graphic.h"
 
-void	parse(t_all *list)
+void	       show_ant(t_mov *list)
+{
+  while (list)
+    {
+      printf("ant : %d\t is room : %s\n", list->ant_num, list->whereis);
+      list = list->next;
+    }
+}
+
+void		show_round(t_round *list)
 {
   int	i;
+
+  i = 0;
+  while (list)
+    {
+      printf("au tour : %d\t", i);
+      show_ant(list->ptr);
+      list = list->next;
+      i++;
+    }
+}
+
+void		parse(t_all *list)
+{
+  int		i;
 
   i = 1;
   list->map = init_parse();
@@ -26,59 +49,79 @@ void	parse(t_all *list)
     no_arc();
   list->arc = arc_num(list->arc, list->room);
   list->move = parse_move(list->map, &i);
+  show_round(list->move);
   list->ant = ants(list->ants, list->room);
 }
 
-t_mov	*parse_move(char **map, int *i)
+t_round		*parse_move(char **map, int *i)
 {
-  t_mov	*ants;
-  char	**tmp_tab;
+  char			**tab;
+  int			tmp;
+  t_round		*list;
+  char			**second;
 
-  ants = NULL;
-  while (map[*i] != NULL)
+  list = NULL;
+  list->ptr = NULL;
+  while (map[*i])
     {
-      tmp_tab = my_str_to_wordtab(map[*i], " \t");
-      ants = fill_ants(ants, tmp_tab);
+      tmp = 0;
+      tab = my_str_to_wordtab(map[*i], " ");
+      while (tab[tmp])
+	{
+	  second = my_str_to_wordtab(tab[tmp], "-");
+	  list->ptr = my_put_mov(list->ptr, second[0], second[1]);
+	  tmp++;
+	}
+      list = round_list(list, list->ptr);
+      sfree(second);
       *i = *i + 1;
     }
-  return (ants);
+  return (list);
 }
 
-t_mov	*fill_ants(t_mov *ant, char **tab)
+t_round		*round_node(t_mov *ptr)
 {
-  int	i;
-  char	**move_tab;
+  t_round	*new;
 
-  i = 0;
-  while (tab[i])
-    {
-      move_tab = my_str_to_wordtab(tab[i], "-");
-      ant = my_put_ant(ant, move_tab[0], move_tab[1]);
-      i++;
-    }
-  return (ant);
+  new = xmalloc(sizeof(t_round));
+  new->ptr = ptr;
+  new->next = NULL;
+  return (new);
 }
 
-t_mov	*new_ant_node(char *ant_name, char *room)
+t_mov		*mov_node(char *name, char *room)
 {
-  t_mov	*new;
+  t_mov		*new;
 
-  new = malloc(sizeof(t_mov));
-  new->ant_num = atoi(ant_name + 1);
+  new = xmalloc(sizeof(t_mov));
+  new->ant_num = atoi(name + 1);
   new->whereis = strdup(room);
   new->next = NULL;
   return (new);
 }
 
-t_mov	*my_put_ant(t_mov *ptr, char *ant_name, char *room)
+t_mov		*my_put_mov(t_mov *ptr, char *name, char *room)
 {
-  t_mov	*tmp;
+  t_mov		*tmp;
 
   if (ptr == NULL)
-    return (new_ant_node(ant_name, room));
+    return (mov_node(name, room));
   tmp = ptr;
   while (tmp->next != NULL)
     tmp = tmp->next;
-  tmp->next = new_ant_node(ant_name, room);
+  tmp->next = mov_node(name, room);
+  return (ptr);
+}
+
+t_round		*round_list(t_round *ptr, t_mov *list)
+{
+  t_round		*tmp;
+
+  if (ptr == NULL)
+    return (round_node(list));
+  tmp = ptr;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  tmp->next = round_node(list);
   return (ptr);
 }

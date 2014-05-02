@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Thu May  1 16:27:03 2014 Alex
+** Last update Fri May  2 15:33:08 2014 Alex
 */
 
 #ifndef GRAPHIC_H
@@ -57,6 +57,12 @@ typedef struct		s_mov
   struct s_mov		*next;
 }			t_mov;
 
+typedef struct		s_round
+{
+  t_mov			*ptr;
+  struct s_round       	*next;
+}			t_round;
+
 typedef struct		s_ant
 {
   int			num;
@@ -71,7 +77,7 @@ typedef struct		s_all
   char			**map;
   t_lem			*room;
   t_arc			*arc;
-  t_mov			*move;
+  t_round      		*move;
   t_ant			*ant;
 }			t_all;
 
@@ -118,14 +124,15 @@ void		check_bool(int *bool_start, int *bool_end);
 void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
 void		parse(t_all *list);
-t_mov		*parse_move(char **map, int *i);
-t_mov		*fill_ants(t_mov *ant, char **tab);
-t_mov		*new_ant_node(char *ant_name, char *room);
-t_mov		*my_put_ant(t_mov *ptr, char *ant_name, char *room);
+t_round		*parse_move(char **map, int *i);
 t_ant		*ants(int nb_ants, t_lem *room);
 t_ant		*fill_ant_num(t_ant *ptr, int nb, t_lem *room);
 t_ant		*node(int nb, int x, int y);
 t_ant		*create_list(t_ant *ptr, int nb, int x, int y);
+t_round		*round_node(t_mov *ptr);
+t_round		*round_list(t_round *ptr, t_mov *list);
+t_mov		*mov_node(char *name, char *room);
+t_mov		*my_put_mov(t_mov *ptr, char *name, char *room);
 
 void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 Uint32	get_pixel(SDL_Surface *surface, int x, int y);

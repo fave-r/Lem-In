@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:46:01 2014 thibaud
-** Last update Thu May  1 17:12:54 2014 Alex
+** Last update Thu May  1 17:24:53 2014 Alex
 */
 
 #include "lem_in.h"
@@ -16,6 +16,7 @@ int		main(void)
 
   p = parse();
   my_show_map(p->map);
+  printf("ants = %d\n", p->ants);
   algo(p->arc, p->room, p->ants);
   sfree(p->map);
   free_list(p->room);
