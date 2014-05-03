@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 19 23:11:03 2014 thibaud
-** Last update Sat May  3 03:38:37 2014 thibaud
+** Last update Sat May  3 04:11:47 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -96,4 +96,14 @@ int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start, int en
       get_sommet(graphe, start)->distance = 0;
     }
   return (0);
+}
+
+t_lem   *get_lem(t_lem *list, int numero_fourmi)
+{
+  t_lem *tmp;
+
+  tmp = list;
+  while (tmp->ptr.num != numero_fourmi)
+    tmp = tmp->next;
+  return (tmp);
 }

@@ -5,20 +5,10 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Thu Apr 17 05:55:27 2014 thibaud
-** Last update Sat May  3 03:59:41 2014 thibaud
+** Last update Sat May  3 04:12:37 2014 thibaud
 */
 
 #include "lem_in.h"
-
-t_lem	*get_lem(t_lem *list, int numero_fourmi)
-{
-  t_lem	*tmp;
-
-  tmp = list;
-  while (tmp->ptr.num != numero_fourmi)
-    tmp = tmp->next;
-  return (tmp);
-}
 
 int             print_wave(t_fourmi *fourmis, t_lem *list)
 {

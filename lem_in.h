@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sat May  3 03:47:30 2014 thibaud
+** Last update Sat May  3 04:11:20 2014 thibaud
 */
 
 #ifndef LEM_IN_
@@ -102,6 +102,7 @@ int		add_arc(t_graphe *graphe, int sommet1, int sommet2);
 int		arc_exist(t_graphe *graphe, int sommet, int adjacent);
 int		insert_arc(t_graphe *graphe, int sommet1, int sommet2);
 int		dijkstra(t_graphe *graphe, int start, int end);
+t_lem		*get_lem(t_lem *list, int numero_fourmi);
 int		get_tmp_distance(t_graphe *graphe, t_list *fix, int **arc_tab);
 t_list          *fix_sommet(t_graphe *graphe);
 int		**build_arcs_tab(t_graphe *graphe, int start);
