@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Wed Apr 30 16:53:03 2014 Thibaut Lopez
+** Last update Sat May  3 03:47:30 2014 thibaud
 */
 
 #ifndef LEM_IN_
@@ -108,14 +108,15 @@ int		**build_arcs_tab(t_graphe *graphe, int start);
 t_list          *get_sommet(t_graphe *graphe, int nb);
 int             get_max_sommet(t_graphe *graphe);
 t_way           *get_ways(t_graphe *graphe, int start, int end, t_way *ways);
-t_way           *get_solution(t_graphe *graphe, t_way *list_chemins, int end, int start);
-int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start);
+t_way           *get_solution(t_graphe *graphe
+			      , t_way *list_chemins, int end, int start);
+int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start, int end);
 int             kill_link(t_graphe *graphe, int s1, int s2);
 int             fill_ways(t_way *ways, int nb_fourmis);
 t_fourmi        *add_fourmi(t_way *way, t_fourmi *fourmis, int *cpt);
 t_fourmi        *fill_wave(t_way *ways, t_fourmi *fourmis, int *cpt);
 t_fourmi        *kill_fourmis(t_fourmi *fourmis);
-int             run_lem_in(t_way *ways);
+int             run_lem_in(t_way *ways, t_lem *list);
 int		my_rev_tab(int *tab, int len);
 int		rmv_adjacent(t_list *cur, int s2);
 int		my_len_tab(char **tab);
@@ -128,7 +129,7 @@ int		print_graphe(t_graphe *graphe);
 int		print_dijsktra(t_graphe *graphe, int end, int start);
 int             print_result(t_way *way);
 int             print_all_result(t_way *ways);
-int             print_wave(t_fourmi *fourmis);
+int             print_wave(t_fourmi *fourmis, t_lem *list);
 int		print_arc_tab(int **, int);
 int		my_isdigit(char);
 
@@ -177,5 +178,6 @@ void		my_show_map(char **map);
 void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
 t_all		*parse();
+void		parse_room_next(int *bool_start, int *bool_end, t_lem **list);
 
 #endif

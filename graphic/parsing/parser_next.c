@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 19 14:25:15 2014 romaric
-** Last update Wed Apr 30 16:51:10 2014 Thibaut Lopez
+** Last update Fri May  2 19:02:12 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -35,6 +35,7 @@ t_lem	*parse_room_end(int *bool_end, t_lem *list, char *map)
       tab = my_str_to_wordtab(map, " \t");
       check_tab(tab);
       list = my_put_end(list, strdup(tab[0]), atoi(tab[1]), atoi(tab[2]));
+      printf("%s = %d\n", list->name, list->is_start);
       return (list);
     }
   return (NULL);

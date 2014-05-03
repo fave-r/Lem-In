@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Apr 30 17:09:40 2014 Thibaut Lopez
-** Last update Thu May  1 12:23:53 2014 Thibaut Lopez
+** Last update Fri May  2 21:08:26 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -22,9 +22,13 @@ void	init_tubes(t_arc *arc, t_lem *room, SDL_Surface *arena, int scale)
   while (tmp != NULL)
     {
       start = find_elem_in_list(tmp->first, room);
+      if (start == NULL)
+	exit(printf("Room not found\n"));
       a.x = start->ptr.x * (50 / scale);
       a.y = start->ptr.y * (50 / scale);
-      end = find_elem_in_list(tmp->second, room); 
+      end = find_elem_in_list(tmp->second, room);
+      if (end == NULL)
+	exit(printf("Room not found\n"));
       b.x = end->ptr.x * (50 / scale);
       b.y = end->ptr.y * (50 / scale);
       draw_tubes(&a, &b, arena, scale);
@@ -46,6 +50,7 @@ void	init_circle(t_lem *room, SDL_Surface *arena, int scale)
 	pixel = 0xFF0000;
       else
 	pixel = 0x00FF00;
+      printf("%s => %d\n", tmp->name, tmp->is_start);
       draw_circle(pixel, arena, &(tmp->ptr), scale);
       tmp = tmp->next;
     }

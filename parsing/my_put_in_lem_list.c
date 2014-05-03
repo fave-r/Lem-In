@@ -5,7 +5,7 @@
 ** Login   <alex-odet@epitech.net>
 ** 
 ** Started on  Fri Apr 18 14:45:17 2014 alex-odet
-** Last update Mon Apr 28 15:33:59 2014 Alex
+** Last update Fri May  2 18:56:12 2014 Thibaut Lopez
 */
 
 #include "lem_in.h"
@@ -33,7 +33,6 @@ t_lem		*my_put_in_lem_list(t_lem *list, char *name, int x, int y)
       return (list);
     }
   tmp = list;
-  list->is_start = 0;
   while (tmp->next != NULL)
     tmp = tmp->next;
   tmp->next = new_node(name, x, y);
@@ -47,11 +46,10 @@ t_lem		*my_put_start(t_lem *list, char *name, int x, int y)
 
   if (list == NULL)
     {
-      list = (new_node(name, x, y));
+      list = new_node(name, x, y);
       list->is_start = 1;
       return (list);
     }
-  list->is_start = 1;
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;
@@ -70,7 +68,6 @@ t_lem		*my_put_end(t_lem *list, char *name, int x, int y)
       list->is_start = 2;
       return (list);
     }
-  list->is_start = 2;
   tmp = list;
   while (tmp->next != NULL)
     tmp = tmp->next;

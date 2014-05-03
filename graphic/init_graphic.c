@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Thu May  1 12:29:19 2014 Thibaut Lopez
+** Last update Fri May  2 19:17:20 2014 Thibaut Lopez
 */
 
 #include "graphic.h"
@@ -38,7 +38,20 @@ void	fill_arena(SDL_Surface *arena, int x, int y)
   SDL_FreeSurface(image);
 }
 
-int	init_graphic(t_all *all, SDL_Rect *pos, int scale)
+SDL_Surface	*init_img_ant()
+{
+  SDL_Surface	*img;
+
+  img = SDL_LoadBMP("tools/ant.bmp");
+  if (img == NULL || img->w != 14 || img->h != 20)
+    {
+      img = SDL_CreateRGBSurface(SDL_SWSURFACE, 14, 20, 32, 0, 0, 0, 0);
+      SDL_FillRect(img, NULL, SDL_MapRGB(img->format, 255, 125, 125));
+    }
+  return (img);
+}
+
+int	init_graphic(t_all *all, SDL_Rect *pos)
 {
   SDL_Surface	*screen;
   SDL_Surface	*arena;
@@ -53,32 +66,34 @@ int	init_graphic(t_all *all, SDL_Rect *pos, int scale)
   if (arena == NULL)
     exit(printf("%s\n", SDL_GetError()));
   fill_arena(arena, pos->x, pos->y);
-  init_tubes(all->arc, all->room, arena, scale);
-  init_circle(all->room, arena, scale);
+  init_tubes(all->arc, all->room, arena, all->scale);
+  init_circle(all->room, arena, all->scale);
   init.x = 0;
   init.y = 0;
   SDL_BlitSurface(arena, NULL, screen, &init);
   SDL_Flip(screen);
-  if (operate_event(screen, arena, &init, pos) == 1)
-    SDL_FreeSurface(arena);
+  all->image = init_img_ant();
+  move_ants(screen, arena, pos, all);
+  SDL_FreeSurface(arena);
+  SDL_Quit();
   return (0);
 }
 
 int	main()
 {
-  int		scale;
   SDL_Rect	pos;
   t_all		all;
 
-  scale = 0;
   parse(&all);
-  pos.x = greater_x(all.room, &scale);
+  all.scale = 0;
+  pos.x = greater_x(all.room, &(all.scale));
+  printf("\n");
   if (pos.x == -1)
     exit(printf("Width or height is too large\n"));
-  pos.y = greater_y(all.room, &scale);
+  pos.y = greater_y(all.room, &(all.scale));
   if (pos.y == -1)
     exit(printf("Width or height is too large\n"));
-  init_graphic(&all, &pos, scale);
+  init_graphic(&all, &pos);
   free_list(all.room);
   free_arc(all.arc);
   return (0);

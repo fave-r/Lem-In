@@ -5,12 +5,13 @@
 ** Login   <thibaut.lopez@epitech.net>
 ** 
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Thu May  1 12:26:56 2014 Thibaut Lopez
+** Last update Fri May  2 20:16:58 2014 Thibaut Lopez
 */
 
 #ifndef GRAPHIC_H
 #define GRAPHIC_H
-#define BPP(S)	(S)->format->BytesPerPixel
+#define BPP(S)		(S)->format->BytesPerPixel
+#define POS(Val, Scl)	((Val) * (50 / (Scl)) + (25 / (Scl)))
 
 #include <math.h>
 #include <SDL/SDL.h>
@@ -50,19 +51,39 @@ typedef struct		s_arc
   struct s_arc		*next;
 }			t_arc;
 
+typedef struct		s_mov
+{
+  int			ant_num;
+  char			*whereis;
+  struct s_mov		*next;
+}			t_mov;
+
+typedef struct		s_round
+{
+  t_mov			*ptr;
+  struct s_round       	*next;
+}			t_round;
+
 typedef struct		s_ant
 {
-  char			*ant_name;
-  char			*whereis;
+  int			num;
+  int			ant_x;
+  int			ant_y;
+  struct s_ant		*next;
 }			t_ant;
 
 typedef struct		s_all
 {
   int			ants;
+  int			scale;
   char			**map;
   t_lem			*room;
   t_arc			*arc;
-  t_ant			*move;
+  t_round      		*move;
+  t_ant			*ant;
+  SDL_Surface		*image;
+  int			tmp_x;
+  int			tmp_y;
 }			t_all;
 
 void		bad_ants();
@@ -108,6 +129,15 @@ void		check_bool(int *bool_start, int *bool_end);
 void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
 void		parse(t_all *list);
+t_round		*parse_move(char **map, int *i);
+t_ant		*ants(int nb_ants, t_lem *room);
+t_ant		*fill_ant_num(t_ant *ptr, int nb, t_lem *room);
+t_ant		*node(int nb, int x, int y);
+t_ant		*create_list(t_ant *ptr, int nb, int x, int y);
+t_round		*round_node(t_mov *ptr);
+t_round		*round_list(t_round *ptr, t_mov *list);
+t_mov		*mov_node(char *name, char *room);
+t_mov		*my_put_mov(t_mov *ptr, char *name, char *room);
 
 void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 Uint32	get_pixel(SDL_Surface *surface, int x, int y);
@@ -132,5 +162,9 @@ int	greater_y(t_lem *list, int *scale);
 t_lem	*find_elem_in_list(char *name, t_lem *list);
 void	init_tubes(t_arc *arc, t_lem *room, SDL_Surface *arena, int scale);
 void	init_circle(t_lem *room, SDL_Surface *arena, int scale);
+t_ant	*find_ant_in_list(int nb, t_ant *list);
+void	move_ants(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, t_all *all);
+void	my_find_start(t_lem *room, SDL_Rect *pos, SDL_Rect *dim);
+void	my_find_end(t_lem *room, SDL_Rect *pos, SDL_Rect *dim);
 
 #endif

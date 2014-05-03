@@ -1,11 +1,10 @@
 3
-##end
-4 10 61
 ##start
-1 43 93
-2 0 32
-3 14 56
-1-2
-1-3
-3-4
-2-4
+ZERO 1 0
+##end
+UN 5 0
+DEUX 9 0
+TROIS 13 0
+ZERO-DEUX
+DEUX-TROIS
+TROIS-UN

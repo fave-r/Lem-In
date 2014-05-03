@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 ** 
 ** Started on  Sat Apr 19 23:11:03 2014 thibaud
-** Last update Thu May  1 16:25:23 2014 thibaud
+** Last update Sat May  3 03:38:37 2014 thibaud
 */
 
 #include "lem_in.h"
@@ -27,9 +27,8 @@ t_way           *get_ways(t_graphe *graphe, int start, int end, t_way *ways)
 {
   while (dijkstra(graphe, start, end))
     {
-      //print_dijsktra(graphe, end, start);
       ways = get_solution(graphe, ways, end, start);
-      kill_the_way(graphe, ways, start);
+      kill_the_way(graphe, ways, start, end);
     }
   if (ways == NULL)
     {
@@ -68,18 +67,21 @@ t_way           *get_solution(t_graphe *graphe, t_way *list_chemins,
   return (new);
 }
 
-int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start)
+int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start, int end)
 {
   int           i;
   t_list        *cur;
 
   cur = graphe->next;
   i = 1;
-  //exit(0);
   while (i < to_kill->len)
     {
-      //get_sommet(graphe, to_kill->chemin[i - 1])->nb_sommet_adjacent = 0;
-      kill_link(graphe, to_kill->chemin[i], to_kill->chemin[i - 1]);
+      if (get_sommet(graphe, to_kill->chemin[i - 1])->numero_sommet != start
+	  && get_sommet(graphe, to_kill->chemin[i - 1])->numero_sommet != end)
+	get_sommet(graphe, to_kill->chemin[i - 1])->nb_sommet_adjacent = 0;
+      else if(get_sommet(graphe, to_kill->chemin[i - 1])->numero_sommet == start
+	      && get_sommet(graphe, to_kill->chemin[i])->numero_sommet == end)
+	kill_link(graphe, to_kill->chemin[i], to_kill->chemin[i - 1]);
       i++;
     }
   while (cur != NULL)

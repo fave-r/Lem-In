@@ -5,12 +5,22 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Thu Apr 17 05:55:27 2014 thibaud
-** Last update Thu May  1 16:28:06 2014 thibaud
+** Last update Sat May  3 03:59:41 2014 thibaud
 */
 
 #include "lem_in.h"
 
-int             print_wave(t_fourmi *fourmis)
+t_lem	*get_lem(t_lem *list, int numero_fourmi)
+{
+  t_lem	*tmp;
+
+  tmp = list;
+  while (tmp->ptr.num != numero_fourmi)
+    tmp = tmp->next;
+  return (tmp);
+}
+
+int             print_wave(t_fourmi *fourmis, t_lem *list)
 {
   t_fourmi      *cur;
 
@@ -18,7 +28,7 @@ int             print_wave(t_fourmi *fourmis)
   while (cur)
     {
       if (cur->posy <= cur->len)
-        printf("P%d-%d", cur->numero_fourmi, cur->chemin[cur->posy + 1]);
+        printf("P%d-%s", cur->numero_fourmi, get_lem(list, cur->chemin[cur->posy + 1])->name);
       if (cur->next)
 	printf(" ");
       cur->posy++;
