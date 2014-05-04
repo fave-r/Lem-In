@@ -5,7 +5,7 @@
 ** Login   <fave_r@epitech.net>
 **
 ** Started on  Sat Apr 12 16:52:24 2014 romaric
-** Last update Sun May  4 20:47:29 2014 romaric
+** Last update Sun May  4 21:10:32 2014 romaric
 */
 
 #include "fmod.h"
@@ -26,9 +26,9 @@ void		fmode(void)
 				     | FMOD_2D | FMOD_CREATESTREAM, 0, &musique);
   if (resultat != FMOD_OK)
     {
-      fprintf(stderr, "Cannot find ");
-      fprintf(stderr, "%s", str);
-      fprintf(stderr, ", put this file next to the executable 'ant_colony'");
+      fprintf(stderr, "\033[31mCannot find \033[0;m");
+      fprintf(stderr, "\033[31m%s\033[0;m", str);
+      fprintf(stderr, "\033[31m, put this file next to the executable 'ant_colony'\033[0;m");
       write(2, "\n", 1);
     }
   else
