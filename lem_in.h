@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sun May  4 12:42:57 2014 romaric
+** Last update Sun May  4 13:21:06 2014 romaric
 */
 
 #ifndef LEM_IN_
@@ -111,7 +111,8 @@ int             get_max_sommet(t_graphe *graphe);
 t_way           *get_ways(t_graphe *graphe, int start, int end, t_way *ways);
 t_way           *get_solution(t_graphe *graphe
 			      , t_way *list_chemins, int end, int start);
-int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start, int end);
+int             kill_the_way(t_graphe *graphe
+			     , t_way *to_kill, int start, int end);
 int             kill_link(t_graphe *graphe, int s1, int s2);
 int             fill_ways(t_way *ways, int nb_fourmis);
 t_fourmi        *add_fourmi(t_way *way, t_fourmi *fourmis, int *cpt);

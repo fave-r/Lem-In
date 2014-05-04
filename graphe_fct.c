@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sun Apr 13 03:01:17 2014 thibaud
-** Last update Fri May  2 16:42:11 2014 Alex
+** Last update Sun May  4 13:20:09 2014 romaric
 */
 
 #include "lem_in.h"
@@ -78,24 +78,12 @@ int		print_graphe(t_graphe *graphe)
   t_list        *list;
   int		i;
 
-  /*printf("Nombre de sommets = %d\nNombre d'arcs = %d\n\n"
-    , graphe->nb_sommet, graphe->nb_arcs);*/
   i = 0;
   list = graphe->next;
   while (list != NULL)
     {
-      /*printf("\nSommet\tn°%d\nNombre de sommet adjacent\t%d\n"
-	, list->numero_sommet, list->nb_sommet_adjacent);*/
-      if (list->nb_sommet_adjacent != 0)
-        //printf("Sommets adjacents :\t");
       while (i < list->nb_sommet_adjacent)
-        {
-          //printf("%d ", list->adjacents[i]);
           i++;
-        }
-//printf("\nFix =\t%d", list->fix);
-//printf("\nDistance =\t%d\n", list->distance);
-//printf("\n");
       i = 0;
       list = list->next;
     }
