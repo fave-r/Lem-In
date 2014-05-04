@@ -1,16 +1,16 @@
 /*
 ** draw_circle.c for draw_circle in /home/thibaut.lopez/Lem-In/graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Thu Apr 24 09:42:42 2014 Thibaut Lopez
-** Last update Thu May  1 12:29:30 2014 Thibaut Lopez
+** Last update Sun May  4 17:52:08 2014 romaric
 */
 
 #include "graphic.h"
 
-void	fill_circle(t_box *var, Uint32 pixel, double r)
+void		fill_circle(t_box *var, Uint32 pixel, double r)
 {
   int		x;
   double	dx;
@@ -39,7 +39,7 @@ void	fill_circle(t_box *var, Uint32 pixel, double r)
     }
 }
 
-void	init_box(t_box *var, t_coor *pos, int scale, SDL_Surface *arena)
+void		init_box(t_box *var, t_coor *pos, int scale, SDL_Surface *arena)
 {
   var->ret = arena;
   var->error = -(20.0 / scale);
@@ -49,9 +49,10 @@ void	init_box(t_box *var, t_coor *pos, int scale, SDL_Surface *arena)
   var->cy = (double)((pos->y * (50 / scale)) + (25.0 / scale) - 0.5);
 }
 
-void	draw_circle(Uint32 pixel, SDL_Surface *arena, t_coor *pos, int scale)
+void		draw_circle(Uint32 pixel
+			    , SDL_Surface *arena, t_coor *pos, int scale)
 {
-  t_box	var;
+  t_box		var;
 
   init_box(&var, pos, scale, arena);
   while (var.x >= var.y)

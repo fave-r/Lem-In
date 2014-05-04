@@ -1,18 +1,18 @@
 /*
 ** free_list.c for free_list in /Users/Alex/work/Lem-In
-** 
+**
 ** Made by Alex
 ** Login   <Alex@epitech.net>
-** 
+**
 ** Started on  Tue Apr 29 15:01:35 2014 Alex
-** Last update Wed Apr 30 12:33:53 2014 Alex
+** Last update Sun May  4 17:32:13 2014 romaric
 */
 
 #include "lem_in.h"
 
 void		free_list(t_lem *list)
 {
-  t_lem *to_free;
+  t_lem		*to_free;
 
   while (list != NULL)
     {

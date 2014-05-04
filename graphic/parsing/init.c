@@ -1,16 +1,16 @@
 /*
 ** init.c for init in /home/alex-odet/work/Lem-In/parsing
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Wed Apr 23 14:02:21 2014 alex-odet
-** Last update Wed Apr 30 17:51:26 2014 Alex
+** Last update Sun May  4 17:53:36 2014 romaric
 */
 
 #include "graphic.h"
 
-char	**init_parse()
+char		**init_parse()
 {
   char		*tmp;
   char		**map;

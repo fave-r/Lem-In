@@ -1,11 +1,11 @@
 /*
 ** parse_arc.c for parse_arc in /home/alex-odet/work/Lem-In/parsing
-** 
+**
 ** Made by alex-odet
 ** Login   <alex-odet@epitech.net>
-** 
+**
 ** Started on  Wed Apr 23 10:35:38 2014 alex-odet
-** Last update Thu May  1 13:53:14 2014 Alex
+** Last update Sun May  4 17:34:36 2014 romaric
 */
 
 #include "lem_in.h"
@@ -47,9 +47,9 @@ void		check_len_tab(char **tab, char *arc)
 
 t_arc		*is_valid(char *first, char *second, t_lem *list, t_arc *arc)
 {
-  t_lem	*cur;
-  char	*save_first;
-  char	*save_second;
+  t_lem		*cur;
+  char		*save_first;
+  char		*save_second;
 
   save_first = NULL;
   save_second = NULL;

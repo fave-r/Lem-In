@@ -1,16 +1,17 @@
 /*
 ** draw_tubes.c for draw_tubes in /home/thibaut.lopez/Lem-In/graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Fri Apr 25 11:33:21 2014 Thibaut Lopez
-** Last update Thu May  1 12:26:44 2014 Thibaut Lopez
+** Last update Sun May  4 17:50:40 2014 romaric
 */
 
 #include "graphic.h"
 
-void	draw_tubes(SDL_Rect *f_box, SDL_Rect *s_box, SDL_Surface *arena, int scale)
+void	draw_tubes(SDL_Rect *f_box
+		   , SDL_Rect *s_box, SDL_Surface *arena, int scale)
 {
   int	i;
   int	iterat;
