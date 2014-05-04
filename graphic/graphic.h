@@ -5,7 +5,7 @@
 ** Login   <thibaut.lopez@epitech.net>
 **
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Sun May  4 20:08:11 2014 romaric
+** Last update Sun May  4 20:51:20 2014 romaric
 */
 
 #ifndef GRAPHIC_H
@@ -141,7 +141,8 @@ t_mov		*my_put_mov(t_mov *ptr, char *name, char *room);
 
 void		put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 Uint32		get_pixel(SDL_Surface *surface, int x, int y);
-void		draw_circle(Uint32 pixel, SDL_Surface *arena, t_coor *pos, int scale);
+void		draw_circle(Uint32 pixel
+			    , SDL_Surface *arena, t_coor *pos, int scale);
 void		draw_tubes(SDL_Rect *f_box
 			   , SDL_Rect *s_box, SDL_Surface *arena, int scale);
 void		draw_line(SDL_Rect *a, SDL_Rect *b, SDL_Surface *arena);
