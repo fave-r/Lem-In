@@ -1,11 +1,11 @@
 /*
 ** operate_event.c for operate_event in /home/thibaut.lopez/Lem-In/graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Mon Apr 28 23:48:33 2014 Thibaut Lopez
-** Last update Fri May  2 20:42:50 2014 Thibaut Lopez
+** Last update Sun May  4 13:25:35 2014 romaric
 */
 
 #include "graphic.h"
@@ -116,7 +116,8 @@ void	my_left(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos)
   pos->y = y;
 }
 
-int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim)
+int	operate_event(SDL_Surface *screen
+		      , SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim)
 {
   static Uint32	a_time = 0;
   Uint32	n_time;

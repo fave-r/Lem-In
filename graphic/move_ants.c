@@ -1,11 +1,11 @@
 /*
 ** move_ants.c for move_ants in /home/thibaut.lopez/Lem-In/graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Thu May  1 16:33:43 2014 Thibaut Lopez
-** Last update Fri May  2 21:08:41 2014 Thibaut Lopez
+** Last update Sun May  4 13:25:59 2014 romaric
 */
 
 #include "graphic.h"
@@ -55,7 +55,8 @@ void	keep_init_value(SDL_Surface *cpy, SDL_Surface *screen, SDL_Rect *init)
   SDL_Flip(screen);
 }
 
-void	move_ants(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, t_all *all)
+void	move_ants(SDL_Surface *screen
+		  , SDL_Surface *arena, SDL_Rect *pos, t_all *all)
 {
   t_round	*tmp;
   SDL_Surface	*cpy;

@@ -1,11 +1,11 @@
 /*
 ** graphic.h for graphic in /home/thibaut.lopez/Lem-In/graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Thu Apr 24 15:45:29 2014 Thibaut Lopez
-** Last update Fri May  2 20:16:58 2014 Thibaut Lopez
+** Last update Sun May  4 13:24:49 2014 romaric
 */
 
 #ifndef GRAPHIC_H
@@ -142,7 +142,8 @@ t_mov		*my_put_mov(t_mov *ptr, char *name, char *room);
 void	put_pixel(SDL_Surface *surface, int x, int y, Uint32 pixel);
 Uint32	get_pixel(SDL_Surface *surface, int x, int y);
 void	draw_circle(Uint32 pixel, SDL_Surface *arena, t_coor *pos, int scale);
-void	draw_tubes(SDL_Rect *f_box, SDL_Rect *s_box, SDL_Surface *arena, int scale);
+void	draw_tubes(SDL_Rect *f_box
+		   , SDL_Rect *s_box, SDL_Surface *arena, int scale);
 void	draw_line(SDL_Rect *a, SDL_Rect *b, SDL_Surface *arena);
 void	flat1(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b);
 void	flat2(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b);
@@ -156,14 +157,16 @@ void	quarter5(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter6(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter7(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
 void	quarter8(SDL_Surface *arena, SDL_Rect *a, SDL_Rect *b, int *delta);
-int	operate_event(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim);
+int	operate_event(SDL_Surface *screen
+		      , SDL_Surface *arena, SDL_Rect *pos, SDL_Rect *dim);
 int	greater_x(t_lem *list, int *scale);
 int	greater_y(t_lem *list, int *scale);
 t_lem	*find_elem_in_list(char *name, t_lem *list);
 void	init_tubes(t_arc *arc, t_lem *room, SDL_Surface *arena, int scale);
 void	init_circle(t_lem *room, SDL_Surface *arena, int scale);
 t_ant	*find_ant_in_list(int nb, t_ant *list);
-void	move_ants(SDL_Surface *screen, SDL_Surface *arena, SDL_Rect *pos, t_all *all);
+void	move_ants(SDL_Surface *screen
+		  , SDL_Surface *arena, SDL_Rect *pos, t_all *all);
 void	my_find_start(t_lem *room, SDL_Rect *pos, SDL_Rect *dim);
 void	my_find_end(t_lem *room, SDL_Rect *pos, SDL_Rect *dim);
 
