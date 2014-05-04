@@ -1,11 +1,11 @@
 /*
 ** get_ways.c for lem_in in /home/thibaud/rendu/Lem-In
-** 
+**
 ** Made by thibaud
 ** Login   <thibaud@epitech.net>
-** 
+**
 ** Started on  Sat Apr 19 23:11:03 2014 thibaud
-** Last update Sat May  3 04:11:47 2014 thibaud
+** Last update Sun May  4 13:10:38 2014 romaric
 */
 
 #include "lem_in.h"
@@ -67,7 +67,8 @@ t_way           *get_solution(t_graphe *graphe, t_way *list_chemins,
   return (new);
 }
 
-int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start, int end)
+int             kill_the_way(t_graphe *graphe
+			     , t_way *to_kill, int start, int end)
 {
   int           i;
   t_list        *cur;
@@ -78,18 +79,16 @@ int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start, int en
     {
       if (get_sommet(graphe, to_kill->chemin[i - 1])->numero_sommet != start
 	  && get_sommet(graphe, to_kill->chemin[i - 1])->numero_sommet != end)
-	get_sommet(graphe, to_kill->chemin[i - 1])->nb_sommet_adjacent = 0;
-      else if(get_sommet(graphe, to_kill->chemin[i - 1])->numero_sommet == start
-	      && get_sommet(graphe, to_kill->chemin[i])->numero_sommet == end)
+	get_sommet(graphe
+		   , to_kill->chemin[i - 1])->nb_sommet_adjacent = 0;
+      else if (get_sommet(graphe
+			  , to_kill->chemin[i - 1])->numero_sommet == start
+	       && get_sommet(graphe, to_kill->chemin[i])->numero_sommet == end)
 	kill_link(graphe, to_kill->chemin[i], to_kill->chemin[i - 1]);
       i++;
     }
   while (cur != NULL)
-    {
-      cur->fix = 0;
-      cur->distance = INT_MAX;
-      cur = cur->next;
-    }
+    kill_the_way_next(&cur);
   if (get_sommet(graphe, start))
     {
       get_sommet(graphe, start)->fix = 0;
@@ -98,9 +97,9 @@ int             kill_the_way(t_graphe *graphe, t_way *to_kill, int start, int en
   return (0);
 }
 
-t_lem   *get_lem(t_lem *list, int numero_fourmi)
+t_lem		*get_lem(t_lem *list, int numero_fourmi)
 {
-  t_lem *tmp;
+  t_lem		*tmp;
 
   tmp = list;
   while (tmp->ptr.num != numero_fourmi)

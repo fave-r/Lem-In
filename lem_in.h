@@ -5,7 +5,7 @@
 ** Login   <thibaud@epitech.net>
 **
 ** Started on  Sat Apr 12 23:41:54 2014 thibaud
-** Last update Sat May  3 04:11:20 2014 thibaud
+** Last update Sun May  4 12:42:57 2014 romaric
 */
 
 #ifndef LEM_IN_
@@ -180,5 +180,6 @@ void		free_arc(t_arc *arc);
 void		free_list(t_lem *list);
 t_all		*parse();
 void		parse_room_next(int *bool_start, int *bool_end, t_lem **list);
+void		kill_the_way_next(t_list **cur);
 
 #endif

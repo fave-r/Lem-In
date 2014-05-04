@@ -5,60 +5,60 @@
 ## Login   <thibaud@epitech.net>
 ##
 ## Started on  Mon Oct 21 09:07:38 2013 thibaud
-## Last update Thu May  1 15:42:22 2014 thibaud
+## Last update Sun May  4 13:13:13 2014 romaric
 ##
 
-CC=	gcc
+CC=		gcc
 
-RM=	rm -f
+RM=		rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror -I. -Ofast -g3 -ggdb
+CFLAGS	+=	-Wextra -Wall -Werror -I. -Ofast
 
-NAME	= lem_in
+NAME=		lem_in
 
-SRCS	= main.c \
-	graphe_fct.c \
-	dijkstra.c \
-	print.c \
-	lib.c \
-	lib_next.c \
-	graph_fct_next.c \
-	get_ways.c \
-	run_lem_in.c \
-	free.c \
-	free_list.c \
-	parse.c \
-	parsing/error.c \
-	parsing/my_len_tab.c \
-	parsing/my_put_in_lem_list.c \
-	parsing/parser.c \
-	parsing/xfunction.c \
-	parsing/my_list_size.c \
-	parsing/my_str_to_wordtab.c \
-	parsing/parser_next.c \
-	parsing/my_strchr.c \
-	parsing/init.c \
-	parsing/my_strscat.c \
-	parsing/my_put_in_arc_list.c \
-	parsing/bad_arc.c \
-	parsing/parse_arc.c \
-	parsing/fill_num_list.c \
-	parsing/arc_num.c \
+SRCS=		main.c \
+		graphe_fct.c \
+		dijkstra.c \
+		print.c \
+		lib.c \
+		lib_next.c \
+		graph_fct_next.c \
+		get_ways.c \
+		run_lem_in.c \
+		free.c \
+		free_list.c \
+		parse.c \
+		parsing/error.c \
+		parsing/my_len_tab.c \
+		parsing/my_put_in_lem_list.c \
+		parsing/parser.c \
+		parsing/xfunction.c \
+		parsing/my_list_size.c \
+		parsing/my_str_to_wordtab.c \
+		parsing/parser_next.c \
+		parsing/my_strchr.c \
+		parsing/init.c \
+		parsing/my_strscat.c \
+		parsing/my_put_in_arc_list.c \
+		parsing/bad_arc.c \
+		parsing/parse_arc.c \
+		parsing/fill_num_list.c \
+		parsing/arc_num.c \
+		get_ways_next.c
 
+OBJS=		$(SRCS:.c=.o)
 
-OBJS=	$(SRCS:.c=.o)
+all:		$(NAME)
 
-all:	$(NAME)
-
-$(NAME) :	$(OBJS)
+$(NAME):	$(OBJS)
 		$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
 clean:
-	$(RM) $(OBJS)
+		$(RM) $(OBJS)
 
-fclean: clean
-	$(RM) $(NAME) *~
+fclean:		clean
+		$(RM) $(NAME) *~
 
-re:	fclean all
+re:		fclean all
 
-.PHONY:	all fclean re
+.PHONY:		all fclean re
