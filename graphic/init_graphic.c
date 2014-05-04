@@ -1,11 +1,11 @@
 /*
 ** init_graphic.c for init_graphic in /home/thibaut.lopez/Corewar/Corewar/vm/Graphic
-** 
+**
 ** Made by Thibaut Lopez
 ** Login   <thibaut.lopez@epitech.net>
-** 
+**
 ** Started on  Wed Mar 19 09:16:50 2014 Thibaut Lopez
-** Last update Fri May  2 19:17:20 2014 Thibaut Lopez
+** Last update Sun May  4 20:07:59 2014 romaric
 */
 
 #include "graphic.h"
@@ -84,6 +84,7 @@ int	main()
   SDL_Rect	pos;
   t_all		all;
 
+  fmode();
   parse(&all);
   all.scale = 0;
   pos.x = greater_x(all.room, &(all.scale));

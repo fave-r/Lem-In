@@ -5,14 +5,16 @@
 ## Login   <thibaut.lopez@epitech.net>
 ## 
 ## Started on  Mon Apr 28 11:58:44 2014 Thibaut Lopez
-## Last update Fri May  2 20:13:13 2014 Thibaut Lopez
+## Last update Sun May  4 19:59:09 2014 romaric
 ##
 
 CC=		gcc
 
 RM=		rm -f
 
-CFLAGS	+=	-Wextra -Wall -Werror -I. -lm -lSDL -lGL -lGLU -g3
+CFLAGS=		-Wextra -Wall -Werror -I. -I./fmodapi44433linux/api/inc -lm -lSDL -lGL -lGLU
+
+FMOD=		./fmodapi44433linux/api/lib/libfmodex64-4.44.33.so
 
 NAME=		ant_colony
 
@@ -46,14 +48,15 @@ SRCS=		init_graphic.c \
 		parsing/parser.c \
 		parsing/parser_next.c \
 		parsing/xfunction.c \
-		parsing/ants.c
+		parsing/ants.c \
+		fmod.c
 
 OBJS=		$(SRCS:.c=.o)
 
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) -lm -g3
+		$(CC) $(OBJS) -o $(NAME) $(CFLAGS) $(FMOD)
 
 clean:
 		$(RM) $(OBJS)
